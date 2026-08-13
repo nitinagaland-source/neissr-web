@@ -1,0 +1,6 @@
+{
+  "name": "NEISSR",
+  "description": "Official website for North East Institute of Social Sciences and Research (NEISSR), Nagaland.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
