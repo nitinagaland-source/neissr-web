@@ -21,15 +21,19 @@ export default function FileUploader({ label, accept, maxSizeMB, currentUrl, onU
     setPendingFile(file); handleUpload(file);
   };
   const handleUpload = async (file: File) => {
-    setUploading(true); setProgress(10); setError(null);
-    const interval = setInterval(() => setProgress(p => p < 85 ? p + 5 : p), 400);
+    setUploading(true); setProgress(0); setError(null);
     try {
-      const url = await uploadToCloudinary(file, getResourceType(file));
-      clearInterval(interval); setProgress(100);
+      const url = await uploadToCloudinary(file, getResourceType(file), {
+        onProgress: (percent) => setProgress(percent),
+      });
       onUploadComplete(url, file.name, formatFileSize(file.size));
       toast.success('File uploaded successfully.');
-    } catch (err) { clearInterval(interval); console.error(err); setError('Upload failed. Retry?'); toast.error('Upload failed.'); }
-    finally { setUploading(false); setProgress(0); }
+    } catch (err) {
+      console.error(err);
+      const message = err instanceof Error ? err.message : 'Upload failed. Retry?';
+      setError(message);
+      toast.error(message);
+    } finally { setUploading(false); setProgress(0); }
   };
   return (
     <div className="space-y-2">
@@ -46,7 +50,7 @@ export default function FileUploader({ label, accept, maxSizeMB, currentUrl, onU
       {uploading && <div className="space-y-1 p-3 bg-blue-50/50 rounded-xl border border-blue-100"><div className="flex justify-between text-xs font-medium text-[#003DA5]"><span>Uploading...</span><span>{progress}%</span></div><div className="w-full bg-blue-200/60 rounded-full h-2"><div className="bg-[#003DA5] h-2 rounded-full transition-all" style={{width: progress+'%'}} /></div></div>}
       {error && !uploading && <div className="flex items-center justify-between p-2.5 bg-red-50 rounded-lg border border-red-200 text-xs text-red-700"><span>{error}</span>{pendingFile && <button type="button" onClick={() => handleUpload(pendingFile)} className="font-bold underline flex items-center gap-1"><RefreshCw className="w-3.5 h-3.5" />Retry</button>}</div>}
       {!uploading && <button type="button" onClick={() => inputRef.current?.click()} disabled={disabled} className="inline-flex items-center gap-2 px-4 py-2 border border-neutral-300 bg-white rounded-lg text-xs font-semibold text-neutral-700 hover:bg-neutral-50 disabled:opacity-50 shadow-sm"><Upload className="w-4 h-4 text-[#003DA5]" />{currentUrl ? 'Replace File' : 'Choose File'}</button>}
-      <p className="text-[11px] text-neutral-400">{hint ?? (isPdf ? 'PDF file' : isImage ? 'JPG, PNG or WebP' : 'Media file') + ' — max ' + maxSizeMB + 'MB'}</p>
+      <p className="text-[11px] text-neutral-400">{hint ?? (isPdf ? 'PDF file' : isImage ? 'JPG, PNG or WebP' : 'Media file') + ' ï¿½ max ' + maxSizeMB + 'MB'}</p>
     </div>
   );
 }
