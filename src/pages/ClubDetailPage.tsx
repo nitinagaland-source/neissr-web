@@ -57,7 +57,7 @@ export default function ClubDetailPage() {
               Office Bearers
             </h3>
             <div className="space-y-2 text-xs">
-              {club.officeBearers.map((ob, idx) => (
+              {(club.officeBearers ?? []).map((ob, idx) => (
                 <div key={idx} className="flex justify-between py-1 border-b border-neutral-100">
                   <span className="text-neutral-500">{ob.role}</span>
                   <span className="font-semibold text-neutral-900">{ob.name}</span>
@@ -70,3 +70,4 @@ export default function ClubDetailPage() {
     </div>
   );
 }
+

@@ -59,7 +59,7 @@ export default function ClubsPage() {
                   dangerouslySetInnerHTML={{ __html: club.descriptionHtml }}
                 />
                 <div className="pt-2 border-t border-neutral-100 text-[11px] text-neutral-500 font-medium">
-                  {club.officeBearers[0]?.role}: {club.officeBearers[0]?.name}
+                  {(club.officeBearers ?? [])[0]?.role}: {(club.officeBearers ?? [])[0]?.name}
                 </div>
               </div>
             </ReferenceCard>
@@ -69,3 +69,4 @@ export default function ClubsPage() {
     </div>
   );
 }
+
