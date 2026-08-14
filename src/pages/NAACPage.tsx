@@ -38,26 +38,8 @@ export default function NAACPage() {
           </div>
 
           <div className="pt-4 border-t border-neutral-200 flex flex-wrap gap-4">
-            <a
-              href="#naac-certificate"
-              onClick={(e) => {
-                e.preventDefault();
-                alert('Downloading NAAC Accreditation Certificate...');
-              }}
-              className="inline-flex items-center gap-2 bg-[#C8102E] text-white px-6 py-3 rounded-full text-xs font-bold hover:bg-[#9A0C24]"
-            >
-              <Download className="w-4 h-4" /> Download NAAC Certificate
-            </a>
-            <a
-              href="#aqar-report"
-              onClick={(e) => {
-                e.preventDefault();
-                alert('Downloading Annual Quality Assurance Report (AQAR)...');
-              }}
-              className="inline-flex items-center gap-2 bg-[#003DA5] text-white px-6 py-3 rounded-full text-xs font-bold hover:bg-[#002B75]"
-            >
-              <Download className="w-4 h-4" /> Download Latest AQAR
-            </a>
+            <span className="inline-flex items-center gap-2 bg-neutral-200 text-neutral-500 px-6 py-3 rounded-full text-xs font-bold cursor-not-allowed"><Download className="w-4 h-4" /> Document Coming Soon</span>
+            <span className="inline-flex items-center gap-2 bg-neutral-200 text-neutral-500 px-6 py-3 rounded-full text-xs font-bold cursor-not-allowed"><Download className="w-4 h-4" /> Document Coming Soon</span>
           </div>
         </div>
       </section>

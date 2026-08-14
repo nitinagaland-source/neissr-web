@@ -42,16 +42,7 @@ export default function NIRFPage() {
                   </div>
                 </div>
 
-                <a
-                  href="#download"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    alert(`Downloading ${rep.title}...`);
-                  }}
-                  className="inline-flex items-center gap-2 bg-[#003DA5] text-white px-5 py-2.5 rounded-full text-xs font-bold hover:bg-[#002B75]"
-                >
-                  <Download className="w-4 h-4" /> Download NIRF PDF
-                </a>
+                <span className="inline-flex items-center gap-2 bg-neutral-200 text-neutral-500 px-5 py-2.5 rounded-full text-xs font-bold cursor-not-allowed"><Download className="w-4 h-4" /> Document Coming Soon</span>
               </div>
             ))}
           </div>
