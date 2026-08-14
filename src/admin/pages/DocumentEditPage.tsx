@@ -255,7 +255,7 @@ export default function DocumentEditPage() {
           <FileUploader
             label="Upload Document File (PDF Recommended)"
             accept="application/pdf,image/jpeg,image/png"
-            maxSizeMB={50}
+            maxSizeMB={100}
             storagePath={`/documents/${id || 'new'}/`}
             currentUrl={fileUrlValue}
             onUploadComplete={(url, name, size) => {
@@ -263,7 +263,7 @@ export default function DocumentEditPage() {
               if (size) setValue('fileSize', size, { shouldDirty: true });
             }}
             onRemove={() => setValue('fileUrl', '', { shouldDirty: true, shouldValidate: true })}
-            hint="PDF files up to 50MB."
+            hint="PDF files up to 100MB."
           />
           {errors.fileUrl && (
             <p className="text-xs text-red-600 font-semibold">{errors.fileUrl.message}</p>
@@ -280,3 +280,4 @@ export default function DocumentEditPage() {
     </div>
   );
 }
+
