@@ -1,4 +1,4 @@
-const CLOUD_NAME = 'qfqx65pe';
+const CLOUD_NAME = 'qqfx65pe';
 const UPLOAD_PRESET = 'neissr_uploads';
 
 export type CloudinaryResourceType = 'image' | 'raw';
