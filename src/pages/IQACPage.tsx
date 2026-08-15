@@ -3,7 +3,13 @@ import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { doc, getDoc } from 'firebase/firestore';
 import { db, isFirebaseConfigured } from '../lib/firebase';
-import { toDownloadUrl } from '../lib/cloudinary';
+
+function getOpenUrl(url: string): string {
+  if (!url) return url;
+  const match = url.match(/drive\.google\.com\/file\/d\/([^/]+)/);
+  if (match) return `https://drive.google.com/file/d/${match[1]}/view`;
+  return url;
+}
 import { FileText, ChevronRight, Loader2, Mail } from 'lucide-react';
 
 const SECTIONS = [
@@ -304,10 +310,9 @@ export default function IQACPage() {
                                 </span>
                               </div>
                               <a
-                                href={toDownloadUrl(item.url, item.name)}
+                                href={getOpenUrl(item.url)}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                download={item.name}
                                 className="inline-flex items-center gap-1 px-4 py-1.5 bg-[#003DA5] hover:bg-[#002d7a] text-white text-xs font-semibold rounded shrink-0 ml-3 transition-colors"
                               >
                                 Click Here

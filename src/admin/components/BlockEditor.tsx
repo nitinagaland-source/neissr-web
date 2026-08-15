@@ -4,7 +4,7 @@ import { db } from '../../lib/firebase';
 import { uploadToCloudinary } from '../../lib/cloudinary';
 import { toast } from 'sonner';
 import {
-  FileText, Upload, X, Save, Loader2, Plus, Trash2, ChevronDown, ChevronUp,
+  FileText, Upload, X, Save, Loader2, Plus, Trash2, ChevronDown, ChevronUp, Link2,
 } from 'lucide-react';
 
 interface DocumentItem {
@@ -45,6 +45,7 @@ export default function BlockEditor({ collectionName, docId, defaultTitle, onSav
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState<string | null>(null); // block index for upload feedback
+  const [linkInput, setLinkInput] = useState<Record<number, { name: string; url: string }>>({});
 
   const [title, setTitle] = useState(defaultTitle);
   const [intro, setIntro] = useState('');
@@ -135,6 +136,16 @@ export default function BlockEditor({ collectionName, docId, defaultTitle, onSav
         i === bi ? { ...b, items: b.items.filter((_, x) => x !== ii) } : b
       )
     );
+  };
+
+  const addLinkItem = (bi: number) => {
+    const input = linkInput[bi];
+    if (!input?.url?.trim()) { toast.error('Paste a URL first.'); return; }
+    if (!input?.name?.trim()) { toast.error('Enter a document name.'); return; }
+    const newItem: DocumentItem = { name: input.name.trim(), url: input.url.trim() };
+    setBlocks(blocks.map((b, i) => i === bi ? { ...b, items: [...b.items, newItem] } : b));
+    setLinkInput((prev) => ({ ...prev, [bi]: { name: '', url: '' } }));
+    toast.success('Link added. Click "Save Page" to keep.');
   };
 
   const updateItemName = (bi: number, ii: number, name: string) => {
@@ -252,7 +263,7 @@ export default function BlockEditor({ collectionName, docId, defaultTitle, onSav
                 <div className="pl-4 border-l-2 border-neutral-100 space-y-2">
                   {block.items.map((item, ii) => (
                     <div key={ii} className="flex items-center gap-2 p-2 bg-neutral-50 rounded-lg border border-neutral-200">
-                      <FileText className="w-4 h-4 text-[#C8102E] shrink-0" />
+                      {item.url.includes("drive.google") ? <Link2 className="w-4 h-4 text-blue-500 shrink-0" /> : <FileText className="w-4 h-4 text-[#C8102E] shrink-0" />}
                       <input
                         type="text"
                         value={item.name}
@@ -277,26 +288,62 @@ export default function BlockEditor({ collectionName, docId, defaultTitle, onSav
                     </div>
                   ))}
 
-                  {/* Upload */}
-                  <label className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-xs font-semibold text-neutral-700 transition-colors">
-                    {uploading === `${bi}` ? (
-                      <Loader2 className="w-3 h-3 animate-spin" />
-                    ) : (
-                      <Upload className="w-3 h-3" />
-                    )}
-                    {uploading === `${bi}` ? 'Uploading...' : 'Add Document'}
-                    <input
-                      type="file"
-                      accept="application/pdf,image/*"
-                      className="hidden"
-                      disabled={uploading === `${bi}`}
-                      onChange={(e) => {
-                        const f = e.target.files?.[0];
-                        if (f) uploadItem(bi, f);
-                        e.target.value = '';
-                      }}
-                    />
-                  </label>
+                  {/* Add Documents */}
+                  <div className="space-y-3 mt-2">
+
+                    {/* Option 1: Upload IMAGE only */}
+                    <label className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 bg-neutral-100 hover:bg-neutral-200 rounded-lg text-xs font-semibold text-neutral-700 transition-colors">
+                      {uploading === `${bi}` ? (
+                        <Loader2 className="w-3 h-3 animate-spin" />
+                      ) : (
+                        <Upload className="w-3 h-3" />
+                      )}
+                      {uploading === `${bi}` ? 'Uploading...' : 'Upload Image'}
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        disabled={uploading === `${bi}`}
+                        onChange={(e) => {
+                          const f = e.target.files?.[0];
+                          if (f) uploadItem(bi, f);
+                          e.target.value = '';
+                        }}
+                      />
+                    </label>
+
+                    {/* Option 2: Google Drive / External URL for PDFs */}
+                    <div className="border-2 border-dashed border-blue-200 rounded-lg p-4 space-y-2 bg-blue-50">
+                      <p className="text-xs font-bold text-blue-700 flex items-center gap-1.5">
+                        <Link2 className="w-3.5 h-3.5" /> Add PDF via Google Drive Link
+                      </p>
+                      <p className="text-[10px] text-blue-600 leading-relaxed">
+                        📌 <strong>For PDFs:</strong> Upload to Google Drive → right-click → Share → Copy link → set to "Anyone with the link" → paste below.
+                      </p>
+                      <input
+                        type="text"
+                        placeholder="Document name (e.g. Anti Ragging Committee 2025-26)"
+                        value={linkInput[bi]?.name || ''}
+                        onChange={(e) => setLinkInput((prev) => ({ ...prev, [bi]: { ...prev[bi], name: e.target.value } }))}
+                        className="w-full px-3 py-2 text-xs border border-blue-200 rounded-lg focus:border-[#003DA5] outline-none bg-white"
+                      />
+                      <div className="flex gap-2">
+                        <input
+                          type="url"
+                          placeholder="https://drive.google.com/file/d/..."
+                          value={linkInput[bi]?.url || ''}
+                          onChange={(e) => setLinkInput((prev) => ({ ...prev, [bi]: { ...prev[bi], url: e.target.value } }))}
+                          className="flex-1 px-3 py-2 text-xs border border-blue-200 rounded-lg focus:border-[#003DA5] outline-none bg-white"
+                        />
+                        <button
+                          onClick={() => addLinkItem(bi)}
+                          className="px-4 py-2 bg-[#003DA5] hover:bg-[#002d7a] text-white text-xs font-bold rounded-lg transition-colors whitespace-nowrap"
+                        >
+                          Add PDF
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
