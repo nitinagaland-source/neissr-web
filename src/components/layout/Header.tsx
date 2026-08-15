@@ -317,7 +317,7 @@ export default function Header() {
                 IQAC <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'iqac' && (
-                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn max-h-80 overflow-y-auto">
+                <div className="absolute top-full left-0 w-56 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn max-h-96 overflow-y-auto">
                   {[
                     { id: 'about', label: 'About IQAC' },
                     { id: 'policy', label: 'Quality Policy' },
@@ -325,7 +325,7 @@ export default function Header() {
                     { id: 'composition', label: 'Composition' },
                     { id: 'activities', label: 'Major Activities' },
                     { id: 'meeting-minutes', label: 'Meeting Minutes' },
-                    { id: 'naac', label: 'NAAC Documents' },
+                    { id: 'naac', label: 'NAAC Compliance' },
                     { id: 'nirf', label: 'NIRF Reports' },
                     { id: 'best-practices', label: 'Best Practices' },
                     { id: 'mandatory-disclosures', label: 'Mandatory Disclosures' },
@@ -353,24 +353,23 @@ export default function Header() {
                 Student Services <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'student-services' && (
-                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn">
+                <div className="absolute top-full left-0 w-56 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn">
+                  <Link to="/student-services" className="block px-4 py-2 text-sm font-semibold text-[#003DA5] hover:bg-neutral-50 rounded-lg">
+                    All Services
+                  </Link>
+                  <div className="h-px bg-neutral-100 my-1" />
                   {[
                     { id: 'scholarship', label: 'Scholarship' },
-                    { id: 'counselling', label: 'Counselling Centre' },
-                    { id: 'anti-ragging', label: 'Anti-Ragging Committee' },
-                    { id: 'grievance', label: 'Student Grievance Redressal' },
-                    { id: 'welfare', label: 'Student Welfare Committee' },
-                    { id: 'womens-cell', label: "Women's Empowerment Cell" },
-                    { id: 'alumni', label: 'Alumni Association' },
+                    { id: 'counselling', label: 'Counselling' },
+                    { id: 'anti-ragging', label: 'Anti-Ragging' },
+                    { id: 'grievance', label: 'Grievance Redressal' },
+                    { id: 'welfare', label: 'Student Welfare' },
+                    { id: 'womens-cell', label: "Women's Cell" },
+                    { id: 'alumni', label: 'Alumni' },
                     { id: 'library', label: 'Library' },
-                    { id: 'placement', label: 'Placement Cell' },
+                    { id: 'placement', label: 'Placement' },
                   ].map((s) => (
-                    <Link
-                      key={s.id}
-                      to={`/student-services`}
-                      onClick={() => {}}
-                      className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors"
-                    >
+                    <Link key={s.id} to="/student-services" className="block px-4 py-2 text-xs text-neutral-600 hover:text-[#C8102E] hover:bg-neutral-50 rounded-lg">
                       {s.label}
                     </Link>
                   ))}
@@ -516,21 +515,15 @@ export default function Header() {
                 <ChevronDown className={`w-5 h-5 transition-transform ${mobileAccordion === 'iqac' ? 'rotate-180' : ''}`} />
               </button>
               {mobileAccordion === 'iqac' && (
-                <div className="pl-4 py-2 space-y-2 bg-neutral-50 rounded-lg my-1">
+                <div className="pl-4 py-2 space-y-1 bg-neutral-50 rounded-lg my-1">
                   {[
                     { id: 'about', label: 'About IQAC' },
                     { id: 'policy', label: 'Quality Policy' },
                     { id: 'functions', label: 'Functions' },
-                    { id: 'composition', label: 'Composition' },
                     { id: 'activities', label: 'Major Activities' },
-                    { id: 'meeting-minutes', label: 'Meeting Minutes' },
-                    { id: 'naac', label: 'NAAC Documents' },
-                    { id: 'nirf', label: 'NIRF Reports' },
-                    { id: 'best-practices', label: 'Best Practices' },
-                    { id: 'mandatory-disclosures', label: 'Mandatory Disclosures' },
-                    { id: 'feedback', label: 'Feedback' },
+                    { id: 'naac', label: 'NAAC Compliance' },
                   ].map((s) => (
-                    <Link key={s.id} to={`/iqac/${s.id}`} className="block text-sm font-medium text-neutral-700 py-1">
+                    <Link key={s.id} to={`/iqac/${s.id}`} className="block text-sm font-medium text-neutral-700 py-1.5">
                       {s.label}
                     </Link>
                   ))}
@@ -548,13 +541,20 @@ export default function Header() {
                 <ChevronDown className={`w-5 h-5 transition-transform ${mobileAccordion === 'student-services' ? 'rotate-180' : ''}`} />
               </button>
               {mobileAccordion === 'student-services' && (
-                <div className="pl-4 py-2 space-y-2 bg-neutral-50 rounded-lg my-1">
-                  <Link to="/student-services" className="block text-sm font-medium text-neutral-700 py-1">All Services</Link>
-                  <Link to="/student-services" className="block text-xs text-neutral-600 py-0.5">Scholarship</Link>
-                  <Link to="/student-services" className="block text-xs text-neutral-600 py-0.5">Counselling Centre</Link>
-                  <Link to="/student-services" className="block text-xs text-neutral-600 py-0.5">Anti-Ragging</Link>
-                  <Link to="/student-services" className="block text-xs text-neutral-600 py-0.5">Student Grievance</Link>
-                  <Link to="/student-services" className="block text-xs text-neutral-600 py-0.5">Alumni Association</Link>
+                <div className="pl-4 py-2 space-y-1.5 bg-neutral-50 rounded-lg my-1">
+                  <Link to="/student-services" className="block text-sm font-semibold text-[#003DA5] py-1">View All</Link>
+                  <div className="h-px bg-neutral-200" />
+                  {[
+                    { id: 'scholarship', label: 'Scholarship' },
+                    { id: 'counselling', label: 'Counselling' },
+                    { id: 'anti-ragging', label: 'Anti-Ragging' },
+                    { id: 'grievance', label: 'Grievance' },
+                    { id: 'alumni', label: 'Alumni' },
+                  ].map((s) => (
+                    <Link key={s.id} to="/student-services" className="block text-xs font-medium text-neutral-700 py-1">
+                      {s.label}
+                    </Link>
+                  ))}
                 </div>
               )}
             </div>
