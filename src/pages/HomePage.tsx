@@ -499,7 +499,16 @@ export default function HomePage() {
                   buttonLink={`/news/${news.slug || news.id}`}
                   icon={<Sparkles className="w-8 h-8" />}
                 >
-                  <p className="text-neutral-600 text-xs md:text-sm line-clamp-3 leading-relaxed">
+                  {news.coverImageUrl && (
+                    <div className="w-full h-36 rounded-xl overflow-hidden mb-2">
+                      <img
+                        src={news.coverImageUrl}
+                        alt={news.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+                  <p className="text-neutral-600 text-xs md:text-sm line-clamp-2 leading-relaxed">
                     {news.excerpt}
                   </p>
                 </ReferenceCard>
