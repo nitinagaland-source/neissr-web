@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   Phone,
   Mail,
@@ -9,7 +9,8 @@ import {
   Menu,
   X,
   ChevronDown,
-  ArrowRight
+  ArrowRight,
+  Search
 } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { doc, getDoc } from 'firebase/firestore';
@@ -33,6 +34,19 @@ export default function Header() {
 
   const [isScrolled, setIsScroll] = useState(false);
   const [mobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!searchQuery.trim()) return;
+    // Simple search: navigate to a search results page OR filter news
+    // For now, take user to news page with query
+    navigate(`/news?q=${encodeURIComponent(searchQuery.trim())}`);
+    setSearchOpen(false);
+    setSearchQuery('');
+  };
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
   const location = useLocation();
@@ -421,13 +435,20 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Admissions Pill Button */}
-          <div className="hidden lg:flex items-center gap-3">
+          {/* Search + Admissions Pill Button */}
+          <div className="hidden lg:flex items-center gap-2">
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="p-2 text-neutral-700 hover:text-[#003DA5] hover:bg-neutral-100 rounded-full transition-colors"
+              aria-label="Search"
+            >
+              <Search className="w-5 h-5" />
+            </button>
             <Link
               to="/admissions"
-              className="inline-flex items-center gap-2 bg-[#C8102E] hover:bg-[#9A0C24] text-white px-5 py-2.5 rounded-full font-semibold text-sm shadow-sm transition-all hover:scale-105"
+              className="inline-flex items-center gap-1.5 bg-[#C8102E] hover:bg-[#9A0C24] text-white px-4 py-2 rounded-full font-semibold text-xs shadow-sm transition-all hover:scale-105"
             >
-              Admissions Open <ArrowRight className="w-4 h-4" />
+              Admissions Open <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
@@ -441,6 +462,49 @@ export default function Header() {
           </button>
         </div>
       </nav>
+
+      {/* Search Overlay Modal */}
+      {searchOpen && (
+        <div
+          className="fixed inset-0 bg-black/60 z-[100] flex items-start justify-center pt-24 px-4 animate-fadeIn"
+          onClick={() => setSearchOpen(false)}
+        >
+          <div
+            className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <form onSubmit={handleSearch} className="flex items-center gap-3 p-4 border-b border-neutral-100">
+              <Search className="w-5 h-5 text-[#003DA5] shrink-0" />
+              <input
+                autoFocus
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search news, events, faculty, documents..."
+                className="flex-1 outline-none text-base text-neutral-800 placeholder-neutral-400"
+              />
+              <button
+                type="button"
+                onClick={() => setSearchOpen(false)}
+                className="p-1 text-neutral-500 hover:text-neutral-800 rounded"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </form>
+            <div className="p-4">
+              <p className="text-xs text-neutral-500 mb-3 font-semibold uppercase tracking-wider">Quick Links</p>
+              <div className="grid grid-cols-2 gap-2">
+                <Link to="/news" onClick={() => setSearchOpen(false)} className="p-3 rounded-lg hover:bg-neutral-50 text-sm text-neutral-700 hover:text-[#003DA5]">📰 News & Announcements</Link>
+                <Link to="/faculty" onClick={() => setSearchOpen(false)} className="p-3 rounded-lg hover:bg-neutral-50 text-sm text-neutral-700 hover:text-[#003DA5]">👥 Faculty & Staff</Link>
+                <Link to="/iqac" onClick={() => setSearchOpen(false)} className="p-3 rounded-lg hover:bg-neutral-50 text-sm text-neutral-700 hover:text-[#003DA5]">🎯 IQAC</Link>
+                <Link to="/student-services" onClick={() => setSearchOpen(false)} className="p-3 rounded-lg hover:bg-neutral-50 text-sm text-neutral-700 hover:text-[#003DA5]">🎓 Student Services</Link>
+                <Link to="/admissions" onClick={() => setSearchOpen(false)} className="p-3 rounded-lg hover:bg-neutral-50 text-sm text-neutral-700 hover:text-[#003DA5]">📝 Admissions</Link>
+                <Link to="/contact" onClick={() => setSearchOpen(false)} className="p-3 rounded-lg hover:bg-neutral-50 text-sm text-neutral-700 hover:text-[#003DA5]">📞 Contact</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (

@@ -107,7 +107,8 @@ export default function BlockEditor({ collectionName, docId, defaultTitle, onSav
     }
     setUploading(`${bi}`);
     try {
-      const url = await uploadToCloudinary(file, 'raw');
+      // 'auto' → cloudinary.ts routes PDFs to `image` for inline viewing
+      const url = await uploadToCloudinary(file, 'auto');
       const size = file.size < 1024 * 1024
         ? `${(file.size / 1024).toFixed(1)} KB`
         : `${(file.size / (1024 * 1024)).toFixed(1)} MB`;
@@ -120,8 +121,8 @@ export default function BlockEditor({ collectionName, docId, defaultTitle, onSav
         prev.map((b, i) => (i === bi ? { ...b, items: [...b.items, newItem] } : b))
       );
       toast.success('Uploaded. Click "Save Page" to keep changes.');
-    } catch {
-      toast.error('Upload failed.');
+    } catch (e: any) {
+      toast.error(e?.message || 'Upload failed.');
     } finally {
       setUploading(null);
     }

@@ -1,110 +1,73 @@
 const CLOUD_NAME = 'qqfx65pe';
 const UPLOAD_PRESET = 'neissr_uploads';
 
-export type CloudinaryResourceType = 'image' | 'raw';
-
 /**
- * Determines which Cloudinary resource type a file should be uploaded as.
- * - Images upload as "image".
- * - PDFs also upload as "image" — Cloudinary serves/previews PDFs reliably
- *   this way under an unsigned preset (the "raw" endpoint was the cause of
- *   stuck/failed document uploads).
- * - Anything else falls back to "raw".
+ * Upload a file to Cloudinary.
+ *
+ * IMPORTANT — Cloudinary free plan has a 10MB per-file limit for unsigned uploads.
+ * Larger files will fail with "File size too large".
+ *
+ * PDFs are uploaded as `image` resource type (Cloudinary supports it) so they
+ * can be viewed inline in the browser and downloaded easily.
  */
-export function getResourceType(file: File): CloudinaryResourceType {
-  if (file.type.startsWith('image/')) return 'image';
-  if (file.type === 'application/pdf') return 'image';
-  return 'raw';
-}
-
-// Files can be up to 100MB (see DocumentEditPage), so allow a generous window.
-const UPLOAD_TIMEOUT_MS = 5 * 60 * 1000;
-
-export interface UploadToCloudinaryOptions {
-  /** Called with an integer 0-100 as the upload progresses. Reaches 100 only after Cloudinary confirms success. */
-  onProgress?: (percent: number) => void;
-  /** Optional AbortSignal to cancel an in-flight upload. */
-  signal?: AbortSignal;
-}
-
-interface CloudinaryResponse {
-  secure_url?: string;
-  error?: { message?: string };
-}
-
-/**
- * Uploads a file to Cloudinary via an unsigned preset using XMLHttpRequest,
- * so real upload progress is available through xhr.upload.onprogress
- * (fetch() cannot report upload progress).
- */
-export function uploadToCloudinary(
+export async function uploadToCloudinary(
   file: File,
-  resourceType: CloudinaryResourceType = 'image',
-  options: UploadToCloudinaryOptions = {}
+  resourceType: 'image' | 'raw' | 'auto' | 'video' = 'auto'
 ): Promise<string> {
-  const { onProgress, signal } = options;
+  // For PDFs, use `image` type so browsers can preview/download them
+  let effectiveType: string = resourceType;
+  if (resourceType === 'auto') {
+    if (file.type.startsWith('image/')) effectiveType = 'image';
+    else if (file.type.startsWith('video/')) effectiveType = 'video';
+    else if (file.type === 'application/pdf') effectiveType = 'image'; // trick: viewable in browser
+    else effectiveType = 'raw';
+  }
 
-  return new Promise<string>((resolve, reject) => {
-    if (signal?.aborted) {
-      reject(new Error('Upload cancelled.'));
-      return;
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('upload_preset', UPLOAD_PRESET);
+
+  const res = await fetch(
+    `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/${effectiveType}/upload`,
+    { method: 'POST', body: formData }
+  );
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    const msg = err?.error?.message || 'Upload failed';
+    // Common case: file too large on free plan
+    if (msg.toLowerCase().includes('file size too large')) {
+      throw new Error(
+        'File too large. Cloudinary free plan allows up to 10MB per file. ' +
+        'Compress the PDF or upgrade the Cloudinary account for larger files.'
+      );
     }
+    throw new Error(msg);
+  }
 
-    const xhr = new XMLHttpRequest();
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', UPLOAD_PRESET);
+  const data = await res.json();
+  return data.secure_url as string;
+}
 
-    const url = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/${resourceType}/upload`;
-    xhr.open('POST', url, true);
-    xhr.timeout = UPLOAD_TIMEOUT_MS;
+/**
+ * Convert a Cloudinary URL into a forced-download URL by injecting fl_attachment.
+ * Works for image, raw, and video resource types.
+ *
+ * Example:
+ *   in:  https://res.cloudinary.com/xx/image/upload/v123/file.pdf
+ *   out: https://res.cloudinary.com/xx/image/upload/fl_attachment/v123/file.pdf
+ */
+export function toDownloadUrl(url: string, filename?: string): string {
+  if (!url || !url.includes('/upload/')) return url;
+  const flag = filename ? `fl_attachment:${encodeURIComponent(filename)}` : 'fl_attachment';
+  // Only inject if not already present
+  if (url.includes('fl_attachment')) return url;
+  return url.replace('/upload/', `/upload/${flag}/`);
+}
 
-    const onAbort = () => xhr.abort();
-    const cleanup = () => {
-      if (signal) signal.removeEventListener('abort', onAbort);
-    };
-    if (signal) signal.addEventListener('abort', onAbort);
-
-    xhr.upload.onprogress = (event) => {
-      if (!onProgress || !event.lengthComputable) return;
-      // Cap real progress at 99% — 100% is only reported once Cloudinary
-      // confirms the upload succeeded, in xhr.onload below.
-      const percent = Math.min(99, Math.round((event.loaded / event.total) * 100));
-      onProgress(percent);
-    };
-
-    xhr.onload = () => {
-      cleanup();
-      let data: CloudinaryResponse | null = null;
-      try {
-        data = JSON.parse(xhr.responseText);
-      } catch {
-        // non-JSON response, handled by the status check below
-      }
-
-      if (xhr.status >= 200 && xhr.status < 300 && data?.secure_url) {
-        onProgress?.(100);
-        resolve(data.secure_url);
-      } else {
-        reject(new Error(data?.error?.message || `Upload failed (status ${xhr.status}).`));
-      }
-    };
-
-    xhr.onerror = () => {
-      cleanup();
-      reject(new Error('Network error during upload. Check your connection and try again.'));
-    };
-
-    xhr.ontimeout = () => {
-      cleanup();
-      reject(new Error('Upload timed out. Please try again.'));
-    };
-
-    xhr.onabort = () => {
-      cleanup();
-      reject(new Error('Upload cancelled.'));
-    };
-
-    xhr.send(formData);
-  });
+export function getResourceType(file: File): 'image' | 'raw' | 'video' {
+  if (file.type.startsWith('image/')) return 'image';
+  if (file.type.startsWith('video/')) return 'video';
+  if (file.type === 'application/pdf') return 'image'; // browser-friendly
+  return 'raw';
 }
