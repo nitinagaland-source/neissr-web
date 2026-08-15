@@ -34,6 +34,8 @@ import DocumentsPage from './pages/DocumentsPage';
 import NIRFPage from './pages/NIRFPage';
 import NAACPage from './pages/NAACPage';
 import MandatoryDisclosuresPage from './pages/MandatoryDisclosuresPage';
+import IQACPage from './pages/IQACPage';
+import StudentServicesPage from './pages/StudentServicesPage';
 import ContactPage from './pages/ContactPage';
 
 // Admin Infrastructure & Pages
@@ -62,6 +64,8 @@ import PlacementsListPage from './admin/pages/PlacementsListPage';
 import PlacementEditPage from './admin/pages/PlacementEditPage';
 import ForumsListPage from './admin/pages/ForumsListPage';
 import ForumEditPage from './admin/pages/ForumEditPage';
+import IQACAdminPage from './admin/pages/IQACAdminPage';
+import StudentServicesAdminPage from './admin/pages/StudentServicesAdminPage';
 import { seedFirestoreIfEmpty } from './lib/seedFirestore';
 
 function ScrollToTop() {
@@ -150,6 +154,8 @@ export default function App() {
             <Route path="forums/new" element={<ForumEditPage />} />
             <Route path="forums/:id" element={<ForumEditPage />} />
 
+            <Route path="iqac" element={<IQACAdminPage />} />
+            <Route path="student-services" element={<StudentServicesAdminPage />} />
             <Route path="magazines" element={<PlaceholderAdminPage title="Magazines & Publications" />} />
             <Route path="students-council" element={<PlaceholderAdminPage title="Students Council" />} />
             <Route path="users" element={<PlaceholderAdminPage title="User Access Management" />} />
@@ -195,6 +201,11 @@ export default function App() {
           <Route path="/nirf" element={<NIRFPage />} />
           <Route path="/naac" element={<NAACPage />} />
           <Route path="/mandatory-disclosures" element={<MandatoryDisclosuresPage />} />
+
+          <Route path="/iqac" element={<IQACPage />} />
+          <Route path="/iqac/:section" element={<IQACPage />} />
+          <Route path="/student-services" element={<StudentServicesPage />} />
+          <Route path="/student-services/:slug" element={<StudentServicesPage />} />
 
           <Route path="/contact" element={<ContactPage />} />
 

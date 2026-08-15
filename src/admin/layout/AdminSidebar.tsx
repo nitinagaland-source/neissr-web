@@ -29,7 +29,8 @@ import {
   X,
   Building,
   GraduationCap,
-  Briefcase
+  Briefcase,
+  Heart
 } from 'lucide-react';
 
 interface AdminSidebarProps {
@@ -87,6 +88,8 @@ export default function AdminSidebar({ mobileOpen = false, onClose }: AdminSideb
     {
       header: 'Collections',
       items: [
+        { label: 'IQAC', href: '/admin/iqac', icon: Shield },
+        { label: 'Student Services', href: '/admin/student-services', icon: Heart },
         { label: 'Faculty & Staff', href: '/admin/faculty', icon: Users },
         { label: 'Documents', href: '/admin/documents', icon: FileText },
         { label: 'News Articles', href: '/admin/news', icon: Newspaper },

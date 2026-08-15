@@ -307,6 +307,77 @@ export default function Header() {
               )}
             </div>
 
+            {/* IQAC */}
+            <div
+              className="relative"
+              onMouseEnter={() => setActiveDropdown('iqac')}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button className="flex items-center gap-1 font-medium text-sm text-neutral-800 hover:text-[#C8102E] py-2 transition-colors">
+                IQAC <ChevronDown className="w-4 h-4" />
+              </button>
+              {activeDropdown === 'iqac' && (
+                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn max-h-80 overflow-y-auto">
+                  {[
+                    { id: 'about', label: 'About IQAC' },
+                    { id: 'policy', label: 'Quality Policy' },
+                    { id: 'functions', label: 'Functions' },
+                    { id: 'composition', label: 'Composition' },
+                    { id: 'activities', label: 'Major Activities' },
+                    { id: 'meeting-minutes', label: 'Meeting Minutes' },
+                    { id: 'naac', label: 'NAAC Documents' },
+                    { id: 'nirf', label: 'NIRF Reports' },
+                    { id: 'best-practices', label: 'Best Practices' },
+                    { id: 'mandatory-disclosures', label: 'Mandatory Disclosures' },
+                    { id: 'feedback', label: 'Feedback' },
+                  ].map((s) => (
+                    <Link
+                      key={s.id}
+                      to={`/iqac/${s.id}`}
+                      className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors"
+                    >
+                      {s.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Student Services */}
+            <div
+              className="relative"
+              onMouseEnter={() => setActiveDropdown('student-services')}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button className="flex items-center gap-1 font-medium text-sm text-neutral-800 hover:text-[#C8102E] py-2 transition-colors">
+                Student Services <ChevronDown className="w-4 h-4" />
+              </button>
+              {activeDropdown === 'student-services' && (
+                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn">
+                  {[
+                    { id: 'scholarship', label: 'Scholarship' },
+                    { id: 'counselling', label: 'Counselling Centre' },
+                    { id: 'anti-ragging', label: 'Anti-Ragging Committee' },
+                    { id: 'grievance', label: 'Student Grievance Redressal' },
+                    { id: 'welfare', label: 'Student Welfare Committee' },
+                    { id: 'womens-cell', label: "Women's Empowerment Cell" },
+                    { id: 'alumni', label: 'Alumni Association' },
+                    { id: 'library', label: 'Library' },
+                    { id: 'placement', label: 'Placement Cell' },
+                  ].map((s) => (
+                    <Link
+                      key={s.id}
+                      to={`/student-services`}
+                      onClick={() => {}}
+                      className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors"
+                    >
+                      {s.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {/* More / Links */}
             <Link
               to="/faculty"
@@ -431,6 +502,59 @@ export default function Header() {
                   <Link to="/academics/msw/peace-conflict-studies" className="block text-xs text-neutral-600 py-1">
                     Peace & Conflict Studies (PCTS)
                   </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Mobile IQAC */}
+            <div>
+              <button
+                onClick={() => toggleMobileAccordion('iqac')}
+                className="w-full flex justify-between items-center py-2 font-semibold text-lg text-neutral-800 border-b border-neutral-100"
+              >
+                <span>IQAC</span>
+                <ChevronDown className={`w-5 h-5 transition-transform ${mobileAccordion === 'iqac' ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileAccordion === 'iqac' && (
+                <div className="pl-4 py-2 space-y-2 bg-neutral-50 rounded-lg my-1">
+                  {[
+                    { id: 'about', label: 'About IQAC' },
+                    { id: 'policy', label: 'Quality Policy' },
+                    { id: 'functions', label: 'Functions' },
+                    { id: 'composition', label: 'Composition' },
+                    { id: 'activities', label: 'Major Activities' },
+                    { id: 'meeting-minutes', label: 'Meeting Minutes' },
+                    { id: 'naac', label: 'NAAC Documents' },
+                    { id: 'nirf', label: 'NIRF Reports' },
+                    { id: 'best-practices', label: 'Best Practices' },
+                    { id: 'mandatory-disclosures', label: 'Mandatory Disclosures' },
+                    { id: 'feedback', label: 'Feedback' },
+                  ].map((s) => (
+                    <Link key={s.id} to={`/iqac/${s.id}`} className="block text-sm font-medium text-neutral-700 py-1">
+                      {s.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Mobile Student Services */}
+            <div>
+              <button
+                onClick={() => toggleMobileAccordion('student-services')}
+                className="w-full flex justify-between items-center py-2 font-semibold text-lg text-neutral-800 border-b border-neutral-100"
+              >
+                <span>Student Services</span>
+                <ChevronDown className={`w-5 h-5 transition-transform ${mobileAccordion === 'student-services' ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileAccordion === 'student-services' && (
+                <div className="pl-4 py-2 space-y-2 bg-neutral-50 rounded-lg my-1">
+                  <Link to="/student-services" className="block text-sm font-medium text-neutral-700 py-1">All Services</Link>
+                  <Link to="/student-services" className="block text-xs text-neutral-600 py-0.5">Scholarship</Link>
+                  <Link to="/student-services" className="block text-xs text-neutral-600 py-0.5">Counselling Centre</Link>
+                  <Link to="/student-services" className="block text-xs text-neutral-600 py-0.5">Anti-Ragging</Link>
+                  <Link to="/student-services" className="block text-xs text-neutral-600 py-0.5">Student Grievance</Link>
+                  <Link to="/student-services" className="block text-xs text-neutral-600 py-0.5">Alumni Association</Link>
                 </div>
               )}
             </div>
