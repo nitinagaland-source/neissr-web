@@ -116,21 +116,29 @@ export default function Header() {
           isScrolled ? 'shadow-md' : 'shadow-sm'
         }`}
       >
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
-          {/* Logo & Tagline */}
-          <Link to="/" className="flex items-center gap-3 group">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
+          {/* Logo + Divider + Tagline */}
+          <Link to="/" className="flex items-center gap-4 group">
             <img
               src="https://i.ibb.co/fYhSSyW4/channels4-profile-1.jpg"
               alt="NEISSR Logo"
               referrerPolicy="no-referrer"
-              className="w-12 h-12 rounded-full object-cover border-2 border-[#C8102E] shadow-sm group-hover:scale-105 transition-transform"
+              className="w-14 h-14 rounded-full object-cover border-2 border-[#C8102E] shadow-sm group-hover:scale-105 transition-transform"
             />
             <div>
-              <div className="font-serif font-bold text-xl md:text-2xl text-[#003DA5] leading-none tracking-tight">
+              <div className="font-serif font-bold text-2xl md:text-3xl text-[#003DA5] leading-none tracking-tight">
                 NEISSR
               </div>
-              <p className="text-[10px] md:text-xs text-neutral-500 font-medium tracking-wide uppercase mt-0.5">
+              <p className="text-[10px] md:text-xs text-neutral-500 font-medium tracking-wide uppercase mt-1 whitespace-nowrap">
                 Excel in Knowledge & Service
+              </p>
+            </div>
+            {/* Vertical Divider */}
+            <div className="hidden md:block w-px h-12 bg-neutral-300 mx-1" />
+            {/* Red Tagline */}
+            <div className="hidden md:block">
+              <p className="text-[#C8102E] font-bold text-sm md:text-base leading-tight max-w-[240px] font-serif">
+                Institute for Peace Building,<br />Research & Dialogue
               </p>
             </div>
           </Link>
@@ -192,12 +200,6 @@ export default function Header() {
                     MSW — Master of Social Work
                   </Link>
                   <div className="h-px bg-neutral-100 my-2" />
-                  <Link
-                    to="/academics/manuals"
-                    className="block px-3 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
-                  >
-                    Academic Manuals
-                  </Link>
                   <div className="text-xs font-semibold uppercase text-neutral-400 px-3 py-1">
                     MSW Specialisations
                   </div>
@@ -424,9 +426,6 @@ export default function Header() {
                   </Link>
                   <Link to="/academics/msw" className="block text-sm font-medium text-neutral-800 py-1">
                     MSW Programme
-                  </Link>
-                  <Link to="/academics/manuals" className="block text-sm font-medium text-neutral-800 py-1">
-                    Academic Manuals
                   </Link>
                   <Link to="/academics/msw/community-development" className="block text-xs text-neutral-600 py-1">
                     Community Development (CD)
