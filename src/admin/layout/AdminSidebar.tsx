@@ -29,7 +29,8 @@ import {
   X,
   Building,
   GraduationCap,
-  Briefcase
+  Briefcase,
+  Heart
 } from 'lucide-react';
 
 interface AdminSidebarProps {
@@ -73,34 +74,66 @@ export default function AdminSidebar({ mobileOpen = false, onClose }: AdminSideb
       ],
     },
     {
-      header: 'Page Content',
+      header: '🏠 Home & About',
       items: [
         { label: 'Home Editor', href: '/admin/content/home', icon: Home },
         { label: 'About Editor', href: '/admin/content/about', icon: Info },
-        { label: 'Messages', href: '/admin/content/messages', icon: MessageSquare },
-        { label: 'Admissions', href: '/admin/content/admissions', icon: ClipboardList },
-        { label: 'Placement', href: '/admin/content/placement', icon: TrendingUp },
+        { label: 'Leadership Messages', href: '/admin/content/messages', icon: MessageSquare },
         { label: 'Infrastructure', href: '/admin/content/infrastructure', icon: Building },
-        { label: 'Academics', href: '/admin/content/academics', icon: GraduationCap },
-        { label: 'Academic Manuals', href: '/admin/academic-manuals', icon: BookOpen },
-        { label: 'BSW Programme', href: '/admin/bsw', icon: GraduationCap },
-        { label: 'MSW Programme', href: '/admin/msw', icon: GraduationCap },
       ],
     },
     {
-      header: 'Collections',
+      header: '🎓 Academics',
       items: [
-        { label: 'Faculty & Staff', href: '/admin/faculty', icon: Users },
-        { label: 'Documents', href: '/admin/documents', icon: FileText },
+        { label: 'Academics Overview', href: '/admin/content/academics', icon: GraduationCap },
+        { label: 'BSW Programme', href: '/admin/bsw', icon: GraduationCap },
+        { label: 'MSW Programme', href: '/admin/msw', icon: GraduationCap },
+        { label: 'Academic Manuals', href: '/admin/academic-manuals', icon: BookOpen },
+      ],
+    },
+    {
+      header: '📋 Admissions & Placement',
+      items: [
+        { label: 'Admissions', href: '/admin/content/admissions', icon: ClipboardList },
+        { label: 'Placement Page', href: '/admin/content/placement', icon: TrendingUp },
+        { label: 'Placement Records', href: '/admin/placements', icon: Briefcase },
+      ],
+    },
+    {
+      header: '🏛️ IQAC',
+      items: [
+        { label: 'IQAC Content', href: '/admin/iqac', icon: Shield },
+      ],
+    },
+    {
+      header: '👥 Student Services',
+      items: [
+        { label: 'Student Services', href: '/admin/student-services', icon: Heart },
+      ],
+    },
+    {
+      header: '📰 News & Events',
+      items: [
         { label: 'News Articles', href: '/admin/news', icon: Newspaper },
         { label: 'Events', href: '/admin/events', icon: Calendar },
         { label: 'Achievements', href: '/admin/achievements', icon: Award },
+        { label: 'Gallery', href: '/admin/gallery', icon: ImageIcon },
+      ],
+    },
+    {
+      header: '🎭 Student Life',
+      items: [
         { label: 'Clubs', href: '/admin/clubs', icon: Shield },
         { label: 'Forums', href: '/admin/forums', icon: MessageCircle },
-        { label: 'Placements Records', href: '/admin/placements', icon: Briefcase },
-        { label: 'Gallery', href: '/admin/gallery', icon: ImageIcon },
-        { label: 'Magazines', href: '/admin/magazines', icon: BookOpen },
         { label: 'Students Council', href: '/admin/students-council', icon: Star },
+        { label: 'Magazines', href: '/admin/magazines', icon: BookOpen },
+      ],
+    },
+    {
+      header: '📁 Collections',
+      items: [
+        { label: 'Faculty & Staff', href: '/admin/faculty', icon: Users },
+        { label: 'Documents', href: '/admin/documents', icon: FileText },
       ],
     },
     {
