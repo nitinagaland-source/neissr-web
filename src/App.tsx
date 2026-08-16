@@ -9,6 +9,9 @@ import Footer from './components/layout/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import MessagesPage from './pages/MessagesPage';
+import VisionPage from './pages/VisionPage';
+import UniquenessPage from './pages/UniquenessPage';
+import CoreValuesPage from './pages/CoreValuesPage';
 import AcademicsPage from './pages/AcademicsPage';
 import BSWPage from './pages/BSWPage';
 import MSWPage from './pages/MSWPage';
@@ -167,6 +170,9 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/about/messages" element={<MessagesPage />} />
+          <Route path="/about/vision" element={<VisionPage />} />
+          <Route path="/about/uniqueness" element={<UniquenessPage />} />
+          <Route path="/about/core-values" element={<CoreValuesPage />} />
 
           <Route path="/academics" element={<AcademicsPage />} />
           <Route path="/academics/bsw" element={<BSWPage />} />
