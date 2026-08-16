@@ -985,18 +985,39 @@ export default function ContentEditorPage() {
               </div>
             </div>
             <RichTextEditor label="Introduction" value={data.coreValuesIntroHtml || ''} onChange={(val) => handleChange('coreValuesIntroHtml', val)} />
-            {[1,2,3,4,5].map((n) => (
-              <div key={n} className="p-4 border border-neutral-200 rounded-xl bg-neutral-50 space-y-2">
-                <span className="text-xs font-bold text-neutral-700 uppercase">Core Value {n}</span>
+              <div className="p-4 border border-neutral-200 rounded-xl bg-neutral-50 space-y-2">
+                <span className="text-xs font-bold text-neutral-700 uppercase">Core Value 1</span>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <div className="space-y-1">
-                    <input type="text" value={(data as any)[`coreValue${n}Title`] || ''} onChange={(e) => handleChange(`coreValue${n}Title`, e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" />
-                    <input type="text" value={(data as any)[coreValue+n+Title] || ''} onChange={(e) => handleChange(coreValue+n+Title, e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" />
-                  </div>
-                  <div className="space-y-1">
-                    <input type="text" value={(data as any)[`coreValue${n}Desc`] || ''} onChange={(e) => handleChange(`coreValue${n}Desc`, e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" />
-                    <input type="text" value={(data as any)[coreValue+n+Desc] || ''} onChange={(e) => handleChange(coreValue+n+Desc, e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" />
-                  </div>
+                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Title</label><input type="text" value={data.coreValue1Title || ''} onChange={(e) => handleChange('coreValue1Title', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
+                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Description</label><input type="text" value={data.coreValue1Desc || ''} onChange={(e) => handleChange('coreValue1Desc', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
+                </div>
+              </div>
+              <div className="p-4 border border-neutral-200 rounded-xl bg-neutral-50 space-y-2">
+                <span className="text-xs font-bold text-neutral-700 uppercase">Core Value 2</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Title</label><input type="text" value={data.coreValue2Title || ''} onChange={(e) => handleChange('coreValue2Title', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
+                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Description</label><input type="text" value={data.coreValue2Desc || ''} onChange={(e) => handleChange('coreValue2Desc', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
+                </div>
+              </div>
+              <div className="p-4 border border-neutral-200 rounded-xl bg-neutral-50 space-y-2">
+                <span className="text-xs font-bold text-neutral-700 uppercase">Core Value 3</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Title</label><input type="text" value={data.coreValue3Title || ''} onChange={(e) => handleChange('coreValue3Title', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
+                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Description</label><input type="text" value={data.coreValue3Desc || ''} onChange={(e) => handleChange('coreValue3Desc', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
+                </div>
+              </div>
+              <div className="p-4 border border-neutral-200 rounded-xl bg-neutral-50 space-y-2">
+                <span className="text-xs font-bold text-neutral-700 uppercase">Core Value 4</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Title</label><input type="text" value={data.coreValue4Title || ''} onChange={(e) => handleChange('coreValue4Title', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
+                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Description</label><input type="text" value={data.coreValue4Desc || ''} onChange={(e) => handleChange('coreValue4Desc', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
+                </div>
+              </div>
+              <div className="p-4 border border-neutral-200 rounded-xl bg-neutral-50 space-y-2">
+                <span className="text-xs font-bold text-neutral-700 uppercase">Core Value 5</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Title</label><input type="text" value={data.coreValue5Title || ''} onChange={(e) => handleChange('coreValue5Title', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
+                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Description</label><input type="text" value={data.coreValue5Desc || ''} onChange={(e) => handleChange('coreValue5Desc', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
                 </div>
               </div>
             ))}
