@@ -147,7 +147,7 @@ export default function Header() {
                 About <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'about' && (
-                    to="/about"
+                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn">
                   <Link to="/about/messages" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
                     Leadership Messages
                   </Link>
@@ -156,10 +156,12 @@ export default function Header() {
                   </Link>
                   <Link to="/about/uniqueness" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
                     Our Uniqueness
+                  </Link>
                   <Link to="/about/core-values" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
                     Core Values of NEISSR
                   </Link>
-                  </Link>
+                </div>
+              )}
             </div>
 
             {/* Academics */}
