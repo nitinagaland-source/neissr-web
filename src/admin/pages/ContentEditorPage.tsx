@@ -1020,8 +1020,6 @@ export default function ContentEditorPage() {
                   <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Description</label><input type="text" value={data.coreValue5Desc || ''} onChange={(e) => handleChange('coreValue5Desc', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
                 </div>
               </div>
-
-              </div>
             </div>
         </div>
       )}
