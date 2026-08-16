@@ -78,7 +78,9 @@ export default function AdminSidebar({ mobileOpen = false, onClose }: AdminSideb
       items: [
         { label: 'Home Editor', href: '/admin/content/home', icon: Home },
         { label: 'About Editor', href: '/admin/content/about', icon: Info },
-        { label: 'Messages', href: '/admin/content/messages', icon: MessageSquare },
+        { label: 'Leadership Messages', href: '/admin/content/messages', icon: MessageSquare },
+        { label: 'Vision & Mission', href: '/admin/content/vision', icon: Info },
+        { label: 'Our Uniqueness', href: '/admin/content/uniqueness', icon: Info },
         { label: 'Admissions', href: '/admin/content/admissions', icon: ClipboardList },
         { label: 'Placement', href: '/admin/content/placement', icon: TrendingUp },
         { label: 'Infrastructure', href: '/admin/content/infrastructure', icon: Building },

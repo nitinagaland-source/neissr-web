@@ -43,6 +43,18 @@ const SECTION_METADATA: Record<
     icon: MessageSquare,
     publicUrl: '/about/messages',
   },
+  vision: {
+    title: 'Vision and Mission Editor',
+    subtitle: 'Edit the institution vision statement, mission, and core values.',
+    icon: Info,
+    publicUrl: '/about/vision',
+  },
+  uniqueness: {
+    title: 'Our Uniqueness Editor',
+    subtitle: 'Highlight what makes NEISSR unique — specializations, distinctions, and achievements.',
+    icon: Info,
+    publicUrl: '/about/uniqueness',
+  },
   admissions: {
     title: 'Admissions Page Content Editor',
     subtitle: 'Configure admission eligibility guidelines, important dates, and links.',
@@ -97,6 +109,20 @@ export const DEFAULT_CONTENT: Record<string, ContentData> = {
     visionStatement: 'To be a center of excellence in social work education, research, peace building, and human development in North East India and beyond.',
     missionStatement: 'To educate and empower young minds with professional social work skills, ethical values, and conflict resolution tools to foster peaceful and self-sustaining communities.',
     historyHtml: '<p>Established in 2014 in Chümoukedima, Nagaland, NEISSR was founded to address the unique social, political, and developmental needs of North East India through specialized social work education.</p>',
+  },
+  vision: {
+    visionHeading: 'Our Vision & Mission',
+    visionStatement: 'To be a center of excellence in social work education, research, peace building, and human development in North East India and beyond.',
+    missionStatement: 'To educate and empower young minds with professional social work skills, ethical values, and conflict resolution tools to foster peaceful and self-sustaining communities.',
+    coreValuesHtml: '<ul><li>Integrity</li><li>Compassion</li><li>Excellence</li><li>Peace</li><li>Social Justice</li></ul>',
+  },
+  uniqueness: {
+    uniquenessHeading: 'Our Uniqueness',
+    uniquenessIntroHtml: '<p>NEISSR is a pioneering institution in North East India with several distinctive features that set it apart.</p>',
+    uniquePoint1: 'First institution in India to introduce Peace and Conflict Transformation Studies as a specialization in Social Work.',
+    uniquePoint2: 'Located in Nagaland — uniquely positioned to address the social, political, and developmental needs of North East India.',
+    uniquePoint3: 'NAAC Accredited with B++ grade, reflecting commitment to academic excellence.',
+    uniquePoint4: 'Strong placement record with 92%+ graduates employed or in higher studies.',
   },
   messages: {
     patronName: 'Most Rev. Dr. James Thoppil',
@@ -833,6 +859,62 @@ export default function ContentEditorPage() {
                 onChange={(e) => handleChange('labDescription', e.target.value)}
                 className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg"
               />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {section === 'vision' && (
+        <div className="bg-white rounded-xl border border-neutral-200 p-6 shadow-sm space-y-4">
+          <h3 className="font-bold text-neutral-900 text-base border-b border-neutral-100 pb-3">Vision & Mission Page</h3>
+          <div className="space-y-4">
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-neutral-700">Page Heading</label>
+              <input type="text" value={data.visionHeading || ''} onChange={(e) => handleChange('visionHeading', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
+            </div>
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-neutral-700">Vision Statement</label>
+              <textarea rows={3} value={data.visionStatement || ''} onChange={(e) => handleChange('visionStatement', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
+            </div>
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-neutral-700">Mission Statement</label>
+              <textarea rows={3} value={data.missionStatement || ''} onChange={(e) => handleChange('missionStatement', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
+            </div>
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-neutral-700">Core Values (HTML)</label>
+              <textarea rows={4} value={data.coreValuesHtml || ''} onChange={(e) => handleChange('coreValuesHtml', e.target.value)} className="w-full px-3 py-2 text-sm font-mono bg-neutral-50 border border-neutral-200 rounded-lg" />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {section === 'uniqueness' && (
+        <div className="bg-white rounded-xl border border-neutral-200 p-6 shadow-sm space-y-4">
+          <h3 className="font-bold text-neutral-900 text-base border-b border-neutral-100 pb-3">Our Uniqueness Page</h3>
+          <div className="space-y-4">
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-neutral-700">Page Heading</label>
+              <input type="text" value={data.uniquenessHeading || ''} onChange={(e) => handleChange('uniquenessHeading', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
+            </div>
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-neutral-700">Introduction (HTML)</label>
+              <textarea rows={3} value={data.uniquenessIntroHtml || ''} onChange={(e) => handleChange('uniquenessIntroHtml', e.target.value)} className="w-full px-3 py-2 text-sm font-mono bg-neutral-50 border border-neutral-200 rounded-lg" />
+            </div>
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-neutral-700">Unique Point 1</label>
+              <textarea rows={2} value={data.uniquePoint1 || ''} onChange={(e) => handleChange('uniquePoint1', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
+            </div>
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-neutral-700">Unique Point 2</label>
+              <textarea rows={2} value={data.uniquePoint2 || ''} onChange={(e) => handleChange('uniquePoint2', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
+            </div>
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-neutral-700">Unique Point 3</label>
+              <textarea rows={2} value={data.uniquePoint3 || ''} onChange={(e) => handleChange('uniquePoint3', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
+            </div>
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-neutral-700">Unique Point 4</label>
+              <textarea rows={2} value={data.uniquePoint4 || ''} onChange={(e) => handleChange('uniquePoint4', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
             </div>
           </div>
         </div>
