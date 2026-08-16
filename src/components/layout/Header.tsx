@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   Phone,
   Mail,
@@ -9,8 +9,7 @@ import {
   Menu,
   X,
   ChevronDown,
-  ArrowRight,
-  Search
+  ArrowRight
 } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { doc, getDoc } from 'firebase/firestore';
@@ -34,19 +33,6 @@ export default function Header() {
 
   const [isScrolled, setIsScroll] = useState(false);
   const [mobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const navigate = useNavigate();
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!searchQuery.trim()) return;
-    // Simple search: navigate to a search results page OR filter news
-    // For now, take user to news page with query
-    navigate(`/news?q=${encodeURIComponent(searchQuery.trim())}`);
-    setSearchOpen(false);
-    setSearchQuery('');
-  };
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
   const location = useLocation();
@@ -137,13 +123,13 @@ export default function Header() {
               src="https://i.ibb.co/fYhSSyW4/channels4-profile-1.jpg"
               alt="NEISSR Logo"
               referrerPolicy="no-referrer"
-              className="w-12 h-12 rounded-full object-cover border-2 border-[#C8102E] shadow-sm group-hover:scale-105 transition-transform"
+              className="w-14 h-14 rounded-full object-cover border-2 border-[#C8102E] shadow-sm group-hover:scale-105 transition-transform"
             />
             <div>
-              <div className="font-serif font-bold text-xl md:text-2xl text-[#003DA5] leading-none tracking-tight">
+              <div className="font-serif font-bold text-2xl md:text-3xl text-[#003DA5] leading-none tracking-tight">
                 NEISSR
               </div>
-              <p className="text-[10px] md:text-xs text-neutral-500 font-medium tracking-wide uppercase mt-0.5">
+              <p className="text-[10px] md:text-xs text-neutral-500 font-medium tracking-wide uppercase mt-1 whitespace-nowrap">
                 Excel in Knowledge & Service
               </p>
             </div>
@@ -321,90 +307,6 @@ export default function Header() {
               )}
             </div>
 
-            {/* IQAC */}
-            <div
-              className="relative"
-              onMouseEnter={() => setActiveDropdown('iqac')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="flex items-center gap-1 font-medium text-sm text-neutral-800 hover:text-[#C8102E] py-2 transition-colors">
-                IQAC <ChevronDown className="w-4 h-4" />
-              </button>
-              {activeDropdown === 'iqac' && (
-                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn max-h-96 overflow-y-auto">
-                  {[
-                    { id: 'about', label: 'About IQAC' },
-                    { id: 'policy', label: 'Quality Assurance Policy' },
-                    { id: 'functions', label: 'Functions' },
-                    { id: 'composition', label: 'Composition' },
-                    { id: 'activities', label: 'Major Activities' },
-                    { id: 'meeting-minutes', label: 'Meeting Minutes' },
-                    { id: 'naac', label: 'NAAC Compliance' },
-                    { id: 'best-practices', label: 'Best Practices' },
-                    { id: 'aqar', label: 'AQAR' },
-                    { id: 'nirf', label: 'NIRF Reports' },
-                    { id: 'annual-reports', label: 'Annual Reports' },
-                    { id: 'mandatory-disclosures', label: 'Mandatory Disclosures' },
-                    { id: 'feedback', label: 'Feedback' },
-                  ].map((s) => (
-                    <Link
-                      key={s.id}
-                      to={`/iqac/${s.id}`}
-                      onClick={() => setActiveDropdown(null)}
-                      className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors"
-                    >
-                      {s.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Student Services */}
-            <div
-              className="relative"
-              onMouseEnter={() => setActiveDropdown('student-services')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="flex items-center gap-1 font-medium text-sm text-neutral-800 hover:text-[#C8102E] py-2 transition-colors">
-                Student Services <ChevronDown className="w-4 h-4" />
-              </button>
-              {activeDropdown === 'student-services' && (
-                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn max-h-96 overflow-y-auto">
-                  <Link
-                    to="/student-services"
-                    onClick={() => setActiveDropdown(null)}
-                    className="block px-4 py-2 text-sm font-semibold text-[#003DA5] hover:bg-blue-50 rounded-lg border-b border-neutral-100 mb-1"
-                  >
-                    View All Services →
-                  </Link>
-                  {[
-                    { id: 'scholarship', label: 'Scholarship' },
-                    { id: 'counselling', label: 'Counselling Centre' },
-                    { id: 'anti-ragging', label: 'Anti-Ragging Committee' },
-                    { id: 'grievance', label: 'Grievance Redressal' },
-                    { id: 'welfare', label: 'Student Welfare' },
-                    { id: 'womens-cell', label: "Women's Empowerment Cell" },
-                    { id: 'internal-complaints', label: 'Internal Complaints Committee' },
-                    { id: 'alumni', label: 'Alumni Association' },
-                    { id: 'library', label: 'Library' },
-                    { id: 'placement', label: 'Placement Cell' },
-                    { id: 'coaching', label: 'Coaching Centre' },
-                    { id: 'health-care', label: 'Health Care' },
-                  ].map((s) => (
-                    <Link
-                      key={s.id}
-                      to={`/student-services/${s.id}`}
-                      onClick={() => setActiveDropdown(null)}
-                      className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors"
-                    >
-                      {s.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
             {/* More / Links */}
             <Link
               to="/faculty"
@@ -435,20 +337,13 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Search + Admissions Pill Button */}
-          <div className="hidden lg:flex items-center gap-2">
-            <button
-              onClick={() => setSearchOpen(true)}
-              className="p-2 text-neutral-700 hover:text-[#003DA5] hover:bg-neutral-100 rounded-full transition-colors"
-              aria-label="Search"
-            >
-              <Search className="w-5 h-5" />
-            </button>
+          {/* Admissions Pill Button */}
+          <div className="hidden lg:flex items-center gap-3">
             <Link
               to="/admissions"
-              className="inline-flex items-center gap-1.5 bg-[#C8102E] hover:bg-[#9A0C24] text-white px-4 py-2 rounded-full font-semibold text-xs shadow-sm transition-all hover:scale-105"
+              className="inline-flex items-center gap-2 bg-[#C8102E] hover:bg-[#9A0C24] text-white px-5 py-2.5 rounded-full font-semibold text-sm shadow-sm transition-all hover:scale-105"
             >
-              Admissions Open <ArrowRight className="w-3.5 h-3.5" />
+              Admissions Open <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
@@ -462,49 +357,6 @@ export default function Header() {
           </button>
         </div>
       </nav>
-
-      {/* Search Overlay Modal */}
-      {searchOpen && (
-        <div
-          className="fixed inset-0 bg-black/60 z-[100] flex items-start justify-center pt-24 px-4 animate-fadeIn"
-          onClick={() => setSearchOpen(false)}
-        >
-          <div
-            className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <form onSubmit={handleSearch} className="flex items-center gap-3 p-4 border-b border-neutral-100">
-              <Search className="w-5 h-5 text-[#003DA5] shrink-0" />
-              <input
-                autoFocus
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search news, events, faculty, documents..."
-                className="flex-1 outline-none text-base text-neutral-800 placeholder-neutral-400"
-              />
-              <button
-                type="button"
-                onClick={() => setSearchOpen(false)}
-                className="p-1 text-neutral-500 hover:text-neutral-800 rounded"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </form>
-            <div className="p-4">
-              <p className="text-xs text-neutral-500 mb-3 font-semibold uppercase tracking-wider">Quick Links</p>
-              <div className="grid grid-cols-2 gap-2">
-                <Link to="/news" onClick={() => setSearchOpen(false)} className="p-3 rounded-lg hover:bg-neutral-50 text-sm text-neutral-700 hover:text-[#003DA5]">📰 News & Announcements</Link>
-                <Link to="/faculty" onClick={() => setSearchOpen(false)} className="p-3 rounded-lg hover:bg-neutral-50 text-sm text-neutral-700 hover:text-[#003DA5]">👥 Faculty & Staff</Link>
-                <Link to="/iqac" onClick={() => setSearchOpen(false)} className="p-3 rounded-lg hover:bg-neutral-50 text-sm text-neutral-700 hover:text-[#003DA5]">🎯 IQAC</Link>
-                <Link to="/student-services" onClick={() => setSearchOpen(false)} className="p-3 rounded-lg hover:bg-neutral-50 text-sm text-neutral-700 hover:text-[#003DA5]">🎓 Student Services</Link>
-                <Link to="/admissions" onClick={() => setSearchOpen(false)} className="p-3 rounded-lg hover:bg-neutral-50 text-sm text-neutral-700 hover:text-[#003DA5]">📝 Admissions</Link>
-                <Link to="/contact" onClick={() => setSearchOpen(false)} className="p-3 rounded-lg hover:bg-neutral-50 text-sm text-neutral-700 hover:text-[#003DA5]">📞 Contact</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
@@ -579,68 +431,6 @@ export default function Header() {
                   <Link to="/academics/msw/peace-conflict-studies" className="block text-xs text-neutral-600 py-1">
                     Peace & Conflict Studies (PCTS)
                   </Link>
-                </div>
-              )}
-            </div>
-
-            {/* Mobile IQAC */}
-            <div>
-              <button
-                onClick={() => toggleMobileAccordion('iqac')}
-                className="w-full flex justify-between items-center py-2 font-semibold text-lg text-neutral-800 border-b border-neutral-100"
-              >
-                <span>IQAC</span>
-                <ChevronDown className={`w-5 h-5 transition-transform ${mobileAccordion === 'iqac' ? 'rotate-180' : ''}`} />
-              </button>
-              {mobileAccordion === 'iqac' && (
-                <div className="pl-4 py-2 space-y-1 bg-neutral-50 rounded-lg my-1">
-                  {[
-                    { id: 'about', label: 'About IQAC' },
-                    { id: 'policy', label: 'Quality Policy' },
-                    { id: 'functions', label: 'Functions' },
-                    { id: 'activities', label: 'Major Activities' },
-                    { id: 'naac', label: 'NAAC Compliance' },
-                    { id: 'aqar', label: 'AQAR' },
-                    { id: 'nirf', label: 'NIRF Reports' },
-                    { id: 'mandatory-disclosures', label: 'Mandatory Disclosures' },
-                  ].map((s) => (
-                    <Link key={s.id} to={`/iqac/${s.id}`} className="block text-sm font-medium text-neutral-700 py-1.5">
-                      {s.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Mobile Student Services */}
-            <div>
-              <button
-                onClick={() => toggleMobileAccordion('student-services')}
-                className="w-full flex justify-between items-center py-2 font-semibold text-lg text-neutral-800 border-b border-neutral-100"
-              >
-                <span>Student Services</span>
-                <ChevronDown className={`w-5 h-5 transition-transform ${mobileAccordion === 'student-services' ? 'rotate-180' : ''}`} />
-              </button>
-              {mobileAccordion === 'student-services' && (
-                <div className="pl-4 py-2 space-y-1 bg-neutral-50 rounded-lg my-1">
-                  <Link to="/student-services" className="block text-sm font-semibold text-[#003DA5] py-1.5 border-b border-neutral-200 mb-1">
-                    View All →
-                  </Link>
-                  {[
-                    { id: 'scholarship', label: 'Scholarship' },
-                    { id: 'counselling', label: 'Counselling' },
-                    { id: 'anti-ragging', label: 'Anti-Ragging' },
-                    { id: 'grievance', label: 'Grievance Redressal' },
-                    { id: 'welfare', label: 'Student Welfare' },
-                    { id: 'womens-cell', label: "Women's Cell" },
-                    { id: 'alumni', label: 'Alumni' },
-                    { id: 'library', label: 'Library' },
-                    { id: 'placement', label: 'Placement' },
-                  ].map((s) => (
-                    <Link key={s.id} to={`/student-services/${s.id}`} className="block text-xs font-medium text-neutral-700 py-1">
-                      {s.label}
-                    </Link>
-                  ))}
                 </div>
               )}
             </div>

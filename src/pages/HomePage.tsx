@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
@@ -31,6 +31,108 @@ import { useQuery } from '@tanstack/react-query';
 import { formatDate } from '../lib/date';
 import ReferenceCard from '../components/ui/ReferenceCard';
 import { SEED_NEWS, SEED_EVENTS, SEED_DOCUMENTS } from '../data/seedData';
+
+/* ============ HERO CAROUSEL COMPONENT ============ */
+interface HeroCarouselProps {
+  images: string[];
+  intervalMs: number;
+  headline: string;
+  subtitle: string;
+}
+
+function HeroCarousel({ images, intervalMs, headline, subtitle }: HeroCarouselProps) {
+  const [current, setCurrent] = useState(0);
+  const validImages = images.filter(Boolean);
+
+  useEffect(() => {
+    if (validImages.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % validImages.length);
+    }, intervalMs);
+    return () => clearInterval(timer);
+  }, [validImages.length, intervalMs]);
+
+  return (
+    <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-neutral-900">
+      {/* Image slides - fade transition */}
+      <div className="absolute inset-0 overflow-hidden">
+        {validImages.map((img, idx) => (
+          <div
+            key={img + idx}
+            className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${
+              idx === current ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <img
+              src={img}
+              alt={`Hero slide ${idx + 1}`}
+              className="w-full h-full object-cover scale-105 animate-[kenburns_20s_infinite_alternate]"
+            />
+          </div>
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/40" />
+      </div>
+
+      {/* Text content */}
+      <div className="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 py-20 w-full text-white">
+        <motion.div
+          initial={{ opacity: 0, y: 48 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-3xl space-y-6"
+        >
+          <div className="inline-flex items-center gap-2 bg-[#C8102E] text-white px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase shadow-md">
+            <Sparkles className="w-4 h-4 text-[#C9A227]" /> Excel in Knowledge & Service
+          </div>
+
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold md:font-black leading-[1.1] tracking-tight text-white drop-shadow-sm">
+            {headline}
+          </h1>
+
+          <p className="text-lg md:text-xl text-neutral-200 font-normal leading-relaxed max-w-2xl">
+            {subtitle}
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
+            <Link
+              to="/admissions"
+              className="inline-flex items-center justify-center gap-2 bg-[#C8102E] hover:bg-[#9A0C24] text-white px-8 py-4 rounded-full font-bold text-base shadow-lg transition-all hover:scale-105"
+            >
+              Apply Now <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              to="/academics"
+              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border-2 border-white/60 backdrop-blur-md px-8 py-4 rounded-full font-semibold text-base transition-all hover:scale-105"
+            >
+              Explore Programmes
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Dot indicators */}
+      {validImages.length > 1 && (
+        <div className="absolute bottom-16 md:bottom-20 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          {validImages.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrent(idx)}
+              className={`h-2 rounded-full transition-all ${
+                idx === current ? 'w-8 bg-white' : 'w-2 bg-white/50 hover:bg-white/80'
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-white text-center hidden md:block">
+        <ChevronDown className="w-6 h-6 mx-auto animate-bounce text-[#C9A227]" />
+      </div>
+    </section>
+  );
+}
 
 const enquirySchema = z.object({
   fullName: z.string().min(2, 'Full name is required'),
@@ -126,60 +228,17 @@ export default function HomePage() {
 
   return (
     <div className="space-y-0">
-      {/* SECTION 1 — HERO (Full Viewport with Ken Burns slow zoom) */}
-      <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-neutral-900">
-        {/* Ken Burns Background Image */}
-        <div className="absolute inset-0 overflow-hidden">
-          <img
-            src={homeContent?.heroImageUrl || "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=2000"}
-            alt="NEISSR Peace Centre Campus"
-            className="w-full h-full object-cover scale-105 animate-[kenburns_20s_infinite_alternate]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/40" />
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 max-w-[1440px] mx-auto px-4 md:px-8 py-20 w-full text-white">
-          <motion.div
-            initial={{ opacity: 0, y: 48 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl space-y-6"
-          >
-            <div className="inline-flex items-center gap-2 bg-[#C8102E] text-white px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase shadow-md">
-              <Sparkles className="w-4 h-4 text-[#C9A227]" /> Excel in Knowledge & Service
-            </div>
-
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold md:font-black leading-[1.1] tracking-tight text-white drop-shadow-sm">
-              {homeContent?.heroHeadline || 'Shaping social change through education, peace, and service.'}
-            </h1>
-
-            <p className="text-lg md:text-xl text-neutral-200 font-normal leading-relaxed max-w-2xl">
-              {homeContent?.heroSubtitle || "North East Institute of Social Sciences and Research — Nagaland's premier Social Work college. Affiliated to Nagaland University & UGC 2(f) recognized."}
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
-              <Link
-                to="/admissions"
-                className="inline-flex items-center justify-center gap-2 bg-[#C8102E] hover:bg-[#9A0C24] text-white px-8 py-4 rounded-full font-bold text-base shadow-lg transition-all hover:scale-105"
-              >
-                Apply Now <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link
-                to="/academics"
-                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border-2 border-white/60 backdrop-blur-md px-8 py-4 rounded-full font-semibold text-base transition-all hover:scale-105"
-              >
-                Explore Programmes
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-white text-center hidden md:block">
-          <ChevronDown className="w-6 h-6 mx-auto animate-bounce text-[#C9A227]" />
-        </div>
-      </section>
+      {/* SECTION 1 — HERO (Auto-scrolling Carousel) */}
+      <HeroCarousel
+        images={
+          (homeContent as any)?.heroImages?.length > 0
+            ? (homeContent as any).heroImages
+            : [homeContent?.heroImageUrl || "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=2000"]
+        }
+        intervalMs={((homeContent as any)?.heroIntervalSeconds || 5) * 1000}
+        headline={homeContent?.heroHeadline || 'Shaping social change through education, peace, and service.'}
+        subtitle={homeContent?.heroSubtitle || "North East Institute of Social Sciences and Research — Nagaland's premier Social Work college. Affiliated to Nagaland University & UGC 2(f) recognized."}
+      />
 
       {/* SECTION 2 — TRUST / STATS STRIP */}
       <section className="bg-white py-6 border-y border-neutral-200/80">
@@ -499,16 +558,7 @@ export default function HomePage() {
                   buttonLink={`/news/${news.slug || news.id}`}
                   icon={<Sparkles className="w-8 h-8" />}
                 >
-                  {news.coverImageUrl && (
-                    <div className="w-full h-36 rounded-xl overflow-hidden mb-2">
-                      <img
-                        src={news.coverImageUrl}
-                        alt={news.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  )}
-                  <p className="text-neutral-600 text-xs md:text-sm line-clamp-2 leading-relaxed">
+                  <p className="text-neutral-600 text-xs md:text-sm line-clamp-3 leading-relaxed">
                     {news.excerpt}
                   </p>
                 </ReferenceCard>

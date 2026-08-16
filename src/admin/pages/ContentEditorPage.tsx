@@ -267,7 +267,7 @@ export default function ContentEditorPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-xs font-semibold text-neutral-700">Hero Background Image URL</label>
+                  <label className="text-xs font-semibold text-neutral-700">Hero Background Image URL (fallback — used only if no carousel images below)</label>
                   <input
                     type="url"
                     placeholder="https://..."
@@ -286,6 +286,91 @@ export default function ContentEditorPage() {
                     className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg"
                   />
                 </div>
+              </div>
+
+              {/* HERO CAROUSEL MANAGER */}
+              <div className="mt-6 p-4 bg-blue-50 rounded-xl border-2 border-blue-200 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="text-sm font-bold text-[#003DA5]">🎠 Hero Carousel (Auto-scrolling)</h4>
+                    <p className="text-[11px] text-neutral-600 mt-0.5">
+                      Add multiple image URLs — they will auto-scroll on the homepage. Leave empty to use single fallback image above.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const current = (data as any).heroImages || [];
+                      handleChange('heroImages', [...current, '']);
+                    }}
+                    className="px-3 py-1.5 bg-[#003DA5] hover:bg-[#002d7a] text-white text-xs font-bold rounded-lg whitespace-nowrap"
+                  >
+                    + Add Image
+                  </button>
+                </div>
+
+                {/* Interval control */}
+                <div className="flex items-center gap-3">
+                  <label className="text-xs font-semibold text-neutral-700 whitespace-nowrap">
+                    Slide interval:
+                  </label>
+                  <input
+                    type="number"
+                    min="2"
+                    max="30"
+                    value={(data as any).heroIntervalSeconds || 5}
+                    onChange={(e) => handleChange('heroIntervalSeconds', parseInt(e.target.value) || 5)}
+                    className="w-20 px-2 py-1 text-sm bg-white border border-blue-200 rounded"
+                  />
+                  <span className="text-xs text-neutral-600">seconds between slides</span>
+                </div>
+
+                {/* Image list */}
+                <div className="space-y-2">
+                  {((data as any).heroImages || []).length === 0 && (
+                    <p className="text-xs text-neutral-500 italic py-2">
+                      No carousel images yet. Click "+ Add Image" to add one.
+                    </p>
+                  )}
+                  {((data as any).heroImages || []).map((img: string, idx: number) => (
+                    <div key={idx} className="flex items-center gap-2">
+                      <span className="text-xs font-bold text-[#003DA5] w-6">#{idx + 1}</span>
+                      <input
+                        type="url"
+                        placeholder="https://... (paste image URL — use Cloudinary, ImgBB or any public image link)"
+                        value={img}
+                        onChange={(e) => {
+                          const arr = [...((data as any).heroImages || [])];
+                          arr[idx] = e.target.value;
+                          handleChange('heroImages', arr);
+                        }}
+                        className="flex-1 px-2 py-1.5 text-xs bg-white border border-blue-200 rounded focus:border-[#003DA5] outline-none"
+                      />
+                      {img && (
+                        <img
+                          src={img}
+                          alt=""
+                          className="w-10 h-10 object-cover rounded border border-blue-200"
+                          onError={(e) => (e.currentTarget.style.display = 'none')}
+                        />
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const arr = ((data as any).heroImages || []).filter((_: any, i: number) => i !== idx);
+                          handleChange('heroImages', arr);
+                        }}
+                        className="px-2 py-1 text-xs text-red-600 hover:bg-red-100 rounded border border-red-200"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="text-[10px] text-blue-700">
+                  💡 Tip: Upload images to Cloudinary or imgbb.com first, then paste the URLs here.
+                </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
