@@ -307,6 +307,90 @@ export default function Header() {
               )}
             </div>
 
+            {/* IQAC */}
+            <div
+              className="relative"
+              onMouseEnter={() => setActiveDropdown('iqac')}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button className="flex items-center gap-1 font-medium text-sm text-neutral-800 hover:text-[#C8102E] py-2 transition-colors">
+                IQAC <ChevronDown className="w-4 h-4" />
+              </button>
+              {activeDropdown === 'iqac' && (
+                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn max-h-96 overflow-y-auto">
+                  {[
+                    { id: 'about', label: 'About IQAC' },
+                    { id: 'policy', label: 'Quality Assurance Policy' },
+                    { id: 'functions', label: 'Functions' },
+                    { id: 'composition', label: 'Composition' },
+                    { id: 'activities', label: 'Major Activities' },
+                    { id: 'meeting-minutes', label: 'Meeting Minutes' },
+                    { id: 'naac', label: 'NAAC Compliance' },
+                    { id: 'best-practices', label: 'Best Practices' },
+                    { id: 'aqar', label: 'AQAR' },
+                    { id: 'nirf', label: 'NIRF Reports' },
+                    { id: 'annual-reports', label: 'Annual Reports' },
+                    { id: 'mandatory-disclosures', label: 'Mandatory Disclosures' },
+                    { id: 'feedback', label: 'Feedback' },
+                  ].map((s) => (
+                    <Link
+                      key={s.id}
+                      to={`/iqac/${s.id}`}
+                      onClick={() => setActiveDropdown(null)}
+                      className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors"
+                    >
+                      {s.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Student Services */}
+            <div
+              className="relative"
+              onMouseEnter={() => setActiveDropdown('student-services')}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button className="flex items-center gap-1 font-medium text-sm text-neutral-800 hover:text-[#C8102E] py-2 transition-colors">
+                Student Services <ChevronDown className="w-4 h-4" />
+              </button>
+              {activeDropdown === 'student-services' && (
+                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn max-h-96 overflow-y-auto">
+                  <Link
+                    to="/student-services"
+                    onClick={() => setActiveDropdown(null)}
+                    className="block px-4 py-2 text-sm font-semibold text-[#003DA5] hover:bg-blue-50 rounded-lg border-b border-neutral-100 mb-1"
+                  >
+                    View All Services →
+                  </Link>
+                  {[
+                    { id: 'scholarship', label: 'Scholarship' },
+                    { id: 'counselling', label: 'Counselling Centre' },
+                    { id: 'anti-ragging', label: 'Anti-Ragging Committee' },
+                    { id: 'grievance', label: 'Grievance Redressal' },
+                    { id: 'welfare', label: 'Student Welfare' },
+                    { id: 'womens-cell', label: "Women's Empowerment Cell" },
+                    { id: 'internal-complaints', label: 'Internal Complaints Committee' },
+                    { id: 'alumni', label: 'Alumni Association' },
+                    { id: 'library', label: 'Library' },
+                    { id: 'placement', label: 'Placement Cell' },
+                    { id: 'coaching', label: 'Coaching Centre' },
+                    { id: 'health-care', label: 'Health Care' },
+                  ].map((s) => (
+                    <Link
+                      key={s.id}
+                      to={`/student-services/${s.id}`}
+                      onClick={() => setActiveDropdown(null)}
+                      className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors"
+                    >
+                      {s.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {/* More / Links */}
             <Link
               to="/faculty"
@@ -431,6 +515,68 @@ export default function Header() {
                   <Link to="/academics/msw/peace-conflict-studies" className="block text-xs text-neutral-600 py-1">
                     Peace & Conflict Studies (PCTS)
                   </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Mobile IQAC */}
+            <div>
+              <button
+                onClick={() => toggleMobileAccordion('iqac')}
+                className="w-full flex justify-between items-center py-2 font-semibold text-lg text-neutral-800 border-b border-neutral-100"
+              >
+                <span>IQAC</span>
+                <ChevronDown className={`w-5 h-5 transition-transform ${mobileAccordion === 'iqac' ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileAccordion === 'iqac' && (
+                <div className="pl-4 py-2 space-y-1 bg-neutral-50 rounded-lg my-1">
+                  {[
+                    { id: 'about', label: 'About IQAC' },
+                    { id: 'policy', label: 'Quality Policy' },
+                    { id: 'functions', label: 'Functions' },
+                    { id: 'activities', label: 'Major Activities' },
+                    { id: 'naac', label: 'NAAC Compliance' },
+                    { id: 'aqar', label: 'AQAR' },
+                    { id: 'nirf', label: 'NIRF Reports' },
+                    { id: 'mandatory-disclosures', label: 'Mandatory Disclosures' },
+                  ].map((s) => (
+                    <Link key={s.id} to={`/iqac/${s.id}`} className="block text-sm font-medium text-neutral-700 py-1.5">
+                      {s.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Mobile Student Services */}
+            <div>
+              <button
+                onClick={() => toggleMobileAccordion('student-services')}
+                className="w-full flex justify-between items-center py-2 font-semibold text-lg text-neutral-800 border-b border-neutral-100"
+              >
+                <span>Student Services</span>
+                <ChevronDown className={`w-5 h-5 transition-transform ${mobileAccordion === 'student-services' ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileAccordion === 'student-services' && (
+                <div className="pl-4 py-2 space-y-1 bg-neutral-50 rounded-lg my-1">
+                  <Link to="/student-services" className="block text-sm font-semibold text-[#003DA5] py-1.5 border-b border-neutral-200 mb-1">
+                    View All →
+                  </Link>
+                  {[
+                    { id: 'scholarship', label: 'Scholarship' },
+                    { id: 'counselling', label: 'Counselling' },
+                    { id: 'anti-ragging', label: 'Anti-Ragging' },
+                    { id: 'grievance', label: 'Grievance Redressal' },
+                    { id: 'welfare', label: 'Student Welfare' },
+                    { id: 'womens-cell', label: "Women's Cell" },
+                    { id: 'alumni', label: 'Alumni' },
+                    { id: 'library', label: 'Library' },
+                    { id: 'placement', label: 'Placement' },
+                  ].map((s) => (
+                    <Link key={s.id} to={`/student-services/${s.id}`} className="block text-xs font-medium text-neutral-700 py-1">
+                      {s.label}
+                    </Link>
+                  ))}
                 </div>
               )}
             </div>
