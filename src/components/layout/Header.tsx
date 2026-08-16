@@ -134,17 +134,17 @@ export default function Header() {
               </p>
             </div>
             {/* Divider */}
-            <div className="hidden lg:block w-px h-12 bg-neutral-300 mx-1 shrink-0" />
+            <div className="hidden xl:block w-px h-12 bg-neutral-300 mx-1 shrink-0" />
             {/* Red Tagline */}
-            <div className="hidden lg:block">
-              <p className="text-[#C8102E] font-bold text-sm leading-snug max-w-[220px] font-serif">
+            <div className="hidden xl:block">
+              <p className="text-[#C8102E] font-bold text-sm leading-snug max-w-[200px] font-serif">
                 Institute for Peace Building,<br />Research & Dialogue
               </p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-4">
             {/* About */}
             <div
               className="relative"
