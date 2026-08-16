@@ -1066,8 +1066,6 @@ export default function ContentEditorPage() {
             </div>
           </div>
         </div>
-            </div>
-            </div>
       )}
     </form>
   );
