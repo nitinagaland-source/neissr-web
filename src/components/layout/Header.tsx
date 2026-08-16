@@ -433,12 +433,6 @@ export default function Header() {
                 <ChevronDown className={`w-5 h-5 transition-transform ${mobileAccordion === 'about' ? 'rotate-180' : ''}`} />
               </button>
               {mobileAccordion === 'about' && (
-                <div className="pl-4 py-2 space-y-2 bg-neutral-50 rounded-lg my-1">
-                  <Link to="/about" className="block text-sm font-medium text-neutral-700 py-1">
-                    About NEISSR
-                  </Link>
-                  <Link to="/about/messages" className="block text-sm font-medium text-neutral-700 py-1">
-                    Leadership Messages
                   </Link>
                 </div>
               )}
