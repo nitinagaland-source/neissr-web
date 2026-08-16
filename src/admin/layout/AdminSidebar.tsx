@@ -83,6 +83,8 @@ export default function AdminSidebar({ mobileOpen = false, onClose }: AdminSideb
         { label: 'Infrastructure', href: '/admin/content/infrastructure', icon: Building },
         { label: 'Academics', href: '/admin/content/academics', icon: GraduationCap },
         { label: 'Academic Manuals', href: '/admin/academic-manuals', icon: BookOpen },
+        { label: 'BSW Programme', href: '/admin/bsw', icon: GraduationCap },
+        { label: 'MSW Programme', href: '/admin/msw', icon: GraduationCap },
       ],
     },
     {

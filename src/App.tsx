@@ -64,6 +64,8 @@ import PlacementEditPage from './admin/pages/PlacementEditPage';
 import ForumsListPage from './admin/pages/ForumsListPage';
 import ForumEditPage from './admin/pages/ForumEditPage';
 import AcademicManualsAdminPage from './admin/pages/AcademicManualsAdminPage';
+import BSWAdminPage from './admin/pages/BSWAdminPage';
+import MSWAdminPage from './admin/pages/MSWAdminPage';
 import { seedFirestoreIfEmpty } from './lib/seedFirestore';
 
 function ScrollToTop() {
@@ -153,6 +155,8 @@ export default function App() {
             <Route path="forums/:id" element={<ForumEditPage />} />
 
             <Route path="academic-manuals" element={<AcademicManualsAdminPage />} />
+            <Route path="bsw" element={<BSWAdminPage />} />
+            <Route path="msw" element={<MSWAdminPage />} />
             <Route path="magazines" element={<PlaceholderAdminPage title="Magazines & Publications" />} />
             <Route path="students-council" element={<PlaceholderAdminPage title="Students Council" />} />
             <Route path="users" element={<PlaceholderAdminPage title="User Access Management" />} />
