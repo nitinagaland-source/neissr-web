@@ -116,20 +116,20 @@ export default function Header() {
           isScrolled ? 'shadow-md' : 'shadow-sm'
         }`}
       >
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-2 flex items-center justify-between">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-3 flex items-center justify-between gap-6">
           {/* Logo & Tagline */}
           <Link to="/" className="flex items-center gap-3 group">
             <img
               src="https://i.ibb.co/fYhSSyW4/channels4-profile-1.jpg"
               alt="NEISSR Logo"
               referrerPolicy="no-referrer"
-              className="w-11 h-11 rounded-full object-cover border-2 border-[#C8102E] shadow-sm group-hover:scale-105 transition-transform"
+              className="w-12 h-12 rounded-full object-cover border-2 border-[#C8102E] shadow-sm group-hover:scale-105 transition-transform"
             />
             <div>
-              <div className="font-serif font-bold text-xl md:text-2xl text-[#003DA5] leading-none tracking-tight">
+              <div className="font-black text-lg md:text-xl text-[#003DA5] leading-none tracking-widest uppercase">
                 NEISSR
               </div>
-              <p className="text-[10px] md:text-xs text-neutral-500 font-medium tracking-wide uppercase mt-1 whitespace-nowrap">
+              <p className="text-[9px] text-neutral-400 font-semibold tracking-[0.2em] uppercase mt-0.5 whitespace-nowrap">
                 Excel in Knowledge & Service
               </p>
             </div>
