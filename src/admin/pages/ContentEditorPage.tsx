@@ -832,15 +832,14 @@ export default function ContentEditorPage() {
             <div className="mt-4 p-4 bg-neutral-50 rounded-xl border border-neutral-200 space-y-3">
               <h4 className="text-sm font-bold text-neutral-800">📚 Academic Manuals Page</h4>
               <p className="text-[11px] text-neutral-600">
-                To manage manuals and documents on the Academic Manuals page, go to the dedicated editor:
+                To manage manuals and documents on the Academic Manuals page, click below:
               </p>
-              <a
-                href="/admin/academic-manuals"
-                target="_blank"
+              <Link
+                to="/admin/academic-manuals"
                 className="inline-flex items-center gap-2 px-4 py-2 bg-[#003DA5] hover:bg-[#002d7a] text-white text-xs font-bold rounded-lg"
               >
                 Open Academic Manuals Editor →
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { SEED_DOCUMENTS } from '../data/seedData';
 import { formatDate } from '../lib/date';
 import { Download, FileText, Search } from 'lucide-react';
@@ -9,7 +10,9 @@ import { DocumentItem } from '../types/neissr';
 
 export default function DocumentsPage() {
   const [searchParams] = useSearchParams();
-  const [selectedCategory, setSelectedCategory] = useState<string>(searchParams.get('category') || 'all');
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    searchParams.get('category') || 'all'
+  );
   useEffect(() => {
     const cat = searchParams.get('category');
     if (cat) setSelectedCategory(cat);
@@ -37,8 +40,7 @@ export default function DocumentsPage() {
     { id: 'naac', label: 'NAAC Accreditation' },
     { id: 'affiliations', label: 'Affiliations & Recognition' },
     { id: 'mandatory-disclosures', label: 'Mandatory Disclosures' },
-    { id: 'magazines', label: 'Magazines' },
-    { id: 'manuals', label: 'Academic Manuals' }
+    { id: 'magazines', label: 'Magazines' }
   ];
 
   const filteredDocs = documentsList.filter((doc) => {
