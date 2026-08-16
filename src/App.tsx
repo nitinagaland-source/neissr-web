@@ -9,12 +9,10 @@ import Footer from './components/layout/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import MessagesPage from './pages/MessagesPage';
-import VisionPage from './pages/VisionPage';
-import UniquenessPage from './pages/UniquenessPage';
-import CoreValuesPage from './pages/CoreValuesPage';
 import AcademicsPage from './pages/AcademicsPage';
 import BSWPage from './pages/BSWPage';
 import MSWPage from './pages/MSWPage';
+import AcademicManualsPage from './pages/AcademicManualsPage';
 import SpecialisationPage from './pages/SpecialisationPage';
 import FacultyPage from './pages/FacultyPage';
 import FacultyProfilePage from './pages/FacultyProfilePage';
@@ -37,8 +35,6 @@ import DocumentsPage from './pages/DocumentsPage';
 import NIRFPage from './pages/NIRFPage';
 import NAACPage from './pages/NAACPage';
 import MandatoryDisclosuresPage from './pages/MandatoryDisclosuresPage';
-import IQACPage from './pages/IQACPage';
-import StudentServicesPage from './pages/StudentServicesPage';
 import ContactPage from './pages/ContactPage';
 
 // Admin Infrastructure & Pages
@@ -67,8 +63,7 @@ import PlacementsListPage from './admin/pages/PlacementsListPage';
 import PlacementEditPage from './admin/pages/PlacementEditPage';
 import ForumsListPage from './admin/pages/ForumsListPage';
 import ForumEditPage from './admin/pages/ForumEditPage';
-import IQACAdminPage from './admin/pages/IQACAdminPage';
-import StudentServicesAdminPage from './admin/pages/StudentServicesAdminPage';
+import AcademicManualsAdminPage from './admin/pages/AcademicManualsAdminPage';
 import { seedFirestoreIfEmpty } from './lib/seedFirestore';
 
 function ScrollToTop() {
@@ -157,8 +152,7 @@ export default function App() {
             <Route path="forums/new" element={<ForumEditPage />} />
             <Route path="forums/:id" element={<ForumEditPage />} />
 
-            <Route path="iqac" element={<IQACAdminPage />} />
-            <Route path="student-services" element={<StudentServicesAdminPage />} />
+            <Route path="academic-manuals" element={<AcademicManualsAdminPage />} />
             <Route path="magazines" element={<PlaceholderAdminPage title="Magazines & Publications" />} />
             <Route path="students-council" element={<PlaceholderAdminPage title="Students Council" />} />
             <Route path="users" element={<PlaceholderAdminPage title="User Access Management" />} />
@@ -170,13 +164,11 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/about/messages" element={<MessagesPage />} />
-          <Route path="/about/vision" element={<VisionPage />} />
-          <Route path="/about/uniqueness" element={<UniquenessPage />} />
-          <Route path="/about/core-values" element={<CoreValuesPage />} />
 
           <Route path="/academics" element={<AcademicsPage />} />
           <Route path="/academics/bsw" element={<BSWPage />} />
           <Route path="/academics/msw" element={<MSWPage />} />
+          <Route path="/academics/manuals" element={<AcademicManualsPage />} />
           <Route path="/academics/msw/:slug" element={<SpecialisationPage />} />
 
           <Route path="/faculty" element={<FacultyPage />} />
@@ -207,11 +199,6 @@ export default function App() {
           <Route path="/nirf" element={<NIRFPage />} />
           <Route path="/naac" element={<NAACPage />} />
           <Route path="/mandatory-disclosures" element={<MandatoryDisclosuresPage />} />
-
-          <Route path="/iqac" element={<IQACPage />} />
-          <Route path="/iqac/:section" element={<IQACPage />} />
-          <Route path="/student-services" element={<StudentServicesPage />} />
-          <Route path="/student-services/:slug" element={<StudentServicesPage />} />
 
           <Route path="/contact" element={<ContactPage />} />
 

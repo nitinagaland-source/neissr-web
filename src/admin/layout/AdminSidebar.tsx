@@ -29,8 +29,7 @@ import {
   X,
   Building,
   GraduationCap,
-  Briefcase,
-  Heart
+  Briefcase
 } from 'lucide-react';
 
 interface AdminSidebarProps {
@@ -78,21 +77,17 @@ export default function AdminSidebar({ mobileOpen = false, onClose }: AdminSideb
       items: [
         { label: 'Home Editor', href: '/admin/content/home', icon: Home },
         { label: 'About Editor', href: '/admin/content/about', icon: Info },
-        { label: 'Leadership Messages', href: '/admin/content/messages', icon: MessageSquare },
-        { label: 'Vision & Mission', href: '/admin/content/vision', icon: Info },
-        { label: 'Our Uniqueness', href: '/admin/content/uniqueness', icon: Info },
-        { label: 'Core Values', href: '/admin/content/core-values', icon: Info },
+        { label: 'Messages', href: '/admin/content/messages', icon: MessageSquare },
         { label: 'Admissions', href: '/admin/content/admissions', icon: ClipboardList },
         { label: 'Placement', href: '/admin/content/placement', icon: TrendingUp },
         { label: 'Infrastructure', href: '/admin/content/infrastructure', icon: Building },
         { label: 'Academics', href: '/admin/content/academics', icon: GraduationCap },
+        { label: 'Academic Manuals', href: '/admin/academic-manuals', icon: BookOpen },
       ],
     },
     {
       header: 'Collections',
       items: [
-        { label: 'IQAC', href: '/admin/iqac', icon: Shield },
-        { label: 'Student Services', href: '/admin/student-services', icon: Heart },
         { label: 'Faculty & Staff', href: '/admin/faculty', icon: Users },
         { label: 'Documents', href: '/admin/documents', icon: FileText },
         { label: 'News Articles', href: '/admin/news', icon: Newspaper },

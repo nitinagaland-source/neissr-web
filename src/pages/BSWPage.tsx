@@ -1,8 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Download, ArrowRight } from 'lucide-react';
+import { useQuery } from '@tanstack/react-query';
+import { doc, getDoc } from 'firebase/firestore';
+import { db, isFirebaseConfigured } from '../lib/firebase';
+
+function getOpenUrl(url: string): string {
+  if (!url) return url;
+  const match = url.match(/drive\.google\.com\/file\/d\/([^/]+)/);
+  if (match) return `https://drive.google.com/file/d/${match[1]}/view`;
+  return url;
+}
 
 export default function BSWPage() {
+  const { data: pageData } = useQuery({
+    queryKey: ['content-academics'],
+    queryFn: async () => {
+      if (!isFirebaseConfigured) return {};
+      const snap = await getDoc(doc(db, 'site_content', 'academics'));
+      return snap.exists() ? snap.data() : {};
+    },
+  });
+
+  const bswSyllabusUrl = (pageData as any)?.bswSyllabusUrl || '';
   return (
     <div className="py-12 bg-[#FAF9F7] space-y-12">
       <section className="max-w-[1440px] mx-auto px-4 md:px-8">
@@ -57,12 +77,23 @@ export default function BSWPage() {
             >
               Apply for BSW Admission <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link
-              to="/documents"
-              className="inline-flex items-center gap-2 bg-neutral-100 text-neutral-800 px-6 py-3 rounded-full text-xs font-bold hover:bg-neutral-200"
-            >
-              <Download className="w-4 h-4" /> Download BSW Syllabus
-            </Link>
+            {bswSyllabusUrl ? (
+              <a
+                href={getOpenUrl(bswSyllabusUrl)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-neutral-100 text-neutral-800 px-6 py-3 rounded-full text-xs font-bold hover:bg-neutral-200"
+              >
+                <Download className="w-4 h-4" /> Download BSW Syllabus
+              </a>
+            ) : (
+              <Link
+                to="/documents"
+                className="inline-flex items-center gap-2 bg-neutral-100 text-neutral-800 px-6 py-3 rounded-full text-xs font-bold hover:bg-neutral-200"
+              >
+                <Download className="w-4 h-4" /> Download BSW Syllabus
+              </Link>
+            )}
           </div>
         </div>
 

@@ -43,18 +43,6 @@ const SECTION_METADATA: Record<
     icon: MessageSquare,
     publicUrl: '/about/messages',
   },
-  vision: {
-    title: 'Vision and Mission Editor',
-    subtitle: 'Edit the institution vision statement, mission, and core values.',
-    icon: Info,
-    publicUrl: '/about/vision',
-  },
-  uniqueness: {
-    title: 'Our Uniqueness Editor',
-    subtitle: 'Highlight what makes NEISSR unique — specializations, distinctions, and achievements.',
-    icon: Info,
-    publicUrl: '/about/uniqueness',
-  },
   admissions: {
     title: 'Admissions Page Content Editor',
     subtitle: 'Configure admission eligibility guidelines, important dates, and links.',
@@ -109,36 +97,6 @@ export const DEFAULT_CONTENT: Record<string, ContentData> = {
     visionStatement: 'To be a center of excellence in social work education, research, peace building, and human development in North East India and beyond.',
     missionStatement: 'To educate and empower young minds with professional social work skills, ethical values, and conflict resolution tools to foster peaceful and self-sustaining communities.',
     historyHtml: '<p>Established in 2014 in Chümoukedima, Nagaland, NEISSR was founded to address the unique social, political, and developmental needs of North East India through specialized social work education.</p>',
-  },
-  vision: {
-    visionHeading: 'Our Vision & Mission',
-    visionStatement: 'To be a center of excellence in social work education, research, peace building, and human development in North East India and beyond.',
-    missionStatement: 'To educate and empower young minds with professional social work skills, ethical values, and conflict resolution tools to foster peaceful and self-sustaining communities.',
-    coreValuesHtml: '<ul><li>Integrity</li><li>Compassion</li><li>Excellence</li><li>Peace</li><li>Social Justice</li></ul>',
-  },
-  uniqueness: {
-    uniquenessHeading: 'Our Uniqueness',
-    uniquenessIntroHtml: '<p>NEISSR is a pioneering institution in North East India with several distinctive features that set it apart.</p>',
-    uniquePoint1: 'First institution in India to introduce Peace and Conflict Transformation Studies as a specialization in Social Work.',
-    uniquePoint2: 'Located in Nagaland — uniquely positioned to address the social, political, and developmental needs of North East India.',
-    uniquePoint3: 'NAAC Accredited with B++ grade, reflecting commitment to academic excellence.',
-    uniquePoint4: 'Strong placement record with 92%+ graduates employed or in higher studies.',
-  },
-  'core-values': {
-    coreValuesHeading: 'Core Values of NEISSR',
-    coreValuesIntroHtml: '<p>At NEISSR, our work is guided by a set of deeply held values that shape our education, research, and community engagement.</p>',
-    coreValue1Title: 'Integrity',
-    coreValue1Desc: 'We uphold honesty, transparency, and ethical conduct in all our actions.',
-    coreValue2Title: 'Compassion',
-    coreValue2Desc: 'We care deeply for the vulnerable and marginalized communities we serve.',
-    coreValue3Title: 'Excellence',
-    coreValue3Desc: 'We strive for the highest standards in education, research, and practice.',
-    coreValue4Title: 'Peace',
-    coreValue4Desc: 'We are committed to peace-building and conflict transformation in North East India.',
-    coreValue5Title: 'Social Justice',
-    coreValue5Desc: 'We advocate for equity, rights, and dignity for all people.',
-    coreValuesImageUrl: '',
-    coreValuesDriveLink: '',
   },
   messages: {
     patronName: 'Most Rev. Dr. James Thoppil',
@@ -309,7 +267,7 @@ export default function ContentEditorPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-xs font-semibold text-neutral-700">Hero Background Image URL (fallback — used only if no carousel images below)</label>
+                  <label className="text-xs font-semibold text-neutral-700">Hero Background Image URL</label>
                   <input
                     type="url"
                     placeholder="https://..."
@@ -328,91 +286,6 @@ export default function ContentEditorPage() {
                     className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg"
                   />
                 </div>
-              </div>
-
-              {/* HERO CAROUSEL MANAGER */}
-              <div className="mt-6 p-4 bg-blue-50 rounded-xl border-2 border-blue-200 space-y-3">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="text-sm font-bold text-[#003DA5]">🎠 Hero Carousel (Auto-scrolling)</h4>
-                    <p className="text-[11px] text-neutral-600 mt-0.5">
-                      Add multiple image URLs — they will auto-scroll on the homepage. Leave empty to use single fallback image above.
-                    </p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const current = (data as any).heroImages || [];
-                      handleChange('heroImages', [...current, '']);
-                    }}
-                    className="px-3 py-1.5 bg-[#003DA5] hover:bg-[#002d7a] text-white text-xs font-bold rounded-lg whitespace-nowrap"
-                  >
-                    + Add Image
-                  </button>
-                </div>
-
-                {/* Interval control */}
-                <div className="flex items-center gap-3">
-                  <label className="text-xs font-semibold text-neutral-700 whitespace-nowrap">
-                    Slide interval:
-                  </label>
-                  <input
-                    type="number"
-                    min="2"
-                    max="30"
-                    value={(data as any).heroIntervalSeconds || 5}
-                    onChange={(e) => handleChange('heroIntervalSeconds', parseInt(e.target.value) || 5)}
-                    className="w-20 px-2 py-1 text-sm bg-white border border-blue-200 rounded"
-                  />
-                  <span className="text-xs text-neutral-600">seconds between slides</span>
-                </div>
-
-                {/* Image list */}
-                <div className="space-y-2">
-                  {((data as any).heroImages || []).length === 0 && (
-                    <p className="text-xs text-neutral-500 italic py-2">
-                      No carousel images yet. Click "+ Add Image" to add one.
-                    </p>
-                  )}
-                  {((data as any).heroImages || []).map((img: string, idx: number) => (
-                    <div key={idx} className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-[#003DA5] w-6">#{idx + 1}</span>
-                      <input
-                        type="url"
-                        placeholder="https://... (paste image URL — use Cloudinary, ImgBB or any public image link)"
-                        value={img}
-                        onChange={(e) => {
-                          const arr = [...((data as any).heroImages || [])];
-                          arr[idx] = e.target.value;
-                          handleChange('heroImages', arr);
-                        }}
-                        className="flex-1 px-2 py-1.5 text-xs bg-white border border-blue-200 rounded focus:border-[#003DA5] outline-none"
-                      />
-                      {img && (
-                        <img
-                          src={img}
-                          alt=""
-                          className="w-10 h-10 object-cover rounded border border-blue-200"
-                          onError={(e) => (e.currentTarget.style.display = 'none')}
-                        />
-                      )}
-                      <button
-                        type="button"
-                        onClick={() => {
-                          const arr = ((data as any).heroImages || []).filter((_: any, i: number) => i !== idx);
-                          handleChange('heroImages', arr);
-                        }}
-                        className="px-2 py-1 text-xs text-red-600 hover:bg-red-100 rounded border border-red-200"
-                      >
-                        Remove
-                      </button>
-                    </div>
-                  ))}
-                </div>
-
-                <p className="text-[10px] text-blue-700">
-                  💡 Tip: Upload images to Cloudinary or imgbb.com first, then paste the URLs here.
-                </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -680,16 +553,6 @@ export default function ContentEditorPage() {
             </div>
 
             <div className="space-y-3">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <label className="text-xs font-semibold text-neutral-700">Patron Photo URL</label>
-                  <input type="url" placeholder="https://... or ImgBB link" value={data.patronImageUrl || ''} onChange={(e) => handleChange('patronImageUrl', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
-                </div>
-                <div className="space-y-1">
-                  <label className="text-xs font-semibold text-neutral-700">Google Drive Link (Patron)</label>
-                  <input type="url" placeholder="https://drive.google.com/..." value={data.patronDriveLink || ''} onChange={(e) => handleChange('patronDriveLink', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
-                </div>
-              </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <label className="text-xs font-semibold text-neutral-700">Director / Principal Name</label>
@@ -890,140 +753,6 @@ export default function ContentEditorPage() {
         </div>
       )}
 
-      {section === 'vision' && (
-        <div className="bg-white rounded-xl border border-neutral-200 p-6 shadow-sm space-y-4">
-          <h3 className="font-bold text-neutral-900 text-base border-b border-neutral-100 pb-3">Vision & Mission Page</h3>
-          <div className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-1">
-                <label className="text-xs font-semibold text-neutral-700">Page Image URL</label>
-                <input type="url" placeholder="https://... or ImgBB link" value={data.visionImageUrl || ''} onChange={(e) => handleChange('visionImageUrl', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
-              </div>
-              <div className="space-y-1">
-                <label className="text-xs font-semibold text-neutral-700">Google Drive Link</label>
-                <input type="url" placeholder="https://drive.google.com/..." value={data.visionDriveLink || ''} onChange={(e) => handleChange('visionDriveLink', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
-              </div>
-            </div>
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-neutral-700">Page Heading</label>
-              <input type="text" value={data.visionHeading || ''} onChange={(e) => handleChange('visionHeading', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
-            </div>
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-neutral-700">Vision Statement</label>
-              <textarea rows={3} value={data.visionStatement || ''} onChange={(e) => handleChange('visionStatement', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
-            </div>
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-neutral-700">Mission Statement</label>
-              <textarea rows={3} value={data.missionStatement || ''} onChange={(e) => handleChange('missionStatement', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
-            </div>
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-neutral-700">Core Values (HTML)</label>
-              <textarea rows={4} value={data.coreValuesHtml || ''} onChange={(e) => handleChange('coreValuesHtml', e.target.value)} className="w-full px-3 py-2 text-sm font-mono bg-neutral-50 border border-neutral-200 rounded-lg" />
-            </div>
-          </div>
-        </div>
-      )}
-
-      {section === 'uniqueness' && (
-        <div className="bg-white rounded-xl border border-neutral-200 p-6 shadow-sm space-y-4">
-          <h3 className="font-bold text-neutral-900 text-base border-b border-neutral-100 pb-3">Our Uniqueness Page</h3>
-          <div className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-1">
-                <label className="text-xs font-semibold text-neutral-700">Page Image URL</label>
-                <input type="url" placeholder="https://... or ImgBB link" value={data.uniquenessImageUrl || ''} onChange={(e) => handleChange('uniquenessImageUrl', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
-              </div>
-              <div className="space-y-1">
-                <label className="text-xs font-semibold text-neutral-700">Google Drive Link</label>
-                <input type="url" placeholder="https://drive.google.com/..." value={data.uniquenessDriveLink || ''} onChange={(e) => handleChange('uniquenessDriveLink', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
-              </div>
-            </div>
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-neutral-700">Page Heading</label>
-              <input type="text" value={data.uniquenessHeading || ''} onChange={(e) => handleChange('uniquenessHeading', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
-            </div>
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-neutral-700">Introduction (HTML)</label>
-              <textarea rows={3} value={data.uniquenessIntroHtml || ''} onChange={(e) => handleChange('uniquenessIntroHtml', e.target.value)} className="w-full px-3 py-2 text-sm font-mono bg-neutral-50 border border-neutral-200 rounded-lg" />
-            </div>
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-neutral-700">Unique Point 1</label>
-              <textarea rows={2} value={data.uniquePoint1 || ''} onChange={(e) => handleChange('uniquePoint1', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
-            </div>
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-neutral-700">Unique Point 2</label>
-              <textarea rows={2} value={data.uniquePoint2 || ''} onChange={(e) => handleChange('uniquePoint2', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
-            </div>
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-neutral-700">Unique Point 3</label>
-              <textarea rows={2} value={data.uniquePoint3 || ''} onChange={(e) => handleChange('uniquePoint3', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
-            </div>
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-neutral-700">Unique Point 4</label>
-              <textarea rows={2} value={data.uniquePoint4 || ''} onChange={(e) => handleChange('uniquePoint4', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
-            </div>
-          </div>
-        </div>
-      )}
-
-      {section === 'core-values' && (
-        <div className="bg-white rounded-xl border border-neutral-200 p-6 shadow-sm space-y-4">
-          <h3 className="font-bold text-neutral-900 text-base border-b border-neutral-100 pb-3">Core Values of NEISSR</h3>
-          <div className="space-y-4">
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-neutral-700">Page Heading</label>
-              <input type="text" value={data.coreValuesHeading || ''} onChange={(e) => handleChange('coreValuesHeading', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-1">
-                <label className="text-xs font-semibold text-neutral-700">Page Image URL</label>
-                <input type="url" placeholder="https://... or ImgBB link" value={data.coreValuesImageUrl || ''} onChange={(e) => handleChange('coreValuesImageUrl', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
-              </div>
-              <div className="space-y-1">
-                <label className="text-xs font-semibold text-neutral-700">Google Drive Link</label>
-                <input type="url" placeholder="https://drive.google.com/..." value={data.coreValuesDriveLink || ''} onChange={(e) => handleChange('coreValuesDriveLink', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
-              </div>
-            </div>
-            <RichTextEditor label="Introduction" value={data.coreValuesIntroHtml || ''} onChange={(val) => handleChange('coreValuesIntroHtml', val)} />
-              <div className="p-4 border border-neutral-200 rounded-xl bg-neutral-50 space-y-2">
-                <span className="text-xs font-bold text-neutral-700 uppercase">Core Value 1</span>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Title</label><input type="text" value={data.coreValue1Title || ''} onChange={(e) => handleChange('coreValue1Title', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
-                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Description</label><input type="text" value={data.coreValue1Desc || ''} onChange={(e) => handleChange('coreValue1Desc', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
-                </div>
-              </div>
-              <div className="p-4 border border-neutral-200 rounded-xl bg-neutral-50 space-y-2">
-                <span className="text-xs font-bold text-neutral-700 uppercase">Core Value 2</span>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Title</label><input type="text" value={data.coreValue2Title || ''} onChange={(e) => handleChange('coreValue2Title', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
-                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Description</label><input type="text" value={data.coreValue2Desc || ''} onChange={(e) => handleChange('coreValue2Desc', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
-                </div>
-              </div>
-              <div className="p-4 border border-neutral-200 rounded-xl bg-neutral-50 space-y-2">
-                <span className="text-xs font-bold text-neutral-700 uppercase">Core Value 3</span>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Title</label><input type="text" value={data.coreValue3Title || ''} onChange={(e) => handleChange('coreValue3Title', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
-                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Description</label><input type="text" value={data.coreValue3Desc || ''} onChange={(e) => handleChange('coreValue3Desc', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
-                </div>
-              </div>
-              <div className="p-4 border border-neutral-200 rounded-xl bg-neutral-50 space-y-2">
-                <span className="text-xs font-bold text-neutral-700 uppercase">Core Value 4</span>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Title</label><input type="text" value={data.coreValue4Title || ''} onChange={(e) => handleChange('coreValue4Title', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
-                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Description</label><input type="text" value={data.coreValue4Desc || ''} onChange={(e) => handleChange('coreValue4Desc', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
-                </div>
-              </div>
-              <div className="p-4 border border-neutral-200 rounded-xl bg-neutral-50 space-y-2">
-                <span className="text-xs font-bold text-neutral-700 uppercase">Core Value 5</span>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Title</label><input type="text" value={data.coreValue5Title || ''} onChange={(e) => handleChange('coreValue5Title', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
-                  <div className="space-y-1"><label className="text-xs font-semibold text-neutral-600">Description</label><input type="text" value={data.coreValue5Desc || ''} onChange={(e) => handleChange('coreValue5Desc', e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" /></div>
-                </div>
-              </div>
-            </div>
-        </div>
-      )}
-
       {section === 'academics' && (
         <div className="bg-white rounded-xl border border-neutral-200 p-6 shadow-sm space-y-4">
           <h3 className="font-bold text-neutral-900 text-base border-b border-neutral-100 pb-3">Academics Page Highlights</h3>
@@ -1066,6 +795,52 @@ export default function ContentEditorPage() {
                 onChange={(e) => handleChange('affiliationText', e.target.value)}
                 className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg"
               />
+            </div>
+
+            {/* Syllabus Download Links */}
+            <div className="mt-4 p-4 bg-blue-50 rounded-xl border-2 border-blue-200 space-y-3">
+              <h4 className="text-sm font-bold text-[#003DA5]">📄 Syllabus Download Links</h4>
+              <p className="text-[11px] text-blue-700">Paste Google Drive links for BSW and MSW syllabi. These appear as download buttons on the programme pages.</p>
+              <div className="space-y-2">
+                <div>
+                  <label className="text-xs font-semibold text-neutral-700 block mb-1">BSW Syllabus — Google Drive Link</label>
+                  <input
+                    type="url"
+                    placeholder="https://drive.google.com/file/d/..."
+                    value={data.bswSyllabusUrl || ''}
+                    onChange={(e) => handleChange('bswSyllabusUrl', e.target.value)}
+                    className="w-full px-3 py-2 text-sm bg-white border border-blue-200 rounded-lg focus:border-[#003DA5] outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-neutral-700 block mb-1">MSW Syllabus — Google Drive Link</label>
+                  <input
+                    type="url"
+                    placeholder="https://drive.google.com/file/d/..."
+                    value={data.mswSyllabusUrl || ''}
+                    onChange={(e) => handleChange('mswSyllabusUrl', e.target.value)}
+                    className="w-full px-3 py-2 text-sm bg-white border border-blue-200 rounded-lg focus:border-[#003DA5] outline-none"
+                  />
+                </div>
+              </div>
+              <p className="text-[10px] text-blue-600">
+                Google Drive → right-click PDF → Share → Anyone with the link → Copy link → paste above.
+              </p>
+            </div>
+
+            {/* Academic Manuals Manager */}
+            <div className="mt-4 p-4 bg-neutral-50 rounded-xl border border-neutral-200 space-y-3">
+              <h4 className="text-sm font-bold text-neutral-800">📚 Academic Manuals Page</h4>
+              <p className="text-[11px] text-neutral-600">
+                To manage manuals and documents on the Academic Manuals page, go to the dedicated editor:
+              </p>
+              <a
+                href="/admin/academic-manuals"
+                target="_blank"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-[#003DA5] hover:bg-[#002d7a] text-white text-xs font-bold rounded-lg"
+              >
+                Open Academic Manuals Editor →
+              </a>
             </div>
           </div>
         </div>
