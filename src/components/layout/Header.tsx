@@ -436,6 +436,18 @@ export default function Header() {
                 <ChevronDown className={`w-5 h-5 transition-transform ${mobileAccordion === 'about' ? 'rotate-180' : ''}`} />
               </button>
               {mobileAccordion === 'about' && (
+                <div className="pl-4 flex flex-col gap-1 mt-1">
+                  <Link to="/about/messages" onClick={() => setMobileOpen(false)} className="block py-2 text-neutral-700 hover:text-[#C8102E] transition-colors">
+                    Leadership Messages
+                  </Link>
+                  <Link to="/about/vision" onClick={() => setMobileOpen(false)} className="block py-2 text-neutral-700 hover:text-[#C8102E] transition-colors">
+                    Vision and Mission
+                  </Link>
+                  <Link to="/about/uniqueness" onClick={() => setMobileOpen(false)} className="block py-2 text-neutral-700 hover:text-[#C8102E] transition-colors">
+                    Our Uniqueness
+                  </Link>
+                  <Link to="/about/core-values" onClick={() => setMobileOpen(false)} className="block py-2 text-neutral-700 hover:text-[#C8102E] transition-colors">
+                    Core Values of NEISSR
                   </Link>
                 </div>
               )}
