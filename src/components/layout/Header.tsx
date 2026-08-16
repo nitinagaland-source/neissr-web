@@ -223,6 +223,51 @@ export default function Header() {
               )}
             </div>
 
+            {/* Student Life */}
+            <div
+              className="relative"
+              onMouseEnter={() => setActiveDropdown('student-life')}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button className="flex items-center gap-1 font-medium text-sm text-neutral-800 hover:text-[#C8102E] py-2 transition-colors">
+                Student Life <ChevronDown className="w-4 h-4" />
+              </button>
+              {activeDropdown === 'student-life' && (
+                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn">
+                  <Link
+                    to="/student-life"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
+                  >
+                    Campus Life Overview
+                  </Link>
+                  <Link
+                    to="/student-life/clubs"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
+                  >
+                    Clubs (10 Active Clubs)
+                  </Link>
+                  <Link
+                    to="/student-life/forums"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
+                  >
+                    Academic Forums (4 Forums)
+                  </Link>
+                  <Link
+                    to="/achievements"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
+                  >
+                    Student Achievements
+                  </Link>
+                  <Link
+                    to="/gallery"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
+                  >
+                    Photo Gallery
+                  </Link>
+                </div>
+              )}
+            </div>
+
             {/* Documents */}
             <div
               className="relative"
