@@ -92,7 +92,16 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Row 2 — Main nav bar */}
+      {/* Row 2 — Tagline bar */}
+      <div className="hidden lg:block bg-white border-b border-neutral-100">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-1.5 text-center">
+          <p className="text-[#C8102E] font-bold text-sm font-serif tracking-wide whitespace-nowrap">
+            Institute for Peace Building, Research & Dialogue
+          </p>
+        </div>
+      </div>
+
+      {/* Row 3 — Main nav bar */}
       <nav className={`bg-white transition-shadow duration-300 border-b border-neutral-100 ${isScrolled ? 'shadow-md' : 'shadow-sm'}`}>
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
           {/* Logo */}
@@ -109,12 +118,6 @@ export default function Header() {
               </div>
               <p className="text-[9px] md:text-[10px] text-neutral-500 font-medium tracking-wide uppercase mt-0.5 whitespace-nowrap">
                 Excel in Knowledge & Service
-              </p>
-            </div>
-            <div className="hidden xl:block w-px h-10 bg-neutral-300 mx-1 shrink-0" />
-            <div className="hidden xl:block shrink-0">
-              <p className="text-[#C8102E] font-bold text-xs leading-snug font-serif whitespace-nowrap">
-                Institute for Peace Building, Research & Dialogue
               </p>
             </div>
           </Link>
