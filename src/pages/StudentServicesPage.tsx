@@ -364,6 +364,15 @@ function ServiceDetail({ slug }: { slug: string }) {
                 Student Services
               </h3>
             </div>
+            <div className="border-b border-neutral-200">
+              <div className="px-5 py-2 text-[10px] font-bold uppercase text-neutral-400 tracking-wider bg-neutral-50">Student Life</div>
+              <Link to="/student-life" className="block px-5 py-2.5 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#003DA5] transition-colors">Campus Life Overview</Link>
+              <Link to="/student-life/clubs" className="block px-5 py-2.5 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#003DA5] transition-colors">Clubs</Link>
+              <Link to="/student-life/forums" className="block px-5 py-2.5 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#003DA5] transition-colors">Academic Forums</Link>
+              <Link to="/achievements" className="block px-5 py-2.5 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#003DA5] transition-colors">Student Achievements</Link>
+              <Link to="/gallery" className="block px-5 py-2.5 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#003DA5] transition-colors">Photo Gallery</Link>
+            </div>
+            <div className="px-5 py-2 text-[10px] font-bold uppercase text-neutral-400 tracking-wider bg-neutral-50 border-b border-neutral-200">Services</div>
             <nav className="divide-y divide-neutral-100">
               {SERVICES.map((s) => (
                 <Link
