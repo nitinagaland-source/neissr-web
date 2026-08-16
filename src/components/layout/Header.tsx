@@ -116,27 +116,27 @@ export default function Header() {
           isScrolled ? 'shadow-md' : 'shadow-sm'
         }`}
       >
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-2 flex items-center justify-between">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
           {/* Logo & Tagline */}
           <Link to="/" className="flex items-center gap-3 group">
             <img
               src="https://i.ibb.co/fYhSSyW4/channels4-profile-1.jpg"
               alt="NEISSR Logo"
               referrerPolicy="no-referrer"
-              className="w-11 h-11 rounded-full object-cover border-2 border-[#C8102E] shadow-sm group-hover:scale-105 transition-transform"
+              className="w-12 h-12 rounded-full object-cover border-2 border-[#C8102E] shadow-sm group-hover:scale-105 transition-transform"
             />
             <div>
               <div className="font-serif font-bold text-xl md:text-2xl text-[#003DA5] leading-none tracking-tight">
                 NEISSR
               </div>
-              <p className="text-[10px] md:text-xs text-neutral-500 font-medium tracking-wide uppercase mt-1 whitespace-nowrap">
+              <p className="text-[10px] md:text-xs text-neutral-500 font-medium tracking-wide uppercase mt-0.5">
                 Excel in Knowledge & Service
               </p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-6">
             {/* About */}
             <div
               className="relative"
@@ -148,17 +148,18 @@ export default function Header() {
               </button>
               {activeDropdown === 'about' && (
                 <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn">
-                  <Link to="/about/messages" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
+                  <Link
+                    to="/about"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors"
+                  >
+                    About NEISSR & Vision
+                  </Link>
+
+                  <Link
+                    to="/about/messages"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors"
+                  >
                     Leadership Messages
-                  </Link>
-                  <Link to="/about/vision" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
-                    Vision and Mission
-                  </Link>
-                  <Link to="/about/uniqueness" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
-                    Our Uniqueness
-                  </Link>
-                  <Link to="/about/core-values" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
-                    Core Values of NEISSR
                   </Link>
                 </div>
               )}
@@ -185,18 +186,14 @@ export default function Header() {
                     BSW — Bachelor of Social Work
                   </Link>
                   <Link
-                    to="/academics/msw"
-                    className="block px-3 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
-                  >
-                    MSW — Master of Social Work
-                  </Link>
+                    to="/academics/msw\"\n                    className=\"block px-3 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg\"\n                  >\n                    MSW — Master of Social Work\n                  </Link>
+                  <div className="h-px bg-neutral-100 my-2" />
                   <Link
-                    to="/documents?category=manuals"
+                    to="/academics/manuals"
                     className="block px-3 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
                   >
                     Academic Manuals
                   </Link>
-                  <div className="h-px bg-neutral-100 my-2" />
                   <div className="text-xs font-semibold uppercase text-neutral-400 px-3 py-1">
                     MSW Specialisations
                   </div>
@@ -228,109 +225,86 @@ export default function Header() {
               )}
             </div>
 
-
-
-            {/* IQAC */}
+            {/* Student Life */}
             <div
               className="relative"
-              onMouseEnter={() => setActiveDropdown('iqac')}
+              onMouseEnter={() => setActiveDropdown('student-life')}
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <button className="flex items-center gap-1 font-medium text-sm text-neutral-800 hover:text-[#C8102E] py-2 transition-colors">
-                IQAC <ChevronDown className="w-4 h-4" />
+                Student Life <ChevronDown className="w-4 h-4" />
               </button>
-              {activeDropdown === 'iqac' && (
-                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn max-h-96 overflow-y-auto">
-                  {[
-                    { id: 'about', label: 'About IQAC' },
-                    { id: 'policy', label: 'Quality Assurance Policy' },
-                    { id: 'functions', label: 'Functions' },
-                    { id: 'composition', label: 'Composition' },
-                    { id: 'activities', label: 'Major Activities' },
-                    { id: 'meeting-minutes', label: 'Meeting Minutes' },
-                    { id: 'naac', label: 'NAAC Compliance' },
-                    { id: 'best-practices', label: 'Best Practices' },
-                    { id: 'aqar', label: 'AQAR' },
-                    { id: 'nirf', label: 'NIRF Reports' },
-                    { id: 'annual-reports', label: 'Annual Reports' },
-                    { id: 'mandatory-disclosures', label: 'Mandatory Disclosures' },
-                    { id: 'feedback', label: 'Feedback' },
-                  ].map((s) => (
-                    <Link
-                      key={s.id}
-                      to={`/iqac/${s.id}`}
-                      onClick={() => setActiveDropdown(null)}
-                      className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors"
-                    >
-                      {s.label}
-                    </Link>
-                  ))}
+              {activeDropdown === 'student-life' && (
+                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn">
+                  <Link
+                    to="/student-life"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
+                  >
+                    Campus Life Overview
+                  </Link>
+                  <Link
+                    to="/student-life/clubs"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
+                  >
+                    Clubs (10 Active Clubs)
+                  </Link>
+                  <Link
+                    to="/student-life/forums"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
+                  >
+                    Academic Forums (4 Forums)
+                  </Link>
+                  <Link
+                    to="/achievements"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
+                  >
+                    Student Achievements
+                  </Link>
+                  <Link
+                    to="/gallery"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
+                  >
+                    Photo Gallery
+                  </Link>
                 </div>
               )}
             </div>
 
-            {/* Student Services */}
+            {/* Documents */}
             <div
               className="relative"
-              onMouseEnter={() => setActiveDropdown('student-services')}
+              onMouseEnter={() => setActiveDropdown('documents')}
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <button className="flex items-center gap-1 font-medium text-sm text-neutral-800 hover:text-[#C8102E] py-2 transition-colors">
-                Student Services <ChevronDown className="w-4 h-4" />
+                Documents <ChevronDown className="w-4 h-4" />
               </button>
-              {activeDropdown === 'student-services' && (
-                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn max-h-96 overflow-y-auto">
+              {activeDropdown === 'documents' && (
+                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn">
                   <Link
-                    to="/student-services"
-                    onClick={() => setActiveDropdown(null)}
-                    className="block px-4 py-2 text-sm font-semibold text-[#003DA5] hover:bg-blue-50 rounded-lg border-b border-neutral-100 mb-1"
+                    to="/documents"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
                   >
-                    View All Services →
-                  <div className="border-b border-neutral-100 my-1">
-                    <p className="px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-neutral-400">Student Life</p>
-                  </div>
-                  <Link to="/student-life" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
-                    Campus Life Overview
+                    Prospectus & Calendar
                   </Link>
-                  <Link to="/student-life/clubs" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
-                    Clubs
+                  <Link
+                    to="/nirf"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
+                  >
+                    NIRF Reports
                   </Link>
-                  <Link to="/student-life/forums" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
-                    Academic Forums
+                  <Link
+                    to="/naac"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
+                  >
+                    NAAC Accreditation B++
                   </Link>
-                  <Link to="/achievements" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
-                    Student Achievements
+                  <Link
+                    to="/mandatory-disclosures"
+                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
+                  >
+                    Mandatory Disclosures
                   </Link>
-                  <Link to="/gallery" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
-                    Photo Gallery
-                  </Link>
-                  <div className="border-b border-neutral-100 my-1">
-                    <p className="px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-neutral-400">Services</p>
-                  </div>
-                  </Link>
-                  {[
-                    { id: 'scholarship', label: 'Scholarship' },
-                    { id: 'counselling', label: 'Counselling Centre' },
-                    { id: 'anti-ragging', label: 'Anti-Ragging Committee' },
-                    { id: 'grievance', label: 'Grievance Redressal' },
-                    { id: 'welfare', label: 'Student Welfare' },
-                    { id: 'womens-cell', label: "Women's Empowerment Cell" },
-                    { id: 'internal-complaints', label: 'Internal Complaints Committee' },
-                    { id: 'alumni', label: 'Alumni Association' },
-                    { id: 'library', label: 'Library' },
-                    { id: 'placement', label: 'Placement Cell' },
-                    { id: 'coaching', label: 'Coaching Centre' },
-                    { id: 'health-care', label: 'Health Care' },
-                  ].map((s) => (
-                    <Link
-                      key={s.id}
-                      to={`/student-services/${s.id}`}
-                      onClick={() => setActiveDropdown(null)}
-                      className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors"
-                    >
-                      {s.label}
-                    </Link>
-                  ))}
                 </div>
               )}
             </div>
@@ -369,9 +343,9 @@ export default function Header() {
           <div className="hidden lg:flex items-center gap-3">
             <Link
               to="/admissions"
-              className="inline-flex items-center gap-1.5 bg-[#C8102E] hover:bg-[#9A0C24] text-white px-4 py-1.5 rounded-full font-semibold text-xs shadow-sm transition-colors"
+              className="inline-flex items-center gap-2 bg-[#C8102E] hover:bg-[#9A0C24] text-white px-5 py-2.5 rounded-full font-semibold text-sm shadow-sm transition-all hover:scale-105"
             >
-              Admissions Open <ArrowRight className="w-3 h-3" />
+              Admissions Open <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
@@ -419,18 +393,12 @@ export default function Header() {
                 <ChevronDown className={`w-5 h-5 transition-transform ${mobileAccordion === 'about' ? 'rotate-180' : ''}`} />
               </button>
               {mobileAccordion === 'about' && (
-                <div className="pl-4 flex flex-col gap-1 mt-1">
-                  <Link to="/about/messages" onClick={() => setMobileOpen(false)} className="block py-2 text-neutral-700 hover:text-[#C8102E] transition-colors">
+                <div className="pl-4 py-2 space-y-2 bg-neutral-50 rounded-lg my-1">
+                  <Link to="/about" className="block text-sm font-medium text-neutral-700 py-1">
+                    About NEISSR
+                  </Link>
+                  <Link to="/about/messages" className="block text-sm font-medium text-neutral-700 py-1">
                     Leadership Messages
-                  </Link>
-                  <Link to="/about/vision" onClick={() => setMobileOpen(false)} className="block py-2 text-neutral-700 hover:text-[#C8102E] transition-colors">
-                    Vision and Mission
-                  </Link>
-                  <Link to="/about/uniqueness" onClick={() => setMobileOpen(false)} className="block py-2 text-neutral-700 hover:text-[#C8102E] transition-colors">
-                    Our Uniqueness
-                  </Link>
-                  <Link to="/about/core-values" onClick={() => setMobileOpen(false)} className="block py-2 text-neutral-700 hover:text-[#C8102E] transition-colors">
-                    Core Values of NEISSR
                   </Link>
                 </div>
               )}
@@ -452,9 +420,9 @@ export default function Header() {
                   </Link>
                   <Link to="/academics/msw" className="block text-sm font-medium text-neutral-800 py-1">
                     MSW Programme
-                  <Link to="/documents?category=manuals" className="block text-sm font-medium text-neutral-800 py-1">
-                    Academic Manuals
                   </Link>
+                  <Link to="/academics/manuals" className="block text-sm font-medium text-neutral-800 py-1">
+                    Academic Manuals
                   </Link>
                   <Link to="/academics/msw/community-development" className="block text-xs text-neutral-600 py-1">
                     Community Development (CD)
@@ -468,68 +436,6 @@ export default function Header() {
                   <Link to="/academics/msw/peace-conflict-studies" className="block text-xs text-neutral-600 py-1">
                     Peace & Conflict Studies (PCTS)
                   </Link>
-                </div>
-              )}
-            </div>
-
-            {/* Mobile IQAC */}
-            <div>
-              <button
-                onClick={() => toggleMobileAccordion('iqac')}
-                className="w-full flex justify-between items-center py-2 font-semibold text-lg text-neutral-800 border-b border-neutral-100"
-              >
-                <span>IQAC</span>
-                <ChevronDown className={`w-5 h-5 transition-transform ${mobileAccordion === 'iqac' ? 'rotate-180' : ''}`} />
-              </button>
-              {mobileAccordion === 'iqac' && (
-                <div className="pl-4 py-2 space-y-1 bg-neutral-50 rounded-lg my-1">
-                  {[
-                    { id: 'about', label: 'About IQAC' },
-                    { id: 'policy', label: 'Quality Policy' },
-                    { id: 'functions', label: 'Functions' },
-                    { id: 'activities', label: 'Major Activities' },
-                    { id: 'naac', label: 'NAAC Compliance' },
-                    { id: 'aqar', label: 'AQAR' },
-                    { id: 'nirf', label: 'NIRF Reports' },
-                    { id: 'mandatory-disclosures', label: 'Mandatory Disclosures' },
-                  ].map((s) => (
-                    <Link key={s.id} to={`/iqac/${s.id}`} className="block text-sm font-medium text-neutral-700 py-1.5">
-                      {s.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Mobile Student Services */}
-            <div>
-              <button
-                onClick={() => toggleMobileAccordion('student-services')}
-                className="w-full flex justify-between items-center py-2 font-semibold text-lg text-neutral-800 border-b border-neutral-100"
-              >
-                <span>Student Services</span>
-                <ChevronDown className={`w-5 h-5 transition-transform ${mobileAccordion === 'student-services' ? 'rotate-180' : ''}`} />
-              </button>
-              {mobileAccordion === 'student-services' && (
-                <div className="pl-4 py-2 space-y-1 bg-neutral-50 rounded-lg my-1">
-                  <Link to="/student-services" className="block text-sm font-semibold text-[#003DA5] py-1.5 border-b border-neutral-200 mb-1">
-                    View All →
-                  </Link>
-                  {[
-                    { id: 'scholarship', label: 'Scholarship' },
-                    { id: 'counselling', label: 'Counselling' },
-                    { id: 'anti-ragging', label: 'Anti-Ragging' },
-                    { id: 'grievance', label: 'Grievance Redressal' },
-                    { id: 'welfare', label: 'Student Welfare' },
-                    { id: 'womens-cell', label: "Women's Cell" },
-                    { id: 'alumni', label: 'Alumni' },
-                    { id: 'library', label: 'Library' },
-                    { id: 'placement', label: 'Placement' },
-                  ].map((s) => (
-                    <Link key={s.id} to={`/student-services/${s.id}`} className="block text-xs font-medium text-neutral-700 py-1">
-                      {s.label}
-                    </Link>
-                  ))}
                 </div>
               )}
             </div>
