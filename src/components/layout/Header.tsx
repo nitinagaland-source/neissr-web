@@ -93,9 +93,9 @@ export default function Header() {
       </div>
 
       {/* Row 2 — Tagline bar */}
-      <div className="hidden lg:block bg-white border-b border-neutral-100">
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-1.5 text-center">
-          <p className="text-[#C8102E] font-bold text-sm font-serif tracking-wide whitespace-nowrap">
+      <div className="hidden lg:block bg-[#fff8f8] border-b border-red-100">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-2 text-center">
+          <p className="text-[#C8102E] font-bold text-base font-serif tracking-wide">
             Institute for Peace Building, Research & Dialogue
           </p>
         </div>
