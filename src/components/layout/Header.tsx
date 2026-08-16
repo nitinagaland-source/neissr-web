@@ -222,50 +222,6 @@ export default function Header() {
               )}
             </div>
 
-            {/* Student Life */}
-            <div
-              className="relative"
-              onMouseEnter={() => setActiveDropdown('student-life')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="flex items-center gap-1 font-medium text-sm text-neutral-800 hover:text-[#C8102E] py-2 transition-colors">
-                Student Life <ChevronDown className="w-4 h-4" />
-              </button>
-              {activeDropdown === 'student-life' && (
-                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn">
-                  <Link
-                    to="/student-life"
-                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
-                  >
-                    Campus Life Overview
-                  </Link>
-                  <Link
-                    to="/student-life/clubs"
-                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
-                  >
-                    Clubs (10 Active Clubs)
-                  </Link>
-                  <Link
-                    to="/student-life/forums"
-                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
-                  >
-                    Academic Forums (4 Forums)
-                  </Link>
-                  <Link
-                    to="/achievements"
-                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
-                  >
-                    Student Achievements
-                  </Link>
-                  <Link
-                    to="/gallery"
-                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
-                  >
-                    Photo Gallery
-                  </Link>
-                </div>
-              )}
-            </div>
 
 
             {/* IQAC */}
@@ -324,6 +280,27 @@ export default function Header() {
                     className="block px-4 py-2 text-sm font-semibold text-[#003DA5] hover:bg-blue-50 rounded-lg border-b border-neutral-100 mb-1"
                   >
                     View All Services →
+                  <div className="border-b border-neutral-100 my-1">
+                    <p className="px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-neutral-400">Student Life</p>
+                  </div>
+                  <Link to="/student-life" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
+                    Campus Life Overview
+                  </Link>
+                  <Link to="/student-life/clubs" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
+                    Clubs
+                  </Link>
+                  <Link to="/student-life/forums" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
+                    Academic Forums
+                  </Link>
+                  <Link to="/achievements" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
+                    Student Achievements
+                  </Link>
+                  <Link to="/gallery" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
+                    Photo Gallery
+                  </Link>
+                  <div className="border-b border-neutral-100 my-1">
+                    <p className="px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-neutral-400">Services</p>
+                  </div>
                   </Link>
                   {[
                     { id: 'scholarship', label: 'Scholarship' },
