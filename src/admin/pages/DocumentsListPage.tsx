@@ -78,6 +78,7 @@ export default function DocumentsListPage() {
     { id: 'affiliations', label: 'Affiliations' },
     { id: 'mandatory-disclosures', label: 'Mandatory Disclosures' },
     { id: 'magazines', label: 'Magazines' },
+    { id: 'manuals', label: 'Academic Manuals' },
     { id: 'other', label: 'Other' },
   ];
 

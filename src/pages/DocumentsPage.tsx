@@ -32,7 +32,8 @@ export default function DocumentsPage() {
     { id: 'naac', label: 'NAAC Accreditation' },
     { id: 'affiliations', label: 'Affiliations & Recognition' },
     { id: 'mandatory-disclosures', label: 'Mandatory Disclosures' },
-    { id: 'magazines', label: 'Magazines' }
+    { id: 'magazines', label: 'Magazines' },
+    { id: 'manuals', label: 'Academic Manuals' }
   ];
 
   const filteredDocs = documentsList.filter((doc) => {

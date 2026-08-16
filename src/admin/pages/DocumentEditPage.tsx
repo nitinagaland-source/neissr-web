@@ -18,6 +18,7 @@ const documentSchema = z.object({
   fileUrl: z.string().min(5, 'File upload is required'),
   fileSize: z.string().optional(),
   description: z.string().optional(),
+  coverImageUrl: z.string().optional(),
   publishedAt: z.string().min(1, 'Published date is required'),
   status: z.enum(['published', 'draft']),
 });
@@ -47,6 +48,7 @@ export default function DocumentEditPage() {
       fileUrl: '',
       fileSize: '',
       description: '',
+      coverImageUrl: '',
       publishedAt: new Date().toISOString().split('T')[0],
       status: 'published',
     },
@@ -54,6 +56,7 @@ export default function DocumentEditPage() {
 
   const titleValue = watch('title');
   const fileUrlValue = watch('fileUrl');
+  const coverImageUrlValue = watch('coverImageUrl');
 
   useEffect(() => {
     if (isNew && titleValue) {
@@ -78,6 +81,7 @@ export default function DocumentEditPage() {
             fileUrl: data.fileUrl || '',
             fileSize: data.fileSize || '',
             description: data.description || '',
+            coverImageUrl: data.coverImageUrl || '',
             publishedAt: data.publishedAt ? data.publishedAt.split('T')[0] : new Date().toISOString().split('T')[0],
             status: data.status || 'published',
           });
@@ -203,6 +207,7 @@ export default function DocumentEditPage() {
                   <option value="affiliations">Affiliation Order</option>
                   <option value="mandatory-disclosures">Mandatory Disclosures</option>
                   <option value="magazines">Magazines & Journals</option>
+                  <option value="manuals">Academic Manuals</option>
                   <option value="other">Other Official Document</option>
                 </select>
               </div>
@@ -244,6 +249,23 @@ export default function DocumentEditPage() {
               />
             </div>
           </div>
+        </div>
+
+        {/* Cover Image Upload Card */}
+        <div className="bg-white rounded-xl border border-neutral-200 p-6 space-y-4 shadow-sm">
+          <h3 className="text-sm font-bold uppercase tracking-wider text-neutral-600 border-b border-neutral-100 pb-2">
+            Cover Image (Optional)
+          </h3>
+          <FileUploader
+            label="Cover Image"
+            accept="image/jpeg,image/png,image/webp"
+            maxSizeMB={10}
+                storagePath="/documents/cover/"
+            currentUrl={coverImageUrlValue}
+            onUploadComplete={(url) => setValue('coverImageUrl', url, { shouldDirty: true })}
+            onRemove={() => setValue('coverImageUrl', '', { shouldDirty: true })}
+            hint="JPG, PNG or WebP, up to 10MB. Shown as the manual's thumbnail."
+          />
         </div>
 
         {/* PDF File Upload Card */}
