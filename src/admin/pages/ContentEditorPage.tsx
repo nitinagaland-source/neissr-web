@@ -1021,6 +1021,11 @@ export default function ContentEditorPage() {
                 </div>
               </div>
 
+              </div>
+            </div>
+        </div>
+      )}
+
       {section === 'academics' && (
         <div className="bg-white rounded-xl border border-neutral-200 p-6 shadow-sm space-y-4">
           <h3 className="font-bold text-neutral-900 text-base border-b border-neutral-100 pb-3">Academics Page Highlights</h3>
