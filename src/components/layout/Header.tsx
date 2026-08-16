@@ -186,7 +186,11 @@ export default function Header() {
                     BSW — Bachelor of Social Work
                   </Link>
                   <Link
-                    to="/academics/msw\"\n                    className=\"block px-3 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg\"\n                  >\n                    MSW — Master of Social Work\n                  </Link>
+                    to="/academics/msw"
+                    className="block px-3 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
+                  >
+                    MSW — Master of Social Work
+                  </Link>
                   <div className="h-px bg-neutral-100 my-2" />
                   <Link
                     to="/academics/manuals"
