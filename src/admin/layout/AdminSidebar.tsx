@@ -81,6 +81,7 @@ export default function AdminSidebar({ mobileOpen = false, onClose }: AdminSideb
         { label: 'Leadership Messages', href: '/admin/content/messages', icon: MessageSquare },
         { label: 'Vision & Mission', href: '/admin/content/vision', icon: Info },
         { label: 'Our Uniqueness', href: '/admin/content/uniqueness', icon: Info },
+        { label: 'Core Values', href: '/admin/content/core-values', icon: Info },
         { label: 'Admissions', href: '/admin/content/admissions', icon: ClipboardList },
         { label: 'Placement', href: '/admin/content/placement', icon: TrendingUp },
         { label: 'Infrastructure', href: '/admin/content/infrastructure', icon: Building },

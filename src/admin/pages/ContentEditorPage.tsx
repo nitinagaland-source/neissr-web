@@ -124,6 +124,22 @@ export const DEFAULT_CONTENT: Record<string, ContentData> = {
     uniquePoint3: 'NAAC Accredited with B++ grade, reflecting commitment to academic excellence.',
     uniquePoint4: 'Strong placement record with 92%+ graduates employed or in higher studies.',
   },
+  'core-values': {
+    coreValuesHeading: 'Core Values of NEISSR',
+    coreValuesIntroHtml: '<p>At NEISSR, our work is guided by a set of deeply held values that shape our education, research, and community engagement.</p>',
+    coreValue1Title: 'Integrity',
+    coreValue1Desc: 'We uphold honesty, transparency, and ethical conduct in all our actions.',
+    coreValue2Title: 'Compassion',
+    coreValue2Desc: 'We care deeply for the vulnerable and marginalized communities we serve.',
+    coreValue3Title: 'Excellence',
+    coreValue3Desc: 'We strive for the highest standards in education, research, and practice.',
+    coreValue4Title: 'Peace',
+    coreValue4Desc: 'We are committed to peace-building and conflict transformation in North East India.',
+    coreValue5Title: 'Social Justice',
+    coreValue5Desc: 'We advocate for equity, rights, and dignity for all people.',
+    coreValuesImageUrl: '',
+    coreValuesDriveLink: '',
+  },
   messages: {
     patronName: 'Most Rev. Dr. James Thoppil',
     patronDesignation: 'Bishop of Kohima & Patron, NEISSR',
@@ -664,6 +680,16 @@ export default function ContentEditorPage() {
             </div>
 
             <div className="space-y-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-neutral-700">Patron Photo URL</label>
+                  <input type="url" placeholder="https://... or ImgBB link" value={data.patronImageUrl || ''} onChange={(e) => handleChange('patronImageUrl', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-neutral-700">Google Drive Link (Patron)</label>
+                  <input type="url" placeholder="https://drive.google.com/..." value={data.patronDriveLink || ''} onChange={(e) => handleChange('patronDriveLink', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
+                </div>
+              </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <label className="text-xs font-semibold text-neutral-700">Director / Principal Name</label>
@@ -868,6 +894,16 @@ export default function ContentEditorPage() {
         <div className="bg-white rounded-xl border border-neutral-200 p-6 shadow-sm space-y-4">
           <h3 className="font-bold text-neutral-900 text-base border-b border-neutral-100 pb-3">Vision & Mission Page</h3>
           <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-neutral-700">Page Image URL</label>
+                <input type="url" placeholder="https://... or ImgBB link" value={data.visionImageUrl || ''} onChange={(e) => handleChange('visionImageUrl', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
+              </div>
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-neutral-700">Google Drive Link</label>
+                <input type="url" placeholder="https://drive.google.com/..." value={data.visionDriveLink || ''} onChange={(e) => handleChange('visionDriveLink', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
+              </div>
+            </div>
             <div className="space-y-1">
               <label className="text-xs font-semibold text-neutral-700">Page Heading</label>
               <input type="text" value={data.visionHeading || ''} onChange={(e) => handleChange('visionHeading', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
@@ -892,6 +928,16 @@ export default function ContentEditorPage() {
         <div className="bg-white rounded-xl border border-neutral-200 p-6 shadow-sm space-y-4">
           <h3 className="font-bold text-neutral-900 text-base border-b border-neutral-100 pb-3">Our Uniqueness Page</h3>
           <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-neutral-700">Page Image URL</label>
+                <input type="url" placeholder="https://... or ImgBB link" value={data.uniquenessImageUrl || ''} onChange={(e) => handleChange('uniquenessImageUrl', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
+              </div>
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-neutral-700">Google Drive Link</label>
+                <input type="url" placeholder="https://drive.google.com/..." value={data.uniquenessDriveLink || ''} onChange={(e) => handleChange('uniquenessDriveLink', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
+              </div>
+            </div>
             <div className="space-y-1">
               <label className="text-xs font-semibold text-neutral-700">Page Heading</label>
               <input type="text" value={data.uniquenessHeading || ''} onChange={(e) => handleChange('uniquenessHeading', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
@@ -916,6 +962,44 @@ export default function ContentEditorPage() {
               <label className="text-xs font-semibold text-neutral-700">Unique Point 4</label>
               <textarea rows={2} value={data.uniquePoint4 || ''} onChange={(e) => handleChange('uniquePoint4', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
             </div>
+          </div>
+        </div>
+      )}
+
+      {section === 'core-values' && (
+        <div className="bg-white rounded-xl border border-neutral-200 p-6 shadow-sm space-y-4">
+          <h3 className="font-bold text-neutral-900 text-base border-b border-neutral-100 pb-3">Core Values of NEISSR</h3>
+          <div className="space-y-4">
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-neutral-700">Page Heading</label>
+              <input type="text" value={data.coreValuesHeading || ''} onChange={(e) => handleChange('coreValuesHeading', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-neutral-700">Page Image URL</label>
+                <input type="url" placeholder="https://... or ImgBB link" value={data.coreValuesImageUrl || ''} onChange={(e) => handleChange('coreValuesImageUrl', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
+              </div>
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-neutral-700">Google Drive Link</label>
+                <input type="url" placeholder="https://drive.google.com/..." value={data.coreValuesDriveLink || ''} onChange={(e) => handleChange('coreValuesDriveLink', e.target.value)} className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg" />
+              </div>
+            </div>
+            <RichTextEditor label="Introduction" value={data.coreValuesIntroHtml || ''} onChange={(val) => handleChange('coreValuesIntroHtml', val)} />
+            {[1,2,3,4,5].map((n) => (
+              <div key={n} className="p-4 border border-neutral-200 rounded-xl bg-neutral-50 space-y-2">
+                <span className="text-xs font-bold text-neutral-700 uppercase">Core Value {n}</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="space-y-1">
+                    <label className="text-xs font-semibold text-neutral-600">Title</label>
+                    <input type="text" value={(data as any)[coreValue+n+Title] || ''} onChange={(e) => handleChange(coreValue+n+Title, e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs font-semibold text-neutral-600">Description</label>
+                    <input type="text" value={(data as any)[coreValue+n+Desc] || ''} onChange={(e) => handleChange(coreValue+n+Desc, e.target.value)} className="w-full px-3 py-2 text-sm bg-white border border-neutral-200 rounded-lg" />
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
