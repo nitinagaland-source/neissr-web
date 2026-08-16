@@ -150,19 +150,15 @@ export default function Header() {
                 <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn">
                   <Link
                     to="/about"
-                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors"
-                  >
-                    About NEISSR & Vision
-                  </Link>
-
-                  <Link
-                    to="/about/messages"
-                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors"
-                  >
+                  <Link to="/about/messages" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
                     Leadership Messages
                   </Link>
-                </div>
-              )}
+                  <Link to="/about/vision" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
+                    Vision and Mission
+                  </Link>
+                  <Link to="/about/uniqueness" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
+                    Our Uniqueness
+                  </Link>
             </div>
 
             {/* Academics */}
