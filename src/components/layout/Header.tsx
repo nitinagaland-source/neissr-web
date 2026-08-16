@@ -190,6 +190,12 @@ export default function Header() {
                   >
                     MSW — Master of Social Work
                   </Link>
+                  <Link
+                    to="/documents?category=manuals"
+                    className="block px-3 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
+                  >
+                    Academic Manuals
+                  </Link>
                   <div className="h-px bg-neutral-100 my-2" />
                   <div className="text-xs font-semibold uppercase text-neutral-400 px-3 py-1">
                     MSW Specialisations
@@ -446,6 +452,9 @@ export default function Header() {
                   </Link>
                   <Link to="/academics/msw" className="block text-sm font-medium text-neutral-800 py-1">
                     MSW Programme
+                  <Link to="/documents?category=manuals" className="block text-sm font-medium text-neutral-800 py-1">
+                    Academic Manuals
+                  </Link>
                   </Link>
                   <Link to="/academics/msw/community-development" className="block text-xs text-neutral-600 py-1">
                     Community Development (CD)

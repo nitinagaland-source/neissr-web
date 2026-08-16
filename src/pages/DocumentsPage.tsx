@@ -8,7 +8,12 @@ import { db, isFirebaseConfigured } from '../lib/firebase';
 import { DocumentItem } from '../types/neissr';
 
 export default function DocumentsPage() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [searchParams] = useSearchParams();
+  const [selectedCategory, setSelectedCategory] = useState<string>(searchParams.get('category') || 'all');
+  useEffect(() => {
+    const cat = searchParams.get('category');
+    if (cat) setSelectedCategory(cat);
+  }, [searchParams]);
   const [searchQuery, setSearchQuery] = useState('');
 
   const { data: documentsList = SEED_DOCUMENTS } = useQuery({
