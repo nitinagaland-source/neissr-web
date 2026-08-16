@@ -268,44 +268,6 @@ export default function Header() {
               )}
             </div>
 
-            {/* Documents */}
-            <div
-              className="relative"
-              onMouseEnter={() => setActiveDropdown('documents')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="flex items-center gap-1 font-medium text-sm text-neutral-800 hover:text-[#C8102E] py-2 transition-colors">
-                Documents <ChevronDown className="w-4 h-4" />
-              </button>
-              {activeDropdown === 'documents' && (
-                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn">
-                  <Link
-                    to="/documents"
-                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
-                  >
-                    Prospectus & Calendar
-                  </Link>
-                  <Link
-                    to="/nirf"
-                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
-                  >
-                    NIRF Reports
-                  </Link>
-                  <Link
-                    to="/naac"
-                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
-                  >
-                    NAAC Accreditation B++
-                  </Link>
-                  <Link
-                    to="/mandatory-disclosures"
-                    className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg"
-                  >
-                    Mandatory Disclosures
-                  </Link>
-                </div>
-              )}
-            </div>
 
             {/* IQAC */}
             <div
