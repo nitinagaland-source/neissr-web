@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export interface ReferenceCardProps {
+  imageUrl?: string;
   key?: string | number;
   title: string;
   subtitle?: string;
@@ -49,9 +50,10 @@ export default function ReferenceCard({
   buttonText,
   buttonLink,
   onButtonClick,
-  className = '',
+  className = "",
   badge,
-  date
+  date,
+  imageUrl
 }: ReferenceCardProps) {
   const gradientClass = customGradient || GRADIENTS[gradient] || GRADIENTS.blue;
   const glowClass = GLOW_SHADOWS[gradient] || GLOW_SHADOWS.blue;
@@ -123,6 +125,13 @@ export default function ReferenceCard({
           </svg>
         </div>
       </div>
+
+      {/* Achievement Photo */}
+      {imageUrl && (
+        <div className="w-full h-48 overflow-hidden">
+          <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
+        </div>
+      )}
 
       {/* White Card Body */}
       <div className="p-6 md:p-8 flex-1 flex flex-col justify-between text-center space-y-6 bg-white">

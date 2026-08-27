@@ -79,6 +79,7 @@ export default function AchievementEditPage() {
     setSaving(true);
     try {
       const payload = {
+        achieverName: data.recipientName,
         ...data,
         updatedAt: serverTimestamp(),
       };

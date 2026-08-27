@@ -25,6 +25,17 @@ import ForumsPage from './pages/ForumsPage';
 import ForumDetailPage from './pages/ForumDetailPage';
 import InfrastructurePage from './pages/InfrastructurePage';
 import AchievementsPage from './pages/AchievementsPage';
+import AchievementDetailPage from './pages/AchievementDetailPage';
+import UNSDGsPage from './pages/UNSDGsPage';
+import UBAPage from './pages/UBAPage';
+import NSSPage from './pages/NSSPage';
+import NCCPage from './pages/NCCPage';
+import NewslettersPage from './pages/NewslettersPage';
+import UNSDGsAdminPage from './admin/pages/UNSDGsAdminPage';
+import UBAAdminPage from './admin/pages/UBAAdminPage';
+import NSSAdminPage from './admin/pages/NSSAdminPage';
+import NCCAdminPage from './admin/pages/NCCAdminPage';
+import NewslettersAdminPage from './admin/pages/NewslettersAdminPage';
 import NewsPage from './pages/NewsPage';
 import NewsDetailPage from './pages/NewsDetailPage';
 import EventsPage from './pages/EventsPage';
@@ -156,6 +167,11 @@ export default function App() {
 
             <Route path="academic-manuals" element={<AcademicManualsAdminPage />} />
             <Route path="bsw" element={<BSWAdminPage />} />
+            <Route path="un-sdgs" element={<UNSDGsAdminPage />} />
+            <Route path="uba" element={<UBAAdminPage />} />
+            <Route path="nss" element={<NSSAdminPage />} />
+            <Route path="ncc" element={<NCCAdminPage />} />
+            <Route path="newsletters" element={<NewslettersAdminPage />} />
             <Route path="msw" element={<MSWAdminPage />} />
             <Route path="magazines" element={<PlaceholderAdminPage title="Magazines & Publications" />} />
             <Route path="students-council" element={<PlaceholderAdminPage title="Students Council" />} />
@@ -190,6 +206,7 @@ export default function App() {
 
           <Route path="/infrastructure" element={<InfrastructurePage />} />
           <Route path="/achievements" element={<AchievementsPage />} />
+          <Route path="/achievements/:id" element={<AchievementDetailPage />} />
 
           <Route path="/news" element={<NewsPage />} />
           <Route path="/news/:slug" element={<NewsDetailPage />} />
@@ -205,6 +222,11 @@ export default function App() {
           <Route path="/mandatory-disclosures" element={<MandatoryDisclosuresPage />} />
 
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/un-sdgs" element={<UNSDGsPage />} />
+          <Route path="/uba" element={<UBAPage />} />
+          <Route path="/nss" element={<NSSPage />} />
+          <Route path="/ncc" element={<NCCPage />} />
+          <Route path="/newsletters" element={<NewslettersPage />} />
 
           <Route path="*" element={<HomePage />} />
         </Route>

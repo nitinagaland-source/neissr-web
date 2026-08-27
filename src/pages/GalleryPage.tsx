@@ -17,37 +17,18 @@ interface GalleryImageItem {
 }
 
 export default function GalleryPage() {
-  const { data: categories = [], isLoading: loadingCategories } = useQuery({
-    queryKey: ['galleries'],
+  const { data: allImages = [], isLoading } = useQuery({
+    queryKey: ['gallery-all-images'],
     queryFn: async () => {
-      const snap = await getDocs(collection(db, 'galleries'));
-      return snap.docs.map((doc) => ({ id: doc.id, ...doc.data() })) as GalleryCategory[];
+      const snap = await getDocs(collection(db, 'gallery'));
+      return snap.docs.map((d) => {
+        const data = d.data();
+        return { id: d.id, url: data.imageUrl || data.url || '', caption: data.caption || data.title || 'Campus Activity' };
+      }).filter((i) => i.url);
     },
   });
 
-  const { data: allImages = [], isLoading: loadingImages } = useQuery({
-    queryKey: ['gallery-all-images', categories],
-    queryFn: async () => {
-      const results: GalleryImageItem[] = [];
-      for (const cat of categories) {
-        const subSnap = await getDocs(collection(db, 'galleries', cat.id, 'images'));
-        subSnap.docs.forEach((imgDoc) => {
-          const data = imgDoc.data();
-          if (data.url) {
-            results.push({
-              id: imgDoc.id,
-              url: data.url,
-              caption: data.caption || cat.name || 'Campus Activity',
-            });
-          }
-        });
-      }
-      return results;
-    },
-    enabled: categories.length > 0,
-  });
-
-  const isLoading = loadingCategories || loadingImages;
+  
 
   return (
     <div className="py-12 bg-[#FAF9F7] space-y-12">

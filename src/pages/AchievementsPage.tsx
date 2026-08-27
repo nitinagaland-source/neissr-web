@@ -48,12 +48,13 @@ export default function AchievementsPage() {
             <ReferenceCard
               key={ach.id}
               title={ach.title}
-              subtitle={`Achiever: ${ach.achieverName}`}
-              badge={`${ach.category} (${ach.year})`}
+              subtitle={`Achiever: ${(ach as any).recipientName || ach.achieverName || "NEISSR Student"}`}
+              badge={`${((ach as any).category || "Student").toUpperCase()} ${ach.year || ((ach as any).date || "").slice(0,4) || ""}`}
               gradient={gradient}
               icon={<Trophy className="w-8 h-8" />}
               buttonText="View Achievement"
-              buttonLink="/student-life/achievements"
+              buttonLink={`/achievements/${ach.id}`}
+              imageUrl={ach.imageUrl || ach.photoUrl}
             >
               <div
                 className="text-neutral-600 text-xs md:text-sm leading-relaxed"

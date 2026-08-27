@@ -137,6 +137,16 @@ export default function AdminSidebar({ mobileOpen = false, onClose }: AdminSideb
       ],
     },
     {
+      header: '?? Initiatives & Compliance',
+      items: [
+        { label: 'UN SDGs', href: '/admin/un-sdgs', icon: FileText },
+        { label: 'UBA', href: '/admin/uba', icon: FileText },
+        { label: 'NSS', href: '/admin/nss', icon: FileText },
+        { label: 'NCC', href: '/admin/ncc', icon: FileText },
+        { label: 'Newsletters', href: '/admin/newsletters', icon: Newspaper },
+      ],
+    },
+    {
       header: 'Submissions',
       items: [
         {
