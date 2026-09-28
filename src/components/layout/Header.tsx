@@ -145,16 +145,16 @@ export default function Header() {
               </button>
               {activeDropdown === 'academics' && (
                 <div className="absolute top-full left-0 w-80 bg-[#2563eb] rounded-xl shadow-xl border border-[#2563eb] p-3 z-50 animate-fadeIn">
-                  <div className="text-xs font-semibold uppercase text-neutral-400 px-3 py-1">Degree Programmes</div>
-                  <Link to="/academics/bsw" className="block px-3 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg">BSW — Bachelor of Social Work</Link>
-                  <Link to="/academics/msw" className="block px-3 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg">MSW — Master of Social Work</Link>
-                  <Link to="/academics/manuals" className="block px-3 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg">Academic Manuals</Link>
-                  <div className="h-px bg-neutral-100 my-2" />
-                  <div className="text-xs font-semibold uppercase text-neutral-400 px-3 py-1">MSW Specialisations</div>
-                  <Link to="/academics/msw/community-development" className="block px-3 py-1.5 text-xs text-neutral-600 hover:text-[#C8102E] hover:bg-neutral-50 rounded-lg">Community Development (CD)</Link>
-                  <Link to="/academics/msw/youth-development" className="block px-3 py-1.5 text-xs text-neutral-600 hover:text-[#C8102E] hover:bg-neutral-50 rounded-lg">Youth Development (YD)</Link>
-                  <Link to="/academics/msw/social-entrepreneurship" className="block px-3 py-1.5 text-xs text-neutral-600 hover:text-[#C8102E] hover:bg-neutral-50 rounded-lg">Social Entrepreneurship (SED)</Link>
-                  <Link to="/academics/msw/peace-conflict-studies" className="block px-3 py-1.5 text-xs text-neutral-600 hover:text-[#C8102E] hover:bg-neutral-50 rounded-lg">Peace & Conflict Transformation (PCTS)</Link>
+                  <div className="text-xs font-semibold uppercase text-white/80 px-3 py-1">Degree Programmes</div>
+                  <Link to="/academics/bsw" className="block px-3 py-2 text-sm font-medium text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg">BSW — Bachelor of Social Work</Link>
+                  <Link to="/academics/msw" className="block px-3 py-2 text-sm font-medium text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg">MSW — Master of Social Work</Link>
+                  <Link to="/academics/manuals" className="block px-3 py-2 text-sm font-medium text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg">Academic Manuals</Link>
+                  <div className="h-px bg-white/40 my-2" />
+                  <div className="text-xs font-semibold uppercase text-white/80 px-3 py-1">MSW Specialisations</div>
+                  <Link to="/academics/msw/community-development" className="block px-3 py-1.5 text-xs text-white hover:text-white hover:bg-[#1d4ed8] rounded-lg">Community Development (CD)</Link>
+                  <Link to="/academics/msw/youth-development" className="block px-3 py-1.5 text-xs text-white hover:text-white hover:bg-[#1d4ed8] rounded-lg">Youth Development (YD)</Link>
+                  <Link to="/academics/msw/social-entrepreneurship" className="block px-3 py-1.5 text-xs text-white hover:text-white hover:bg-[#1d4ed8] rounded-lg">Social Entrepreneurship (SED)</Link>
+                  <Link to="/academics/msw/peace-conflict-studies" className="block px-3 py-1.5 text-xs text-white hover:text-white hover:bg-[#1d4ed8] rounded-lg">Peace & Conflict Transformation (PCTS)</Link>
                 </div>
               )}
             </div>
@@ -386,6 +386,7 @@ export default function Header() {
     </header>
   );
 }
+
 
 
 
