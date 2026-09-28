@@ -123,18 +123,18 @@ export default function Header() {
       <nav className={`bg-[#1e2a4a] transition-shadow duration-300 ${isScrolled ? 'shadow-md' : 'shadow-sm'}`}>
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group shrink-0">
+          <Link to="/" className="flex items-center gap-5 group shrink-0">
             <img
               src="https://i.ibb.co/fYhSSyW4/channels4-profile-1.jpg"
               alt="NEISSR Logo"
               referrerPolicy="no-referrer"
-              className="w-12 h-12 rounded-full object-cover border-2 border-[#C8102E] shadow-sm group-hover:scale-105 transition-transform"
+              className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-white shadow-md group-hover:scale-105 transition-transform"
             />
             <div>
-              <div className="font-serif font-bold text-xl md:text-2xl text-white leading-none tracking-tight">
+              <div className="font-serif font-bold text-3xl md:text-4xl text-white leading-none tracking-tight">
                 NEISSR
               </div>
-              <p className="text-[9px] md:text-[10px] text-white/50 font-medium tracking-widest uppercase mt-0.5 whitespace-nowrap">
+              <p className="text-xs md:text-sm text-white/80 font-semibold tracking-[0.18em] uppercase mt-2 whitespace-nowrap">
                 Excel in Knowledge & Service
               </p>
             </div>
@@ -403,6 +403,7 @@ export default function Header() {
     </header>
   );
 }
+
 
 
 
