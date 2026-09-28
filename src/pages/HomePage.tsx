@@ -240,34 +240,59 @@ export default function HomePage() {
         subtitle={homeContent?.heroSubtitle || "North East Institute of Social Sciences and Research — Nagaland's premier Social Work college. Affiliated to Nagaland University & UGC 2(f) recognized."}
       />
 
-      {/* SECTION 2 - TRUST / STATS STRIP */}
+              {/* SECTION 2 - TRUST / STATS STRIP */}
         <section className="bg-white py-7 border-y border-neutral-200/80">
           <div className="max-w-[1440px] mx-auto px-4 md:px-8">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
 
-              <Link to="/naac" className="group bg-gradient-to-br from-[#D61F45] via-[#C51638] to-[#9E102B] border border-white/15 rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_10px_24px_-10px_rgba(183,25,53,0.35)] hover:-translate-y-1 hover:brightness-105 hover:shadow-[0_16px_30px_-12px_rgba(183,25,53,0.42)] transition-all duration-300">
-                <div className="font-serif font-bold text-xl md:text-2xl text-white">NAAC B++</div>
-                <div className="text-xs md:text-sm text-white/90 font-semibold mt-2">CGPA 2.98 First Cycle</div>
+              <Link to="/naac" className="group relative isolate overflow-hidden rounded-[22px] min-h-[125px] p-5 text-center flex flex-col justify-center bg-gradient-to-br from-[#E3254C] via-[#C81639] to-[#A70F2E] border border-white/20 shadow-[0_10px_24px_-10px_rgba(183,25,53,0.28)] hover:-translate-y-1 hover:scale-[1.01] hover:shadow-[0_18px_36px_-12px_rgba(183,25,53,0.35)] transition-all duration-300">
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.34)_0%,rgba(255,255,255,0.18)_22%,rgba(255,255,255,0.06)_42%,rgba(255,255,255,0)_62%)]" />
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-white/70" />
+                <div className="pointer-events-none absolute right-4 top-3 h-10 w-24 rounded-full bg-white/10 blur-xl" />
+                <div className="relative z-10">
+                  <div className="font-serif font-bold text-xl md:text-2xl text-white drop-shadow-sm">NAAC B++</div>
+                  <div className="text-xs md:text-sm text-white/95 font-semibold mt-2">CGPA 2.98 First Cycle</div>
+                </div>
               </Link>
 
-              <Link to="/documents" className="group bg-gradient-to-br from-[#2A5AA0] via-[#1F4A87] to-[#163A70] border border-white/15 rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_10px_24px_-10px_rgba(22,58,112,0.35)] hover:-translate-y-1 hover:brightness-105 hover:shadow-[0_16px_30px_-12px_rgba(22,58,112,0.42)] transition-all duration-300">
-                <div className="font-serif font-bold text-xl md:text-2xl text-white">NIRF Ranked</div>
-                <div className="text-xs md:text-sm text-white/90 font-semibold mt-2">College Data Submitted</div>
+              <Link to="/documents" className="group relative isolate overflow-hidden rounded-[22px] min-h-[125px] p-5 text-center flex flex-col justify-center bg-gradient-to-br from-[#2E63B8] via-[#214D95] to-[#173A73] border border-white/20 shadow-[0_10px_24px_-10px_rgba(23,58,115,0.28)] hover:-translate-y-1 hover:scale-[1.01] hover:shadow-[0_18px_36px_-12px_rgba(23,58,115,0.35)] transition-all duration-300">
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.34)_0%,rgba(255,255,255,0.18)_22%,rgba(255,255,255,0.06)_42%,rgba(255,255,255,0)_62%)]" />
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-white/70" />
+                <div className="pointer-events-none absolute right-4 top-3 h-10 w-24 rounded-full bg-white/10 blur-xl" />
+                <div className="relative z-10">
+                  <div className="font-serif font-bold text-xl md:text-2xl text-white drop-shadow-sm">NIRF Ranked</div>
+                  <div className="text-xs md:text-sm text-white/95 font-semibold mt-2">College Data Submitted</div>
+                </div>
               </Link>
 
-              <Link to="/about" className="group bg-gradient-to-br from-[#C08D1A] via-[#A97B14] to-[#8A6710] border border-white/15 rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_10px_24px_-10px_rgba(154,113,22,0.35)] hover:-translate-y-1 hover:brightness-105 hover:shadow-[0_16px_30px_-12px_rgba(154,113,22,0.42)] transition-all duration-300">
-                <div className="font-serif font-bold text-xl md:text-2xl text-white">UGC 2(f)</div>
-                <div className="text-xs md:text-sm text-white/90 font-semibold mt-2">Recognised Institute</div>
+              <Link to="/about" className="group relative isolate overflow-hidden rounded-[22px] min-h-[125px] p-5 text-center flex flex-col justify-center bg-gradient-to-br from-[#D0A11C] via-[#B78612] to-[#92690A] border border-white/20 shadow-[0_10px_24px_-10px_rgba(146,105,10,0.28)] hover:-translate-y-1 hover:scale-[1.01] hover:shadow-[0_18px_36px_-12px_rgba(146,105,10,0.35)] transition-all duration-300">
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.34)_0%,rgba(255,255,255,0.18)_22%,rgba(255,255,255,0.06)_42%,rgba(255,255,255,0)_62%)]" />
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-white/70" />
+                <div className="pointer-events-none absolute right-4 top-3 h-10 w-24 rounded-full bg-white/10 blur-xl" />
+                <div className="relative z-10">
+                  <div className="font-serif font-bold text-xl md:text-2xl text-white drop-shadow-sm">UGC 2(f)</div>
+                  <div className="text-xs md:text-sm text-white/95 font-semibold mt-2">Recognised Institute</div>
+                </div>
               </Link>
 
-              <Link to="/academics" className="group bg-gradient-to-br from-[#25897D] via-[#1F7A70] to-[#176B63] border border-white/15 rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_10px_24px_-10px_rgba(23,107,99,0.35)] hover:-translate-y-1 hover:brightness-105 hover:shadow-[0_16px_30px_-12px_rgba(23,107,99,0.42)] transition-all duration-300">
-                <div className="font-serif font-bold text-xl md:text-2xl text-white">Nagaland Univ.</div>
-                <div className="text-xs md:text-sm text-white/90 font-semibold mt-2">Affiliated College</div>
+              <Link to="/academics" className="group relative isolate overflow-hidden rounded-[22px] min-h-[125px] p-5 text-center flex flex-col justify-center bg-gradient-to-br from-[#2B9A8D] via-[#1F7F73] to-[#17665D] border border-white/20 shadow-[0_10px_24px_-10px_rgba(23,102,93,0.28)] hover:-translate-y-1 hover:scale-[1.01] hover:shadow-[0_18px_36px_-12px_rgba(23,102,93,0.35)] transition-all duration-300">
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.34)_0%,rgba(255,255,255,0.18)_22%,rgba(255,255,255,0.06)_42%,rgba(255,255,255,0)_62%)]" />
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-white/70" />
+                <div className="pointer-events-none absolute right-4 top-3 h-10 w-24 rounded-full bg-white/10 blur-xl" />
+                <div className="relative z-10">
+                  <div className="font-serif font-bold text-xl md:text-2xl text-white drop-shadow-sm">Nagaland Univ.</div>
+                  <div className="text-xs md:text-sm text-white/95 font-semibold mt-2">Affiliated College</div>
+                </div>
               </Link>
 
-              <Link to="/about" className="group bg-gradient-to-br from-[#7650B2] via-[#6743A1] to-[#5B3A8E] border border-white/15 rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_10px_24px_-10px_rgba(91,58,142,0.35)] hover:-translate-y-1 hover:brightness-105 hover:shadow-[0_16px_30px_-12px_rgba(91,58,142,0.42)] transition-all duration-300 col-span-2 md:col-span-1">
-                <div className="font-serif font-bold text-xl md:text-2xl text-white">Peace Centre</div>
-                <div className="text-xs md:text-sm text-white/90 font-semibold mt-2">Research &amp; Dialogue Hub</div>
+              <Link to="/about" className="group relative isolate overflow-hidden rounded-[22px] min-h-[125px] p-5 text-center flex flex-col justify-center bg-gradient-to-br from-[#8A63D2] via-[#6E49B3] to-[#583891] border border-white/20 shadow-[0_10px_24px_-10px_rgba(88,56,145,0.28)] hover:-translate-y-1 hover:scale-[1.01] hover:shadow-[0_18px_36px_-12px_rgba(88,56,145,0.35)] transition-all duration-300 col-span-2 md:col-span-1">
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.34)_0%,rgba(255,255,255,0.18)_22%,rgba(255,255,255,0.06)_42%,rgba(255,255,255,0)_62%)]" />
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-white/70" />
+                <div className="pointer-events-none absolute right-4 top-3 h-10 w-24 rounded-full bg-white/10 blur-xl" />
+                <div className="relative z-10">
+                  <div className="font-serif font-bold text-xl md:text-2xl text-white drop-shadow-sm">Peace Centre</div>
+                  <div className="text-xs md:text-sm text-white/95 font-semibold mt-2">Research & Dialogue Hub</div>
+                </div>
               </Link>
 
             </div>
@@ -909,6 +934,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
