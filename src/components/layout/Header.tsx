@@ -104,7 +104,7 @@ export default function Header() {
 
       {/* Utility links bar */}
       <div className="hidden lg:block bg-[#2563eb]">
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-2 flex items-center justify-center gap-8 relative">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-2.5 flex items-center justify-center gap-8">
           {[
             { label: "UN SDGs", to: "/un-sdgs" },
             { label: "UBA", to: "/uba" },
@@ -115,7 +115,7 @@ export default function Header() {
             <Link key={link.to} to={link.to} className="text-xs font-semibold text-white/60 hover:text-white transition-colors tracking-widest uppercase">
               {link.label}
             </Link>
-          ))}           <Link to="/admissions" className="absolute right-4 md:right-8 inline-flex items-center gap-2 bg-[#C8102E] hover:bg-[#a50d25] text-white px-4 py-1.5 rounded-md font-semibold text-sm shadow-sm transition-all">Admissions Open <ArrowRight className="w-3.5 h-3.5" /></Link>
+          ))}           <Link to="/admissions" className="inline-flex items-center gap-2 bg-[#C8102E] hover:bg-[#a50d25] text-white px-4 py-1.5 rounded-md font-semibold text-sm shadow-sm transition-all">Admissions Open <ArrowRight className="w-3.5 h-3.5" /></Link>
         </div>
       </div>
 
@@ -376,6 +376,14 @@ export default function Header() {
     </header>
   );
 }
+
+
+
+
+
+
+
+
 
 
 
