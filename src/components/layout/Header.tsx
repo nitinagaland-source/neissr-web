@@ -127,7 +127,7 @@ export default function Header() {
           <div className="hidden lg:flex items-center gap-3">
             {/* About */}
             <div className="relative" onMouseEnter={() => setActiveDropdown('about')} onMouseLeave={() => setActiveDropdown(null)}>
-              <button className="flex items-center gap-1 font-medium text-xs text-white/80 hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">
+              <button className="flex items-center gap-1 font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">
                 About <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'about' && (
@@ -140,7 +140,7 @@ export default function Header() {
 
             {/* Academics */}
             <div className="relative" onMouseEnter={() => setActiveDropdown('academics')} onMouseLeave={() => setActiveDropdown(null)}>
-              <button className="flex items-center gap-1 font-medium text-xs text-white/80 hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">
+              <button className="flex items-center gap-1 font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">
                 Academics <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'academics' && (
@@ -161,7 +161,7 @@ export default function Header() {
 
             {/* Documents */}
             <div className="relative" onMouseEnter={() => setActiveDropdown('documents')} onMouseLeave={() => setActiveDropdown(null)}>
-              <button className="flex items-center gap-1 font-medium text-xs text-white/80 hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">
+              <button className="flex items-center gap-1 font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">
                 Documents <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'documents' && (
@@ -176,7 +176,7 @@ export default function Header() {
 
             {/* IQAC */}
             <div className="relative" onMouseEnter={() => setActiveDropdown('iqac')} onMouseLeave={() => setActiveDropdown(null)}>
-              <button className="flex items-center gap-1 font-medium text-xs text-white/80 hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">
+              <button className="flex items-center gap-1 font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">
                 IQAC <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'iqac' && (
@@ -206,7 +206,7 @@ export default function Header() {
 
             {/* Student Services (includes Student Life items) */}
             <div className="relative" onMouseEnter={() => setActiveDropdown('student-services')} onMouseLeave={() => setActiveDropdown(null)}>
-              <button className="flex items-center gap-1 font-medium text-xs text-white/80 hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">
+              <button className="flex items-center gap-1 font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">
                 Student Services <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'student-services' && (
@@ -244,10 +244,10 @@ export default function Header() {
               )}
             </div>
 
-            <Link to="/faculty" className="font-medium text-xs text-white/80 hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">Faculty</Link>
-            <Link to="/placement" className="font-medium text-xs text-white/80 hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">Placements</Link>
-            <Link to="/infrastructure" className="font-medium text-xs text-white/80 hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">Infrastructure</Link>
-            <Link to="/contact" className="font-medium text-xs text-white/80 hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">Contact</Link>
+            <Link to="/faculty" className="font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">Faculty</Link>
+            <Link to="/placement" className="font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">Placements</Link>
+            <Link to="/infrastructure" className="font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">Infrastructure</Link>
+            <Link to="/contact" className="font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">Contact</Link>
           </div>
 
           {/* Admissions Button */}
@@ -386,6 +386,7 @@ export default function Header() {
     </header>
   );
 }
+
 
 
 
