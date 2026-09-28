@@ -60,7 +60,7 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full z-50 sticky top-0 transition-all duration-300">
+    <header className="w-full z-50 sticky top-0 transition-all duration-300 relative"><Link to="/" className="hidden lg:flex absolute left-[5%] top-[46px] z-[60] items-center gap-5 group"><img src="https://i.ibb.co/fYhSSyW4/channels4-profile-1.jpg" alt="NEISSR Logo" referrerPolicy="no-referrer" className="w-28 h-28 xl:w-32 xl:h-32 rounded-full object-cover border-4 border-white shadow-xl group-hover:scale-105 transition-transform" /><div><div className="font-serif font-bold text-4xl xl:text-5xl text-white leading-none tracking-tight drop-shadow-sm">NEISSR</div><p className="text-sm xl:text-base text-white/90 font-semibold tracking-[0.16em] uppercase mt-3 whitespace-nowrap drop-shadow-sm">Excel in Knowledge & Service</p></div></Link>
       {/* Row 1 — Top utility bar */}
       <div className="bg-[#2563eb] text-white text-xs py-2 px-4 md:px-8 border-b border-white/10">
         <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
@@ -121,24 +121,7 @@ export default function Header() {
 
       {/* Row 3 — Main nav bar */}
       <nav className={`bg-[#1e2a4a] transition-shadow duration-300 ${isScrolled ? 'shadow-md' : 'shadow-sm'}`}>
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-5 group shrink-0">
-            <img
-              src="https://i.ibb.co/fYhSSyW4/channels4-profile-1.jpg"
-              alt="NEISSR Logo"
-              referrerPolicy="no-referrer"
-              className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-white shadow-md group-hover:scale-105 transition-transform"
-            />
-            <div>
-              <div className="font-serif font-bold text-3xl md:text-4xl text-white leading-none tracking-tight">
-                NEISSR
-              </div>
-              <p className="text-xs md:text-sm text-white/80 font-semibold tracking-[0.18em] uppercase mt-2 whitespace-nowrap">
-                Excel in Knowledge & Service
-              </p>
-            </div>
-          </Link>
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-3 flex items-center justify-between">          {/* Branding spacer */}           <div className="hidden lg:block w-[420px] shrink-0" />
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-3">
@@ -403,6 +386,10 @@ export default function Header() {
     </header>
   );
 }
+
+
+
+
 
 
 
