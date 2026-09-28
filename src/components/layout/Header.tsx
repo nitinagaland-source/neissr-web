@@ -62,7 +62,7 @@ export default function Header() {
   return (
     <header className="w-full z-50 sticky top-0 transition-all duration-300">
       {/* Row 1 — Top utility bar */}
-      <div className="bg-[#1a1a2e] text-white text-xs py-2 px-4 md:px-8 border-b border-white/10">
+      <div className="bg-[#2563eb] text-white text-xs py-2 px-4 md:px-8 border-b border-white/10">
         <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
           <div className="flex items-center gap-2 font-medium tracking-wide text-center sm:text-left">
             <Phone className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
@@ -94,7 +94,7 @@ export default function Header() {
       </div>
 
       {/* Row 2 — Tagline bar */}
-      <div className="hidden lg:block bg-[#1a1a2e] border-b border-white/10">
+      <div className="hidden lg:block bg-[#2563eb] border-b border-white/10">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-2 text-center">
           <p className="text-white font-bold text-base font-serif tracking-wide">
             Institute for Peace Building, Research & Dialogue
@@ -103,7 +103,7 @@ export default function Header() {
       </div>
 
       {/* Utility links bar */}
-      <div className="hidden lg:block bg-[#13213a] border-b border-white/5">
+      <div className="hidden lg:block bg-[#2563eb] border-b border-white/5">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-2 flex items-center justify-center gap-8">
           {[
             { label: "UN SDGs", to: "/un-sdgs" },
@@ -148,9 +148,9 @@ export default function Header() {
                 About <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'about' && (
-                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn">
-                  <Link to="/about" className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">About NEISSR & Vision</Link>
-                  <Link to="/about/messages" className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">Leadership Messages</Link>
+                <div className="absolute top-full left-0 w-64 bg-[#2563eb] rounded-xl shadow-xl border border-[#2563eb] p-2 z-50 animate-fadeIn">
+                  <Link to="/about" className="block px-4 py-2 text-sm text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg transition-colors">About NEISSR & Vision</Link>
+                  <Link to="/about/messages" className="block px-4 py-2 text-sm text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg transition-colors">Leadership Messages</Link>
                 </div>
               )}
             </div>
@@ -161,7 +161,7 @@ export default function Header() {
                 Academics <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'academics' && (
-                <div className="absolute top-full left-0 w-80 bg-white rounded-xl shadow-xl border border-neutral-100 p-3 z-50 animate-fadeIn">
+                <div className="absolute top-full left-0 w-80 bg-[#2563eb] rounded-xl shadow-xl border border-[#2563eb] p-3 z-50 animate-fadeIn">
                   <div className="text-xs font-semibold uppercase text-neutral-400 px-3 py-1">Degree Programmes</div>
                   <Link to="/academics/bsw" className="block px-3 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg">BSW — Bachelor of Social Work</Link>
                   <Link to="/academics/msw" className="block px-3 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg">MSW — Master of Social Work</Link>
@@ -182,11 +182,11 @@ export default function Header() {
                 Documents <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'documents' && (
-                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn">
-                  <Link to="/documents" className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg">Prospectus & Calendar</Link>
-                  <Link to="/nirf" className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg">NIRF Reports</Link>
-                  <Link to="/naac" className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg">NAAC Accreditation B++</Link>
-                  <Link to="/mandatory-disclosures" className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg">Mandatory Disclosures</Link>
+                <div className="absolute top-full left-0 w-64 bg-[#2563eb] rounded-xl shadow-xl border border-[#2563eb] p-2 z-50 animate-fadeIn">
+                  <Link to="/documents" className="block px-4 py-2 text-sm text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg">Prospectus & Calendar</Link>
+                  <Link to="/nirf" className="block px-4 py-2 text-sm text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg">NIRF Reports</Link>
+                  <Link to="/naac" className="block px-4 py-2 text-sm text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg">NAAC Accreditation B++</Link>
+                  <Link to="/mandatory-disclosures" className="block px-4 py-2 text-sm text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg">Mandatory Disclosures</Link>
                 </div>
               )}
             </div>
@@ -197,7 +197,7 @@ export default function Header() {
                 IQAC <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'iqac' && (
-                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn max-h-96 overflow-y-auto">
+                <div className="absolute top-full left-0 w-64 bg-[#2563eb] rounded-xl shadow-xl border border-[#2563eb] p-2 z-50 animate-fadeIn max-h-96 overflow-y-auto">
                   {[
                     { id: 'about', label: 'About IQAC' },
                     { id: 'policy', label: 'Quality Assurance Policy' },
@@ -213,7 +213,7 @@ export default function Header() {
                     { id: 'mandatory-disclosures', label: 'Mandatory Disclosures' },
                     { id: 'feedback', label: 'Feedback' },
                   ].map((s) => (
-                    <Link key={s.id} to={`/iqac/${s.id}`} onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
+                    <Link key={s.id} to={`/iqac/${s.id}`} onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg transition-colors">
                       {s.label}
                     </Link>
                   ))}
@@ -227,18 +227,18 @@ export default function Header() {
                 Student Services <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'student-services' && (
-                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-neutral-100 p-2 z-50 animate-fadeIn max-h-96 overflow-y-auto">
+                <div className="absolute top-full left-0 w-64 bg-[#2563eb] rounded-xl shadow-xl border border-[#2563eb] p-2 z-50 animate-fadeIn max-h-96 overflow-y-auto">
                   <Link to="/student-services" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm font-semibold text-[#003DA5] hover:bg-blue-50 rounded-lg border-b border-neutral-100 mb-1">
                     View All Services →
                   </Link>
-                  <div className="text-xs font-semibold uppercase text-neutral-400 px-4 py-1 mt-1">Campus Life</div>
-                  <Link to="/student-life" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">Campus Life Overview</Link>
-                  <Link to="/student-life/clubs" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">Clubs (10 Active Clubs)</Link>
-                  <Link to="/student-life/forums" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">Academic Forums</Link>
-                  <Link to="/achievements" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">Student Achievements</Link>
-                  <Link to="/gallery" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">Photo Gallery</Link>
+                  <div className="text-xs font-semibold uppercase text-blue-100 px-4 py-1 mt-1">Campus Life</div>
+                  <Link to="/student-life" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg transition-colors">Campus Life Overview</Link>
+                  <Link to="/student-life/clubs" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg transition-colors">Clubs (10 Active Clubs)</Link>
+                  <Link to="/student-life/forums" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg transition-colors">Academic Forums</Link>
+                  <Link to="/achievements" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg transition-colors">Student Achievements</Link>
+                  <Link to="/gallery" onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg transition-colors">Photo Gallery</Link>
                   <div className="h-px bg-neutral-100 my-1" />
-                  <div className="text-xs font-semibold uppercase text-neutral-400 px-4 py-1">Support Services</div>
+                  <div className="text-xs font-semibold uppercase text-blue-100 px-4 py-1">Support Services</div>
                   {[
                     { id: 'scholarship', label: 'Scholarship' },
                     { id: 'counselling', label: 'Counselling Centre' },
@@ -253,7 +253,7 @@ export default function Header() {
                     { id: 'coaching', label: 'Coaching Centre' },
                     { id: 'health-care', label: 'Health Care' },
                   ].map((s) => (
-                    <Link key={s.id} to={`/student-services/${s.id}`} onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#C8102E] rounded-lg transition-colors">
+                    <Link key={s.id} to={`/student-services/${s.id}`} onClick={() => setActiveDropdown(null)} className="block px-4 py-2 text-sm text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg transition-colors">
                       {s.label}
                     </Link>
                   ))}
@@ -403,3 +403,7 @@ export default function Header() {
     </header>
   );
 }
+
+
+
+

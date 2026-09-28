@@ -46,6 +46,7 @@ import DocumentsPage from './pages/DocumentsPage';
 import NIRFPage from './pages/NIRFPage';
 import NAACPage from './pages/NAACPage';
 import MandatoryDisclosuresPage from './pages/MandatoryDisclosuresPage';
+import IQACPage from './pages/IQACPage';
 import ContactPage from './pages/ContactPage';
 
 // Admin Infrastructure & Pages
@@ -219,7 +220,7 @@ export default function App() {
           <Route path="/documents" element={<DocumentsPage />} />
           <Route path="/nirf" element={<NIRFPage />} />
           <Route path="/naac" element={<NAACPage />} />
-          <Route path="/mandatory-disclosures" element={<MandatoryDisclosuresPage />} />
+          <Route path="/mandatory-disclosures" element={<MandatoryDisclosuresPage />} />`r`n          <Route path="/iqac/:section" element={<IQACPage />} />
 
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/un-sdgs" element={<UNSDGsPage />} />
@@ -234,4 +235,6 @@ export default function App() {
     </BrowserRouter>
   );
 }
+
+
 
