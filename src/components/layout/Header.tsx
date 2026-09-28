@@ -60,7 +60,7 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full z-50 sticky top-0 transition-all duration-300 relative"><Link to="/" className="hidden lg:flex absolute left-[5%] top-[46px] z-[60] items-center gap-5 group"><img src="https://i.ibb.co/fYhSSyW4/channels4-profile-1.jpg" alt="NEISSR Logo" referrerPolicy="no-referrer" className="w-28 h-28 xl:w-32 xl:h-32 rounded-full object-cover border-4 border-white shadow-xl group-hover:scale-105 transition-transform" /><div className="relative top-[54px]"><div className="font-serif font-bold text-3xl xl:text-4xl text-white leading-none tracking-tight">NEISSR</div><p className="text-[11px] xl:text-xs text-white/90 font-semibold tracking-[0.12em] uppercase mt-2 whitespace-nowrap">Excel in Knowledge & Service</p></div></Link>
+    <header className="w-full z-50 sticky top-0 transition-all duration-300 relative"><Link to="/" className="hidden lg:flex absolute left-[5%] top-[46px] z-[60] items-center gap-5 group"><img src="https://i.ibb.co/fYhSSyW4/channels4-profile-1.jpg" alt="NEISSR Logo" referrerPolicy="no-referrer" className="w-28 h-28 xl:w-32 xl:h-32 rounded-full object-cover border-4 border-white shadow-xl group-hover:scale-105 transition-transform" /><div className="relative top-[32px]"><div className="font-serif font-bold text-3xl xl:text-4xl text-white leading-none tracking-tight">NEISSR</div><p className="text-[11px] xl:text-xs text-white/90 font-semibold tracking-[0.12em] uppercase mt-2 whitespace-nowrap">Excel in Knowledge & Service</p></div></Link>
       {/* Row 1 — Top utility bar */}
       <div className="bg-[#2563eb] text-white text-xs py-2 px-4 md:px-8">
         <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
@@ -386,6 +386,7 @@ export default function Header() {
     </header>
   );
 }
+
 
 
 
