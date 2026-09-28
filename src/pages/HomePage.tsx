@@ -245,27 +245,27 @@ export default function HomePage() {
           <div className="max-w-[1440px] mx-auto px-4 md:px-8">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
 
-              <Link to="/naac" className="group bg-[#B71935] rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_12px_30px_-12px_rgba(0,0,0,0.45)] hover:-translate-y-1 hover:shadow-[0_18px_38px_-12px_rgba(0,0,0,0.5)] transition-all duration-300">
+              <Link to="/naac" className="group bg-gradient-to-br from-[#D61F45] via-[#C51638] to-[#9E102B] border border-white/15 rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_10px_24px_-10px_rgba(183,25,53,0.35)] hover:-translate-y-1 hover:brightness-105 hover:shadow-[0_16px_30px_-12px_rgba(183,25,53,0.42)] transition-all duration-300">
                 <div className="font-serif font-bold text-xl md:text-2xl text-white">NAAC B++</div>
                 <div className="text-xs md:text-sm text-white/90 font-semibold mt-2">CGPA 2.98 First Cycle</div>
               </Link>
 
-              <Link to="/documents" className="group bg-[#163A70] rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_12px_30px_-12px_rgba(0,0,0,0.45)] hover:-translate-y-1 hover:shadow-[0_18px_38px_-12px_rgba(0,0,0,0.5)] transition-all duration-300">
+              <Link to="/documents" className="group bg-gradient-to-br from-[#2A5AA0] via-[#1F4A87] to-[#163A70] border border-white/15 rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_10px_24px_-10px_rgba(22,58,112,0.35)] hover:-translate-y-1 hover:brightness-105 hover:shadow-[0_16px_30px_-12px_rgba(22,58,112,0.42)] transition-all duration-300">
                 <div className="font-serif font-bold text-xl md:text-2xl text-white">NIRF Ranked</div>
                 <div className="text-xs md:text-sm text-white/90 font-semibold mt-2">College Data Submitted</div>
               </Link>
 
-              <Link to="/about" className="group bg-[#9A7116] rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_12px_30px_-12px_rgba(0,0,0,0.45)] hover:-translate-y-1 hover:shadow-[0_18px_38px_-12px_rgba(0,0,0,0.5)] transition-all duration-300">
+              <Link to="/about" className="group bg-gradient-to-br from-[#C08D1A] via-[#A97B14] to-[#8A6710] border border-white/15 rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_10px_24px_-10px_rgba(154,113,22,0.35)] hover:-translate-y-1 hover:brightness-105 hover:shadow-[0_16px_30px_-12px_rgba(154,113,22,0.42)] transition-all duration-300">
                 <div className="font-serif font-bold text-xl md:text-2xl text-white">UGC 2(f)</div>
                 <div className="text-xs md:text-sm text-white/90 font-semibold mt-2">Recognised Institute</div>
               </Link>
 
-              <Link to="/academics" className="group bg-[#176B63] rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_12px_30px_-12px_rgba(0,0,0,0.45)] hover:-translate-y-1 hover:shadow-[0_18px_38px_-12px_rgba(0,0,0,0.5)] transition-all duration-300">
+              <Link to="/academics" className="group bg-gradient-to-br from-[#25897D] via-[#1F7A70] to-[#176B63] border border-white/15 rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_10px_24px_-10px_rgba(23,107,99,0.35)] hover:-translate-y-1 hover:brightness-105 hover:shadow-[0_16px_30px_-12px_rgba(23,107,99,0.42)] transition-all duration-300">
                 <div className="font-serif font-bold text-xl md:text-2xl text-white">Nagaland Univ.</div>
                 <div className="text-xs md:text-sm text-white/90 font-semibold mt-2">Affiliated College</div>
               </Link>
 
-              <Link to="/about" className="group bg-[#5B3A8E] rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_12px_30px_-12px_rgba(0,0,0,0.45)] hover:-translate-y-1 hover:shadow-[0_18px_38px_-12px_rgba(0,0,0,0.5)] transition-all duration-300 col-span-2 md:col-span-1">
+              <Link to="/about" className="group bg-gradient-to-br from-[#7650B2] via-[#6743A1] to-[#5B3A8E] border border-white/15 rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_10px_24px_-10px_rgba(91,58,142,0.35)] hover:-translate-y-1 hover:brightness-105 hover:shadow-[0_16px_30px_-12px_rgba(91,58,142,0.42)] transition-all duration-300 col-span-2 md:col-span-1">
                 <div className="font-serif font-bold text-xl md:text-2xl text-white">Peace Centre</div>
                 <div className="text-xs md:text-sm text-white/90 font-semibold mt-2">Research &amp; Dialogue Hub</div>
               </Link>
@@ -909,4 +909,10 @@ export default function HomePage() {
     </div>
   );
 }
+
+
+
+
+
+
 
