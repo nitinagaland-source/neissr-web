@@ -240,72 +240,41 @@ export default function HomePage() {
         subtitle={homeContent?.heroSubtitle || "North East Institute of Social Sciences and Research — Nagaland's premier Social Work college. Affiliated to Nagaland University & UGC 2(f) recognized."}
       />
 
-      {/* SECTION 2 — TRUST / STATS STRIP */}
-      <section className="bg-white py-6 border-y border-neutral-200/80">
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-            
-            {/* Card 1: NAAC B++ */}
-            <Link
-              to="/naac"
-              className="group relative p-4 md:p-5 rounded-xl border border-neutral-200/90 bg-[#FAF9F7] text-center hover:bg-white hover:border-[#C8102E]/60 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_20px_-4px_rgba(200,16,46,0.12)] transition-all duration-200 flex flex-col justify-center overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#C8102E] opacity-80 group-hover:opacity-100 transition-opacity" />
-              <div className="font-serif font-bold text-xl md:text-2xl text-[#C8102E] group-hover:scale-[1.02] transition-transform">
-                NAAC B++
-              </div>
-              <div className="text-xs text-neutral-600 font-semibold mt-1">
-                CGPA 2.98 First Cycle
-              </div>
-            </Link>
+      {/* SECTION 2 - TRUST / STATS STRIP */}
+        <section className="bg-white py-7 border-y border-neutral-200/80">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
 
-            {/* Card 2: NIRF Ranked */}
-            <Link
-              to="/documents"
-              className="group relative p-4 md:p-5 rounded-xl border border-neutral-200/90 bg-[#FAF9F7] text-center hover:bg-white hover:border-[#003DA5]/60 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_20px_-4px_rgba(0,61,165,0.12)] transition-all duration-200 flex flex-col justify-center overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#003DA5] opacity-80 group-hover:opacity-100 transition-opacity" />
-              <div className="font-serif font-bold text-xl md:text-2xl text-[#003DA5] group-hover:scale-[1.02] transition-transform">
-                NIRF Ranked
-              </div>
-              <div className="text-xs text-neutral-600 font-semibold mt-1">
-                College Data Submitted
-              </div>
-            </Link>
+              <Link to="/naac" className="group bg-[#B71935] rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_12px_30px_-12px_rgba(0,0,0,0.45)] hover:-translate-y-1 hover:shadow-[0_18px_38px_-12px_rgba(0,0,0,0.5)] transition-all duration-300">
+                <div className="font-serif font-bold text-xl md:text-2xl text-white">NAAC B++</div>
+                <div className="text-xs md:text-sm text-white/90 font-semibold mt-2">CGPA 2.98 First Cycle</div>
+              </Link>
 
-            {/* Card 3: UGC 2(f) */}
-            <Link
-              to="/about"
-              className="group relative p-4 md:p-5 rounded-xl border border-neutral-200/90 bg-[#FAF9F7] text-center hover:bg-white hover:border-[#C9A227]/70 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_20px_-4px_rgba(201,162,39,0.15)] transition-all duration-200 flex flex-col justify-center overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#C9A227] opacity-80 group-hover:opacity-100 transition-opacity" />
-              <div className="font-serif font-bold text-xl md:text-2xl text-neutral-900 group-hover:text-[#8B6B08] group-hover:scale-[1.02] transition-transform">
-                UGC 2(f)
-              </div>
-              <div className="text-xs text-neutral-600 font-semibold mt-1">
-                Recognised Institute
-              </div>
-            </Link>
+              <Link to="/documents" className="group bg-[#163A70] rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_12px_30px_-12px_rgba(0,0,0,0.45)] hover:-translate-y-1 hover:shadow-[0_18px_38px_-12px_rgba(0,0,0,0.5)] transition-all duration-300">
+                <div className="font-serif font-bold text-xl md:text-2xl text-white">NIRF Ranked</div>
+                <div className="text-xs md:text-sm text-white/90 font-semibold mt-2">College Data Submitted</div>
+              </Link>
 
-            {/* Card 4: Nagaland Univ. */}
-            <Link
-              to="/academics"
-              className="group relative p-4 md:p-5 rounded-xl border border-neutral-200/90 bg-[#FAF9F7] text-center hover:bg-white hover:border-[#003DA5]/60 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_20px_-4px_rgba(0,61,165,0.12)] transition-all duration-200 flex flex-col justify-center overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#003DA5] opacity-80 group-hover:opacity-100 transition-opacity" />
-              <div className="font-serif font-bold text-xl md:text-2xl text-[#003DA5] group-hover:scale-[1.02] transition-transform">
-                Nagaland Univ.
-              </div>
-              <div className="text-xs text-neutral-600 font-semibold mt-1">
-                Affiliated College
-              </div>
-            </Link>
+              <Link to="/about" className="group bg-[#9A7116] rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_12px_30px_-12px_rgba(0,0,0,0.45)] hover:-translate-y-1 hover:shadow-[0_18px_38px_-12px_rgba(0,0,0,0.5)] transition-all duration-300">
+                <div className="font-serif font-bold text-xl md:text-2xl text-white">UGC 2(f)</div>
+                <div className="text-xs md:text-sm text-white/90 font-semibold mt-2">Recognised Institute</div>
+              </Link>
 
+              <Link to="/academics" className="group bg-[#176B63] rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_12px_30px_-12px_rgba(0,0,0,0.45)] hover:-translate-y-1 hover:shadow-[0_18px_38px_-12px_rgba(0,0,0,0.5)] transition-all duration-300">
+                <div className="font-serif font-bold text-xl md:text-2xl text-white">Nagaland Univ.</div>
+                <div className="text-xs md:text-sm text-white/90 font-semibold mt-2">Affiliated College</div>
+              </Link>
+
+              <Link to="/about" className="group bg-[#5B3A8E] rounded-2xl min-h-[125px] p-5 text-center flex flex-col justify-center shadow-[0_12px_30px_-12px_rgba(0,0,0,0.45)] hover:-translate-y-1 hover:shadow-[0_18px_38px_-12px_rgba(0,0,0,0.5)] transition-all duration-300 col-span-2 md:col-span-1">
+                <div className="font-serif font-bold text-xl md:text-2xl text-white">Peace Centre</div>
+                <div className="text-xs md:text-sm text-white/90 font-semibold mt-2">Research &amp; Dialogue Hub</div>
+              </Link>
+
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* SECTION 3 — ABOUT PREVIEW (Alternating Layout) */}
+        {/* SECTION 3 — ABOUT PREVIEW (Alternating Layout) */}
       <section className="py-20 bg-[#FAF9F7]">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8">
           <motion.div
@@ -940,3 +909,4 @@ export default function HomePage() {
     </div>
   );
 }
+
