@@ -140,13 +140,13 @@ export default function VideoShowcase({
   }
 
   const desktopPositions = [
-    'left-[4%] top-[105px] w-[190px] h-[330px] -rotate-[13deg] z-10',
-    'left-[18%] top-[135px] w-[175px] h-[295px] -rotate-[8deg] z-20',
-    'left-[32%] top-[165px] w-[150px] h-[255px] -rotate-[3deg] z-30',
-    'left-1/2 -translate-x-1/2 top-[175px] w-[155px] h-[245px] z-40',
-    'right-[32%] top-[165px] w-[150px] h-[255px] rotate-[3deg] z-30',
-    'right-[18%] top-[135px] w-[175px] h-[295px] rotate-[8deg] z-20',
-    'right-[4%] top-[105px] w-[190px] h-[330px] rotate-[13deg] z-10',
+    'w-[190px] h-[330px] -rotate-[12deg] translate-y-3 z-10',
+    'w-[170px] h-[290px] -rotate-[8deg] translate-y-7 -ml-7 z-20',
+    'w-[150px] h-[250px] -rotate-[4deg] translate-y-10 -ml-6 z-30',
+    'w-[155px] h-[245px] -ml-5 z-40',
+    'w-[150px] h-[250px] rotate-[4deg] translate-y-10 -ml-5 z-30',
+    'w-[170px] h-[290px] rotate-[8deg] translate-y-7 -ml-6 z-20',
+    'w-[190px] h-[330px] rotate-[12deg] translate-y-3 -ml-7 z-10',
   ];
   return (
     <section className="relative py-20 md:py-24 bg-white overflow-hidden border-t border-neutral-100">
@@ -168,14 +168,14 @@ export default function VideoShowcase({
         </div>
 
         {/* Desktop curved five-card presentation */}
-        <div className="hidden md:block relative h-[470px] max-w-[1050px] mx-auto mt-8 lg:mt-10 [perspective:1400px]">
+        <div className="hidden md:flex relative h-[390px] max-w-[1100px] mx-auto mt-8 lg:mt-10 items-end justify-center [perspective:1400px]">
           <div className="absolute left-1/2 -translate-x-1/2 bottom-3 w-[72%] h-16 bg-black/10 blur-3xl rounded-full" />
 
           {desktopVideos.map((video, index) => (
             <VideoCard
               key={`${video.videoUrl || video.instagramUrl}-${index}`}
               video={video}
-              className={`absolute transition-all duration-500 hover:rotate-0 hover:-translate-y-3 hover:z-50 ${desktopPositions[index]}`}
+              className={`shrink-0 transition-all duration-500 hover:rotate-0 hover:-translate-y-3 hover:z-50 ${desktopPositions[index]}`}
             />
           ))}
         </div>
