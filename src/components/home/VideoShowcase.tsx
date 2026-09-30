@@ -70,7 +70,7 @@ function VideoCard({
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center text-white/60 text-sm">
-              Video unavailable
+              Coming Soon
             </div>
           )}
         </div>
@@ -108,33 +108,46 @@ export default function VideoShowcase({
 }: Props) {
   const validVideos = videos.filter(
     (video) =>
-      (video.sourceType === 'instagram' && video.instagramUrl) ||
-      (video.sourceType !== 'instagram' && video.videoUrl)
+      video.sourceType === 'instagram'
+        ? Boolean(video.instagramUrl)
+        : Boolean(video.videoUrl)
   );
 
-  if (validVideos.length === 0) return null;
-
+  const featuredIndex = validVideos.findIndex((video) => video.featured);
   const featured =
-    validVideos.find((video) => video.featured) || validVideos[0];
+    featuredIndex >= 0
+      ? validVideos[featuredIndex]
+      : (validVideos[0] ?? {});
 
-  const others = validVideos.filter((video) => video !== featured);
+  const others = validVideos.filter(
+    (_, index) => index !== (featuredIndex >= 0 ? featuredIndex : 0)
+  );
 
-  const desktopVideos = [
-    others[0],
-    others[1],
+  const desktopVideos: ShowcaseVideo[] = [
+    others[0] ?? {},
+    others[1] ?? {},
+    others[2] ?? {},
     featured,
-    others[2],
-    others[3],
-  ].filter(Boolean) as ShowcaseVideo[];
-
-  const desktopPositions = [
-    'left-[2%] top-[120px] w-[210px] h-[350px] -rotate-[10deg] z-10',
-    'left-[20%] top-[75px] w-[245px] h-[405px] -rotate-[5deg] z-20',
-    'left-1/2 -translate-x-1/2 top-[15px] w-[300px] h-[500px] z-40',
-    'right-[20%] top-[75px] w-[245px] h-[405px] rotate-[5deg] z-20',
-    'right-[2%] top-[120px] w-[210px] h-[350px] rotate-[10deg] z-10',
+    others[3] ?? {},
+    others[4] ?? {},
+    others[5] ?? {},
   ];
 
+  const mobileVideos: ShowcaseVideo[] = [featured, ...others].slice(0, 7);
+
+  while (mobileVideos.length < 7) {
+    mobileVideos.push({});
+  }
+
+  const desktopPositions = [
+    'left-[0%] top-[150px] w-[175px] h-[315px] -rotate-[12deg] z-10',
+    'left-[12%] top-[105px] w-[205px] h-[365px] -rotate-[8deg] z-20',
+    'left-[26%] top-[65px] w-[230px] h-[415px] -rotate-[4deg] z-30',
+    'left-1/2 -translate-x-1/2 top-[15px] w-[300px] h-[500px] z-40',
+    'right-[26%] top-[65px] w-[230px] h-[415px] rotate-[4deg] z-30',
+    'right-[12%] top-[105px] w-[205px] h-[365px] rotate-[8deg] z-20',
+    'right-[0%] top-[150px] w-[175px] h-[315px] rotate-[12deg] z-10',
+  ];
   return (
     <section className="relative py-20 md:py-24 bg-white overflow-hidden border-t border-neutral-100">
       <div className="max-w-[1440px] mx-auto px-4 md:px-8">
@@ -170,7 +183,7 @@ export default function VideoShowcase({
         {/* Mobile */}
         <div className="md:hidden mt-10 -mx-4">
           <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-6 scrollbar-hide">
-            {[featured, ...others].map((video, index) => (
+            {mobileVideos.map((video, index) => (
               <VideoCard
                 key={`${video.videoUrl || video.instagramUrl}-${index}`}
                 video={video}
