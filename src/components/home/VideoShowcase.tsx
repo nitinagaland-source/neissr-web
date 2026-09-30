@@ -140,13 +140,13 @@ export default function VideoShowcase({
   }
 
   const desktopPositions = [
-    'left-[0%] top-[150px] w-[175px] h-[315px] -rotate-[12deg] z-10',
-    'left-[12%] top-[105px] w-[205px] h-[365px] -rotate-[8deg] z-20',
-    'left-[26%] top-[65px] w-[230px] h-[415px] -rotate-[4deg] z-30',
-    'left-1/2 -translate-x-1/2 top-[15px] w-[300px] h-[500px] z-40',
-    'right-[26%] top-[65px] w-[230px] h-[415px] rotate-[4deg] z-30',
-    'right-[12%] top-[105px] w-[205px] h-[365px] rotate-[8deg] z-20',
-    'right-[0%] top-[150px] w-[175px] h-[315px] rotate-[12deg] z-10',
+    'left-[4%] top-[105px] w-[190px] h-[330px] -rotate-[13deg] z-10',
+    'left-[18%] top-[135px] w-[175px] h-[295px] -rotate-[8deg] z-20',
+    'left-[32%] top-[165px] w-[150px] h-[255px] -rotate-[3deg] z-30',
+    'left-1/2 -translate-x-1/2 top-[175px] w-[155px] h-[245px] z-40',
+    'right-[32%] top-[165px] w-[150px] h-[255px] rotate-[3deg] z-30',
+    'right-[18%] top-[135px] w-[175px] h-[295px] rotate-[8deg] z-20',
+    'right-[4%] top-[105px] w-[190px] h-[330px] rotate-[13deg] z-10',
   ];
   return (
     <section className="relative py-20 md:py-24 bg-white overflow-hidden border-t border-neutral-100">
@@ -168,7 +168,7 @@ export default function VideoShowcase({
         </div>
 
         {/* Desktop curved five-card presentation */}
-        <div className="hidden md:block relative h-[565px] mt-10 lg:mt-14 [perspective:1400px]">
+        <div className="hidden md:block relative h-[470px] max-w-[1050px] mx-auto mt-8 lg:mt-10 [perspective:1400px]">
           <div className="absolute left-1/2 -translate-x-1/2 bottom-3 w-[72%] h-16 bg-black/10 blur-3xl rounded-full" />
 
           {desktopVideos.map((video, index) => (
