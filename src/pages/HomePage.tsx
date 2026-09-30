@@ -84,7 +84,7 @@ function HeroCarousel({ images, intervalMs, headline }: HeroCarouselProps) {
             <Sparkles className="w-4 h-4 text-[#C9A227]" /> Excel in Knowledge & Service
           </div>
 
-          <h1 className="relative -top-8 md:-top-14 mt-4 max-w-3xl text-xl md:text-3xl lg:text-4xl font-extrabold md:font-black leading-[1.1] tracking-tight text-white drop-shadow-sm">
+          <h1 className="relative -top-8 md:-top-14 mt-4 whitespace-nowrap text-lg md:text-2xl lg:text-3xl font-extrabold md:font-black leading-[1.1] tracking-tight text-white drop-shadow-sm">
             {headline}
           </h1>
 
@@ -928,6 +928,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
