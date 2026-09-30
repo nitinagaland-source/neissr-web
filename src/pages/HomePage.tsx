@@ -78,17 +78,17 @@ function HeroCarousel({ images, intervalMs, headline }: HeroCarouselProps) {
           initial={{ opacity: 0, y: 48 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto space-y-5 text-center flex flex-col items-center"
+          className="max-w-4xl mx-auto w-full min-h-[68vh] md:min-h-[74vh] text-center flex flex-col items-center py-8 md:py-12"
         >
           <div className="inline-flex items-center gap-2 bg-[#C8102E] text-white px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase shadow-md">
             <Sparkles className="w-4 h-4 text-[#C9A227]" /> Excel in Knowledge & Service
           </div>
 
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold md:font-black leading-[1.1] tracking-tight text-white drop-shadow-sm">
+          <h1 className="mt-4 max-w-3xl text-2xl md:text-4xl lg:text-5xl font-extrabold md:font-black leading-[1.1] tracking-tight text-white drop-shadow-sm">
             {headline}
           </h1>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+          <div className="mt-auto flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
             <Link
               to="/admissions"
               className="inline-flex items-center justify-center gap-2 bg-[#C8102E] hover:bg-[#9A0C24] text-white px-8 py-4 rounded-full font-bold text-base shadow-lg transition-all hover:scale-105"
@@ -928,6 +928,9 @@ export default function HomePage() {
     </div>
   );
 }
+
+
+
 
 
 
