@@ -78,7 +78,7 @@ function HeroCarousel({ images, intervalMs, headline }: HeroCarouselProps) {
           initial={{ opacity: 0, y: 48 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto w-full min-h-[68vh] md:min-h-[74vh] text-center flex flex-col items-center py-8 md:py-12"
+          className="max-w-4xl mx-auto w-full min-h-[68vh] md:min-h-[74vh] text-center flex flex-col items-center pt-2 md:pt-4 pb-10"
         >
           <div className="inline-flex items-center gap-2 bg-[#C8102E] text-white px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase shadow-md">
             <Sparkles className="w-4 h-4 text-[#C9A227]" /> Excel in Knowledge & Service
@@ -928,6 +928,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
