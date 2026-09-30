@@ -37,10 +37,9 @@ interface HeroCarouselProps {
   images: string[];
   intervalMs: number;
   headline: string;
-  subtitle: string;
 }
 
-function HeroCarousel({ images, intervalMs, headline, subtitle }: HeroCarouselProps) {
+function HeroCarousel({ images, intervalMs, headline }: HeroCarouselProps) {
   const [current, setCurrent] = useState(0);
   const validImages = images.filter(Boolean);
 
@@ -79,21 +78,17 @@ function HeroCarousel({ images, intervalMs, headline, subtitle }: HeroCarouselPr
           initial={{ opacity: 0, y: 48 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-3xl space-y-6"
+          className="max-w-4xl mx-auto space-y-5 text-center flex flex-col items-center"
         >
           <div className="inline-flex items-center gap-2 bg-[#C8102E] text-white px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase shadow-md">
             <Sparkles className="w-4 h-4 text-[#C9A227]" /> Excel in Knowledge & Service
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold md:font-black leading-[1.1] tracking-tight text-white drop-shadow-sm">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold md:font-black leading-[1.1] tracking-tight text-white drop-shadow-sm">
             {headline}
           </h1>
 
-          <p className="text-lg md:text-xl text-neutral-200 font-normal leading-relaxed max-w-2xl">
-            {subtitle}
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <Link
               to="/admissions"
               className="inline-flex items-center justify-center gap-2 bg-[#C8102E] hover:bg-[#9A0C24] text-white px-8 py-4 rounded-full font-bold text-base shadow-lg transition-all hover:scale-105"
@@ -237,7 +232,6 @@ export default function HomePage() {
         }
         intervalMs={((homeContent as any)?.heroIntervalSeconds || 5) * 1000}
         headline={homeContent?.heroHeadline || 'Shaping social change through education, peace, and service.'}
-        subtitle={homeContent?.heroSubtitle || "North East Institute of Social Sciences and Research — Nagaland's premier Social Work college. Affiliated to Nagaland University & UGC 2(f) recognized."}
       />
 
               {/* SECTION 2 - TRUST / STATS STRIP */}
@@ -934,6 +928,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 

@@ -72,7 +72,6 @@ const SECTION_METADATA: Record<
 export const DEFAULT_CONTENT: Record<string, ContentData> = {
   home: {
     heroHeadline: 'Educating for Peace, Development and Social Transformation',
-    heroSubtitle: 'North East Institute of Social Sciences and Research (NEISSR) is the first indigenous social work institute in Nagaland offering specialized BSW & MSW programs.',
     heroImageUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=2000',
     aboutImageUrl: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000',
     primaryCtaText: 'Explore Programmes',
@@ -847,3 +846,4 @@ export default function ContentEditorPage() {
     </form>
   );
 }
+
