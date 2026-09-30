@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db, isFirebaseConfigured } from '../../lib/firebase';
+import HeroCarouselManager from '../components/HeroCarouselManager';
 import RichTextEditor from '../components/RichTextEditor';
 import VideoShowcaseManager from '../components/VideoShowcaseManager';
 import { toast } from 'sonner';
@@ -74,6 +75,7 @@ export const DEFAULT_CONTENT: Record<string, ContentData> = {
   home: {
     heroHeadline: 'Educating for Peace, Development and Social Transformation',
     heroImageUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=2000',
+    heroImages: [],
     aboutImageUrl: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000',
     primaryCtaText: 'Explore Programmes',
     primaryCtaLink: '/academics',
@@ -258,27 +260,10 @@ export default function ContentEditorPage() {
                 />
               </div>
 
-              <div className="space-y-1">
-                <label className="text-xs font-semibold text-neutral-700">Hero Subtitle / Description</label>
-                <textarea
-                  rows={3}
-                  value={data.heroSubtitle || ''}
-                  onChange={(e) => handleChange('heroSubtitle', e.target.value)}
-                  className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8102E]/20"
-                />
-              </div>
+
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <label className="text-xs font-semibold text-neutral-700">Hero Background Image URL</label>
-                  <input
-                    type="url"
-                    placeholder="https://..."
-                    value={data.heroImageUrl || ''}
-                    onChange={(e) => handleChange('heroImageUrl', e.target.value)}
-                    className="w-full px-3 py-2 text-sm bg-neutral-50 border border-neutral-200 rounded-lg"
-                  />
-                </div>
+                <HeroCarouselManager data={data} onChange={handleChange} />
                 <div className="space-y-1">
                   <label className="text-xs font-semibold text-neutral-700">Campus Overview Image URL ("Rooted in Nagaland")</label>
                   <input
