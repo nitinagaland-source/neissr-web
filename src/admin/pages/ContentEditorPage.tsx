@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db, isFirebaseConfigured } from '../../lib/firebase';
 import RichTextEditor from '../components/RichTextEditor';
+import VideoShowcaseManager from '../components/VideoShowcaseManager';
 import { toast } from 'sonner';
 import {
   Save,
@@ -82,6 +83,9 @@ export const DEFAULT_CONTENT: Record<string, ContentData> = {
     studentsEnrolled: '450+',
     alumniNetwork: '1,200+',
     placementRate: '92%',
+    videoShowcaseTitle: 'NEISSR in Motion',
+    videoShowcaseSubtitle: 'Stories, experiences and moments from the NEISSR community.',
+    videoShowcase: [],
     campusImage1: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1000',
     campusCaption1: 'Cultural Day & Traditional Naga Attires',
     campusImage2: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600',
@@ -344,6 +348,8 @@ export default function ContentEditorPage() {
               </div>
             </div>
           </div>
+
+          <VideoShowcaseManager data={data} onChange={handleChange} />
 
           <div className="bg-white rounded-xl border border-neutral-200 p-6 shadow-sm space-y-4">
             <div>

@@ -30,6 +30,7 @@ import { db, isFirebaseConfigured } from '../lib/firebase';
 import { useQuery } from '@tanstack/react-query';
 import { formatDate } from '../lib/date';
 import ReferenceCard from '../components/ui/ReferenceCard';
+import VideoShowcase from '../components/home/VideoShowcase';
 import { SEED_NEWS, SEED_EVENTS, SEED_DOCUMENTS } from '../data/seedData';
 
 /* ============ HERO CAROUSEL COMPONENT ============ */
@@ -619,6 +620,12 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <VideoShowcase
+        videos={(homeContent as any)?.videoShowcase ?? []}
+        title={(homeContent as any)?.videoShowcaseTitle ?? 'NEISSR in Motion'}
+        subtitle={(homeContent as any)?.videoShowcaseSubtitle ?? 'Stories, experiences and moments from the NEISSR community.'}
+      />
 
       {/* SECTION 8 — LIFE AT NEISSR (Campus Life Mosaic) */}
       <section className="py-20 bg-[#FAF9F7]">
