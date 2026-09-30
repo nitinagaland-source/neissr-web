@@ -60,9 +60,9 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full z-50 sticky top-0 transition-all duration-300 relative"><Link to="/" className="hidden lg:flex absolute left-[5%] top-[46px] z-[60] items-start gap-5 group"><img src="https://i.ibb.co/fYhSSyW4/channels4-profile-1.jpg" alt="NEISSR Logo" referrerPolicy="no-referrer" className="w-28 h-28 xl:w-32 xl:h-32 rounded-full object-cover border-4 border-white shadow-xl group-hover:scale-105 transition-transform" /><div className="relative w-[340px] h-32"><div className="absolute left-0 top-[38px] font-serif font-bold text-3xl xl:text-4xl text-white leading-none tracking-tight">NEISSR</div><p className="absolute left-0 top-[92px] text-[11px] xl:text-xs text-white/90 font-semibold tracking-[0.12em] uppercase whitespace-nowrap">Excel in Knowledge & Service</p></div></Link>
+    <header className="w-full z-50 sticky top-0 transition-all duration-300 relative"><Link to="/" className="hidden lg:flex absolute left-[5%] top-[46px] z-[60] items-start gap-5 group"><img src="https://i.ibb.co/fYhSSyW4/channels4-profile-1.jpg" alt="NEISSR Logo" referrerPolicy="no-referrer" className="w-24 h-24 xl:w-28 xl:h-28 rounded-full object-cover border-4 border-white shadow-xl group-hover:scale-105 transition-transform" /><div className="relative w-[340px] h-32"><div className="absolute left-0 top-[38px] font-serif font-bold text-2xl xl:text-3xl text-white leading-none tracking-tight">NEISSR</div><p className="absolute left-0 top-[92px] text-[10px] xl:text-[11px] text-white/90 font-semibold tracking-[0.12em] uppercase whitespace-nowrap">Excel in Knowledge & Service</p></div></Link>
       {/* Row 1 — Top utility bar */}
-      <div className="bg-[#2563eb] text-white text-xs py-2 px-4 md:px-8">
+      <div className="bg-[#2563eb] text-white text-xs py-1.5 px-4 md:px-8">
         <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
           <div className="flex items-center gap-2 font-medium tracking-wide text-center sm:text-left">
             <Phone className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
@@ -95,7 +95,7 @@ export default function Header() {
 
       {/* Row 2 — Tagline bar */}
       <div className="hidden lg:block bg-[#2563eb]">
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-2 text-center">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-1.5 text-center">
           <p className="text-white font-bold text-base font-serif tracking-wide">
             Institute for Peace Building, Research & Dialogue
           </p>
@@ -104,7 +104,7 @@ export default function Header() {
 
       {/* Utility links bar */}
       <div className="hidden lg:block bg-[#2563eb]">
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-2.5 flex items-center justify-center gap-8">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-1.5 flex items-center justify-center gap-7">
           {[
             { label: "UN SDGs", to: "/un-sdgs" },
             { label: "UBA", to: "/uba" },
@@ -121,13 +121,13 @@ export default function Header() {
 
       {/* Row 3 — Main nav bar */}
       <nav className={`bg-[#1e2a4a] transition-shadow duration-300 ${isScrolled ? 'shadow-md' : 'shadow-sm'}`}>
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-3 flex items-center justify-between">          {/* Branding spacer */}           <div className="hidden lg:block w-[420px] shrink-0" />
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-2 flex items-center justify-between">          {/* Branding spacer */}           <div className="hidden lg:block w-[420px] shrink-0" />
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-3">
             {/* About */}
             <div className="relative" onMouseEnter={() => setActiveDropdown('about')} onMouseLeave={() => setActiveDropdown(null)}>
-              <button className="flex items-center gap-1 font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">
+              <button className="flex items-center gap-1 font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">
                 About <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'about' && (
@@ -140,7 +140,7 @@ export default function Header() {
 
             {/* Academics */}
             <div className="relative" onMouseEnter={() => setActiveDropdown('academics')} onMouseLeave={() => setActiveDropdown(null)}>
-              <button className="flex items-center gap-1 font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">
+              <button className="flex items-center gap-1 font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">
                 Academics <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'academics' && (
@@ -161,7 +161,7 @@ export default function Header() {
 
             {/* Documents */}
             <div className="relative" onMouseEnter={() => setActiveDropdown('documents')} onMouseLeave={() => setActiveDropdown(null)}>
-              <button className="flex items-center gap-1 font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">
+              <button className="flex items-center gap-1 font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">
                 Documents <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'documents' && (
@@ -176,7 +176,7 @@ export default function Header() {
 
             {/* IQAC */}
             <div className="relative" onMouseEnter={() => setActiveDropdown('iqac')} onMouseLeave={() => setActiveDropdown(null)}>
-              <button className="flex items-center gap-1 font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">
+              <button className="flex items-center gap-1 font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">
                 IQAC <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'iqac' && (
@@ -206,7 +206,7 @@ export default function Header() {
 
             {/* Student Services (includes Student Life items) */}
             <div className="relative" onMouseEnter={() => setActiveDropdown('student-services')} onMouseLeave={() => setActiveDropdown(null)}>
-              <button className="flex items-center gap-1 font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">
+              <button className="flex items-center gap-1 font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">
                 Student Services <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'student-services' && (
@@ -244,10 +244,10 @@ export default function Header() {
               )}
             </div>
 
-            <Link to="/faculty" className="font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">Faculty</Link>
-            <Link to="/placement" className="font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">Placements</Link>
-            <Link to="/infrastructure" className="font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">Infrastructure</Link>
-            <Link to="/contact" className="font-medium text-sm text-white hover:text-white px-2.5 py-1.5 rounded-md hover:bg-white/10 transition-all">Contact</Link>
+            <Link to="/faculty" className="font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">Faculty</Link>
+            <Link to="/placement" className="font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">Placements</Link>
+            <Link to="/infrastructure" className="font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">Infrastructure</Link>
+            <Link to="/contact" className="font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">Contact</Link>
           </div>
 
           {/* Mobile Hamburger */}
@@ -376,6 +376,11 @@ export default function Header() {
     </header>
   );
 }
+
+
+
+
+
 
 
 
