@@ -112,7 +112,7 @@ export default function Header() {
             { label: "NCC", to: "/ncc" },
             { label: "Newsletters", to: "/newsletters" },
           ].map((link) => (
-            <Link key={link.to} to={link.to} className="text-xs font-semibold text-white/60 hover:text-white transition-colors tracking-widest uppercase">
+            <Link key={link.to} to={link.to} className="text-sm font-semibold text-white/80 hover:text-white transition-colors tracking-widest uppercase">
               {link.label}
             </Link>
           ))}           <Link to="/admissions" className="inline-flex items-center gap-2 bg-[#C8102E] hover:bg-[#a50d25] text-white px-4 py-1.5 rounded-md font-semibold text-sm shadow-sm transition-all">Admissions Open <ArrowRight className="w-3.5 h-3.5" /></Link>
@@ -127,7 +127,7 @@ export default function Header() {
           <div className="hidden lg:flex items-center gap-3">
             {/* About */}
             <div className="relative" onMouseEnter={() => setActiveDropdown('about')} onMouseLeave={() => setActiveDropdown(null)}>
-              <button className="flex items-center gap-1 font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">
+              <button className="flex items-center gap-1 font-medium text-sm text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">
                 About <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'about' && (
@@ -140,7 +140,7 @@ export default function Header() {
 
             {/* Academics */}
             <div className="relative" onMouseEnter={() => setActiveDropdown('academics')} onMouseLeave={() => setActiveDropdown(null)}>
-              <button className="flex items-center gap-1 font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">
+              <button className="flex items-center gap-1 font-medium text-sm text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">
                 Academics <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'academics' && (
@@ -161,7 +161,7 @@ export default function Header() {
 
             {/* Documents */}
             <div className="relative" onMouseEnter={() => setActiveDropdown('documents')} onMouseLeave={() => setActiveDropdown(null)}>
-              <button className="flex items-center gap-1 font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">
+              <button className="flex items-center gap-1 font-medium text-sm text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">
                 Documents <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'documents' && (
@@ -176,7 +176,7 @@ export default function Header() {
 
             {/* IQAC */}
             <div className="relative" onMouseEnter={() => setActiveDropdown('iqac')} onMouseLeave={() => setActiveDropdown(null)}>
-              <button className="flex items-center gap-1 font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">
+              <button className="flex items-center gap-1 font-medium text-sm text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">
                 IQAC <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'iqac' && (
@@ -206,7 +206,7 @@ export default function Header() {
 
             {/* Student Services (includes Student Life items) */}
             <div className="relative" onMouseEnter={() => setActiveDropdown('student-services')} onMouseLeave={() => setActiveDropdown(null)}>
-              <button className="flex items-center gap-1 font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">
+              <button className="flex items-center gap-1 font-medium text-sm text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">
                 Student Services <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === 'student-services' && (
@@ -244,10 +244,10 @@ export default function Header() {
               )}
             </div>
 
-            <Link to="/faculty" className="font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">Faculty</Link>
-            <Link to="/placement" className="font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">Placements</Link>
-            <Link to="/infrastructure" className="font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">Infrastructure</Link>
-            <Link to="/contact" className="font-medium text-[13px] text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">Contact</Link>
+            <Link to="/faculty" className="font-medium text-sm text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">Faculty</Link>
+            <Link to="/placement" className="font-medium text-sm text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">Placements</Link>
+            <Link to="/infrastructure" className="font-medium text-sm text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">Infrastructure</Link>
+            <Link to="/contact" className="font-medium text-sm text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">Contact</Link>
           </div>
 
           {/* Mobile Hamburger */}
