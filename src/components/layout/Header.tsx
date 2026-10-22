@@ -252,9 +252,9 @@ export default function Header() {
                 Student Support <ChevronDown className="w-4 h-4" />
               </button>
               {activeDropdown === "student-support" && (
-                <div className="absolute top-full right-0 w-56 bg-[#1e3a5f] rounded-xl shadow-2xl border border-white/10 p-2 z-50 mt-1">
-                  <Link to="/lesson-plans" className="block px-4 py-2 text-sm text-white hover:bg-white/10 rounded-lg transition-colors">Lesson Plans</Link>
-                  <Link to="/annual-calendar" className="block px-4 py-2 text-sm text-white hover:bg-white/10 rounded-lg transition-colors">Annual Calendar</Link>
+                <div className="absolute top-full right-0 w-56 bg-[#2563eb] rounded-xl shadow-xl border border-[#2563eb] p-2 z-50 animate-fadeIn">
+                  <Link to="/lesson-plans" className="block px-4 py-2 text-sm text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg">Lesson Plans</Link>
+                  <Link to="/annual-calendar" className="block px-4 py-2 text-sm text-white hover:bg-[#1d4ed8] hover:text-white rounded-lg">Annual Calendar</Link>
                 </div>
               )}
             </div>
