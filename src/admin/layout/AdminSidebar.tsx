@@ -144,6 +144,8 @@ export default function AdminSidebar({ mobileOpen = false, onClose }: AdminSideb
         { label: 'NSS', href: '/admin/nss', icon: FileText },
         { label: 'NCC', href: '/admin/ncc', icon: FileText },
         { label: 'Newsletters', href: '/admin/newsletters', icon: Newspaper },
+        { label: 'Lesson Plans', href: '/admin/lesson-plans', icon: FileText },
+        { label: 'Annual Calendar', href: '/admin/annual-calendar', icon: FileText },
       ],
     },
     {

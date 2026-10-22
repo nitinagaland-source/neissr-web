@@ -31,6 +31,10 @@ import UBAPage from './pages/UBAPage';
 import NSSPage from './pages/NSSPage';
 import NCCPage from './pages/NCCPage';
 import NewslettersPage from './pages/NewslettersPage';
+import LessonPlanPage from './pages/LessonPlanPage';
+import AnnualCalendarPage from './pages/AnnualCalendarPage';
+import LessonPlanAdminPage from './admin/pages/LessonPlanAdminPage';
+import AnnualCalendarAdminPage from './admin/pages/AnnualCalendarAdminPage';
 import UNSDGsAdminPage from './admin/pages/UNSDGsAdminPage';
 import UBAAdminPage from './admin/pages/UBAAdminPage';
 import NSSAdminPage from './admin/pages/NSSAdminPage';
@@ -173,6 +177,8 @@ export default function App() {
             <Route path="nss" element={<NSSAdminPage />} />
             <Route path="ncc" element={<NCCAdminPage />} />
             <Route path="newsletters" element={<NewslettersAdminPage />} />
+            <Route path="lesson-plans" element={<LessonPlanAdminPage />} />
+            <Route path="annual-calendar" element={<AnnualCalendarAdminPage />} />
             <Route path="msw" element={<MSWAdminPage />} />
             <Route path="magazines" element={<PlaceholderAdminPage title="Magazines & Publications" />} />
             <Route path="students-council" element={<PlaceholderAdminPage title="Students Council" />} />
@@ -228,6 +234,8 @@ export default function App() {
           <Route path="/nss" element={<NSSPage />} />
           <Route path="/ncc" element={<NCCPage />} />
           <Route path="/newsletters" element={<NewslettersPage />} />
+          <Route path="/lesson-plans" element={<LessonPlanPage />} />
+          <Route path="/annual-calendar" element={<AnnualCalendarPage />} />
 
           <Route path="*" element={<HomePage />} />
         </Route>

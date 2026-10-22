@@ -247,6 +247,17 @@ export default function Header() {
             <Link to="/faculty" className="font-medium text-sm text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">Faculty</Link>
             <Link to="/placement" className="font-medium text-sm text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">Placements</Link>
             <Link to="/infrastructure" className="font-medium text-sm text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">Infrastructure</Link>
+            <div className="relative" onMouseEnter={() => setActiveDropdown("student-support")} onMouseLeave={() => setActiveDropdown(null)}>
+              <button className="flex items-center gap-1 font-medium text-sm text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">
+                Student Support <ChevronDown className="w-4 h-4" />
+              </button>
+              {activeDropdown === "student-support" && (
+                <div className="absolute top-full left-0 w-56 bg-white rounded-xl shadow-2xl border border-neutral-100 p-2 z-50 mt-1">
+                  <Link to="/lesson-plans" className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#003DA5] rounded-lg">Lesson Plans</Link>
+                  <Link to="/annual-calendar" className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-[#003DA5] rounded-lg">Annual Calendar</Link>
+                </div>
+              )}
+            </div>
             <Link to="/contact" className="font-medium text-sm text-white hover:text-white px-2 py-1 rounded-md hover:bg-white/10 transition-all">Contact</Link>
           </div>
 
